@@ -11,8 +11,8 @@
 
 var TARGET = Argument ("t", Argument ("target", "Default"));
 
-var NUGET_VERSION = "24.2.1";
-var COMPONENT_VERSION = "24.2.1.0";
+var NUGET_VERSION = "24.2.1.1";
+var COMPONENT_VERSION = "24.2.1.1";
 var AAR_VERSION = "24.2.1";
 
 // FROM: https://dl.google.com/android/repository/addon.xml
