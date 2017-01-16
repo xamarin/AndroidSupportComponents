@@ -383,6 +383,8 @@ Task ("genapi").IsDependentOn ("libs-base").IsDependentOn ("externals").Does (()
 	CopyFile ("./v4/source/bin/Release/Xamarin.Android.Support.v4.dll", "./output/Xamarin.Android.Support.v4.dll");
 });
 
+Task ("nuget-setup");
+
 SetupXamarinBuildTasks (buildSpec, Tasks, Task);
 
 RunTarget (TARGET);
