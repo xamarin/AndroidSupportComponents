@@ -3,7 +3,7 @@
 
   <!-- Adds an argument to the call to aapt to support vectors -->
   <PropertyGroup>
-    <AndroidResgenExtraArgs>$(AndroidResgenExtraArgs)--no-version-vectors</AndroidResgenExtraArgs>
+    <AndroidResgenExtraArgs>$(AndroidResgenExtraArgs) --no-version-vectors</AndroidResgenExtraArgs>
   </PropertyGroup>
 
   <!-- 
