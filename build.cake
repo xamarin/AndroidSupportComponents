@@ -15,21 +15,18 @@ LogSystemInfo ();
 
 var TARGET = Argument ("t", Argument ("target", "Default"));
 
-var NUGET_VERSION = "25.1.1";
-var COMPONENT_VERSION = "25.1.1.0";
-var AAR_VERSION = "25.1.1";
+var NUGET_VERSION = "25.2.0";
+var COMPONENT_VERSION = "25.2.0.0";
+var AAR_VERSION = "25.2.0";
 
-// FROM: https://dl.google.com/android/repository/addon.xml
 // FROM: https://dl.google.com/android/repository/addon2-1.xml
-var M2_REPOSITORY_URL = "https://dl-ssl.google.com/android/repository/android_m2repository_r42.zip";
-var M2_REPOSITORY_SHA1 = "175c56e2e2aa6fec560430318f56ed98eaeaea04";
+var M2_REPOSITORY_URL = "https://dl-ssl.google.com/android/repository/android_m2repository_r44.zip";
 var BUILD_TOOLS_URL = "https://dl-ssl.google.com/android/repository/build-tools_r25-macosx.zip";
-//var DOCS_URL = "https://dl-ssl.google.com/android/repository/docs-23_r01.zip";
 var ANDROID_SDK_VERSION = IsRunningOnWindows () ? "v7.0" : "android-24";
 var RENDERSCRIPT_FOLDER = "android-7.1.1";
 
 // We grab the previous release's api-info.xml to use as a comparison for this build's generated info to make an api-diff
-var BASE_API_INFO_URL = "https://github.com/xamarin/AndroidSupportComponents/releases/download/25.1.0/api-info.xml";
+var BASE_API_INFO_URL = "https://github.com/xamarin/AndroidSupportComponents/releases/download/25.1.1/api-info.xml";
 
 var CPU_COUNT = System.Environment.ProcessorCount;
 
@@ -137,6 +134,8 @@ var buildSpec = new BuildSpec {
 				new OutputFileCopy { FromFile = "./support-media-compat/source/bin/Release/Xamarin.Android.Support.Media.Compat.dll" },
 				new OutputFileCopy { FromFile = "./transition/source/bin/Release/Xamarin.Android.Support.Transition.dll" },
 				new OutputFileCopy { FromFile = "./exifinterface/source/bin/Release/Xamarin.Android.Support.Exif.dll" },
+
+				new OutputFileCopy { FromFile = "./support-annotations/source/bin/Release/Xamarin.Android.Support.Annotations.dll" },
 			}
 		}
 	},
@@ -188,6 +187,7 @@ var buildSpec = new BuildSpec {
 		new NuGetInfo { NuSpec = "./support-media-compat/nuget/Xamarin.Android.Support.Media.Compat.nuspec", Version = NUGET_VERSION, RequireLicenseAcceptance = true },
 		new NuGetInfo { NuSpec = "./transition/nuget/Xamarin.Android.Support.Transition.nuspec", Version = NUGET_VERSION, RequireLicenseAcceptance = true },
 		new NuGetInfo { NuSpec = "./exifinterface/nuget/Xamarin.Android.Support.Exif.nuspec", Version = NUGET_VERSION, RequireLicenseAcceptance = true },
+		new NuGetInfo { NuSpec = "./support-annotations/nuget/Xamarin.Android.Support.Annotations.nuspec", Version = NUGET_VERSION, RequireLicenseAcceptance = true },
 	},
 
 	Components = new [] {
@@ -247,6 +247,7 @@ Task ("externals")
 			MoveFile (implFile, path + aarDir + "/libs/internal_impl.jar");
 	}
 
+	CopyFile (string.Format (path + "m2repository/com/android/support/support-annotations/{0}/support-annotations-{0}.jar", AAR_VERSION), path + "support-annotations.jar");
 	// We get docs a different way now
  //  // Get android docs
 	// if (!FileExists (path + "docs.zip")) {
@@ -330,7 +331,23 @@ Task ("component-setup").Does (() =>
 });
 
 Task ("nuget-setup").IsDependentOn ("buildtasks").IsDependentOn ("externals")
-	.WithCriteria (!FileExists ("./generated.targets")).Does (() => {
+	.WithCriteria (!FileExists ("./generated.targets")).Does (() => 
+{
+
+	Action<FilePath, FilePath> mergeTargetsFiles = (FilePath fromFile, FilePath intoFile) =>
+	{
+		// Load the doc to append to, and the doc to append
+		var xOrig = System.Xml.Linq.XDocument.Load (MakeAbsolute(intoFile).FullPath);
+		System.Xml.Linq.XNamespace nsOrig = xOrig.Root.Name.Namespace;
+		var xMerge = System.Xml.Linq.XDocument.Load (MakeAbsolute(fromFile).FullPath);
+		System.Xml.Linq.XNamespace nsMerge = xMerge.Root.Name.Namespace;
+		// Add all the elements under <Project> into the existing file's <Project> node
+		foreach (var xItemToAdd in xMerge.Element (nsMerge + "Project").Elements ())
+			xOrig.Element (nsOrig + "Project").Add (xItemToAdd);
+
+		xOrig.Save (MakeAbsolute (intoFile).FullPath);
+	};
+
 	var templateText = FileReadText ("./template.targets");
 
 	if (FileExists ("./generated.targets"))
@@ -420,19 +437,22 @@ Task ("nuget-setup").IsDependentOn ("buildtasks").IsDependentOn ("externals")
 
 		if (FileExists (mergeFile)) {
 			Information ("merge.targets found, merging into generated file...");
-
-			// Load the doc to append to, and the doc to append
-			var xOrig = System.Xml.Linq.XDocument.Load (MakeAbsolute(targetsFile).FullPath);
-			System.Xml.Linq.XNamespace nsOrig = xOrig.Root.Name.Namespace;
-			var xMerge = System.Xml.Linq.XDocument.Load (MakeAbsolute(mergeFile).FullPath);
-			System.Xml.Linq.XNamespace nsMerge = xMerge.Root.Name.Namespace;
-			// Add all the elements under <Project> into the existing file's <Project> node
-			foreach (var xItemToAdd in xMerge.Element (nsMerge + "Project").Elements ())
-				xOrig.Element (nsOrig + "Project").Add (xItemToAdd);
-
-			xOrig.Save (MakeAbsolute (targetsFile).FullPath);
+			mergeTargetsFiles (mergeFile, targetsFile);
 		}
 	}
+
+	// Support annotations needs merging tool
+	var annotationsPart = downloadParts.FirstOrDefault (p => p.LocalPath.EndsWith ("/support-annotations-" + AAR_VERSION + ".jar"));
+
+	var annotationsTemplateText = FileReadText ("./support-annotations/nuget/template.targets");
+	annotationsTemplateText = annotationsTemplateText.Replace ("$AarVersion$", AAR_VERSION)
+								.Replace ("$XbdRangeStart$", annotationsPart.RangeStart.ToString())
+								.Replace ("$XbdRangeEnd$", annotationsPart.RangeEnd.ToString())
+								.Replace ("$XbdMd5$", annotationsPart.Md5)
+								.Replace ("$XbdUrl$", M2_REPOSITORY_URL);
+								
+	FileWriteText ("./support-annotations/nuget/Xamarin.Android.Support.Annotations.targets", annotationsTemplateText);
+	mergeTargetsFiles ("./support-annotations/nuget/Xamarin.Android.Support.Annotations.targets", "./generated.targets");
 });
 
 Task ("nuget").IsDependentOn ("nuget-setup").IsDependentOn ("nuget-base").IsDependentOn ("libs");
