@@ -42,10 +42,10 @@ using Android.App;
 
 static class __Consts
 {
-    public const string AarVersion = "1.0.0-alpha9";
+    public const string AarVersion = "1.0.2";
     public const string Version = AarVersion;
     public const string PackageName = "Xamarin.Android.Support.Constraint.Layout";
     public const string Url = "https://dl-ssl.google.com/android/repository/com.android.support.constraint-constraint-layout-" + __Consts.AarVersion + ".zip";
     public const string AarPath = "constraintlayout/constraint-layout-" + __Consts.AarVersion + ".aar";
-    public const string Sha1sum = "89c2bbc005d4731c7a830a4d5aa98dae121a46a4";
+    public const string Sha1sum = "3d9688a50fe0ed7348275f85d1b02278f616d8a4";
 }

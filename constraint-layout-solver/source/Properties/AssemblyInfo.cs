@@ -18,7 +18,7 @@ using Android.App;
 // The form "{Major}.{Minor}.*" will automatically update the build and revision,
 // and "{Major}.{Minor}.{Build}.*" will update just the revision.
 
-[assembly: AssemblyVersion ("1.0.0")]
+[assembly: AssemblyVersion ("1.0.2")]
 
 // The following attributes are used to specify the signing key for the assembly, 
 // if desired. See the Mono documentation for more information about signing.
@@ -43,9 +43,9 @@ using Android.App;
 static class __Consts
 {
     public const string JarPath = "solver/constraint-layout-solver-" + JarVersion + ".jar";
-    public const string JarVersion = "1.0.0-alpha9";
+    public const string JarVersion = "1.0.2";
     public const string Version = JarVersion;
     public const string PackageName = "Xamarin.Android.Support.Constraint.Layout.Solver";
     public const string Url = "https://dl-ssl.google.com/android/repository/com.android.support.constraint-constraint-layout-solver-" + JarVersion + ".zip";
-    public const string Sha1sum = "2c52ddd883d83230a17042b8f4ba03669f0f5f40";
+    public const string Sha1sum = "96d7ff669f0e808e9833b2c2e320702826ccc8be";
 }
