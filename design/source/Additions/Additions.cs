@@ -3,8 +3,7 @@ using Android.Runtime;
 
 namespace Android.Support.Design.Internal
 {
-
-	public partial class NavigationMenuItemView
+    public partial class NavigationMenuItemView
 	{
 	    public void SetEnabled (bool enabled)
 	    {
@@ -24,8 +23,7 @@ namespace Android.Support.Design.Internal
 
 namespace Android.Support.Design.Widget
 {
-
-	public partial class AppBarLayout
+    public partial class AppBarLayout
 	{
 		public partial class OffsetChangedEventArgs
 		{

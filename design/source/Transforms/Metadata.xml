@@ -26,9 +26,6 @@
 
 	<attr path="/api/package[@name='android.support.design.widget']/interface[@name='ShadowViewDelegate']" name="visibility">public</attr>
 
-	<attr path="/api/package[@name='android.support.design.widget']/class[@name='CoordinatorLayout.ViewElevationComparator']/method[@name='compare' and count(parameter)=2 and parameter[1][@type='android.view.View'] and parameter[2][@type='android.view.View']]/parameter[1]" name="managedType">Java.Lang.Object</attr>
-	<attr path="/api/package[@name='android.support.design.widget']/class[@name='CoordinatorLayout.ViewElevationComparator']/method[@name='compare' and count(parameter)=2 and parameter[1][@type='android.view.View'] and parameter[2][@type='android.view.View']]/parameter[2]" name="managedType">Java.Lang.Object</attr>
-	
 	<!-- Manually fix these generator bug overrides https://bugzilla.xamarin.com/show_bug.cgi?id=44151  -->
 	<remove-node path="/api/package[@name='android.support.design.widget']/class[@name='FloatingActionButton']/method[@name='setVisibility' and count(parameter)=1 and parameter[1][@type='int']]" />
   
@@ -40,4 +37,6 @@
 	<remove-node path="/api/package[@name='android.support.design.widget']/interface[@name='BaseTransientBottomBar.OnAttachStateChangeListener']" />
 	<remove-node path="/api/package[@name='android.support.design.widget']/interface[@name='BaseTransientBottomBar.OnLayoutChangeListener']" />
 
+  <attr path="/api/package[@name='android.support.design.widget']/class[@name='AppBarLayout.Behavior']/method[@name='onLayoutChild' and count(parameter)=3 and parameter[1][@type='android.support.design.widget.CoordinatorLayout'] and parameter[2][@type='android.view.View'] and parameter[3][@type='int']]/parameter[2]" name="managedType">Java.Lang.Object</attr>
+  <attr path="/api/package[@name='android.support.design.widget']/class[@name='AppBarLayout.ScrollingViewBehavior']/method[@name='onLayoutChild' and count(parameter)=3 and parameter[1][@type='android.support.design.widget.CoordinatorLayout'] and parameter[2][@type='android.view.View'] and parameter[3][@type='int']]/parameter[2]" name="managedType">Java.Lang.Object</attr>
 </metadata>

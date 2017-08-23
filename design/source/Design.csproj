@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -61,11 +60,11 @@
     </TransformFile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\v7-recyclerview\source\V7-RecyclerView.csproj">
+    <ProjectReference Include="..\..\recyclerview-v7\source\V7-RecyclerView.csproj">
       <Project>{514ED7A8-0F25-4F61-B7B3-A4A652FD7192}</Project>
       <Name>V7-RecyclerView</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\v7-appcompat\source\V7-AppCompat.csproj">
+    <ProjectReference Include="..\..\appcompat-v7\source\V7-AppCompat.csproj">
       <Project>{B4ED245B-BBD8-4549-9990-476A36AAD381}</Project>
       <Name>V7-AppCompat</Name>
     </ProjectReference>
