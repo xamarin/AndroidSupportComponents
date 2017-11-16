@@ -25,6 +25,7 @@ using Android.App;
 
 //[assembly: AssemblyDelaySign(false)]
 //[assembly: AssemblyKeyFile("")]
+[assembly: Android.LinkerSafe]
 
 [assembly: Java.Interop.JavaLibraryReference (__Consts.RootDir + "/renderscript/lib/renderscript-v8.jar",
 	SourceUrl = __Consts.SupportUrl,

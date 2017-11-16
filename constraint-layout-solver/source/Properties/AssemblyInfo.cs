@@ -19,3 +19,4 @@ using Android.App;
 // and "{Major}.{Minor}.{Build}.*" will update just the revision.
 
 [assembly: AssemblyVersion ("1.1.0.0")]
+[assembly: Android.LinkerSafe]
