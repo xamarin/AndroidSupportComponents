@@ -26,3 +26,4 @@ using Java.Interop;
 
 //[assembly: AssemblyDelaySign(false)]
 //[assembly: AssemblyKeyFile("")]
+[assembly: Android.LinkerSafe]

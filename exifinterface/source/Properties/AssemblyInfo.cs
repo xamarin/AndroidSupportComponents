@@ -25,3 +25,4 @@ using Android.App;
 
 //[assembly: AssemblyDelaySign(false)]
 //[assembly: AssemblyKeyFile("")]
+[assembly: Android.LinkerSafe]
