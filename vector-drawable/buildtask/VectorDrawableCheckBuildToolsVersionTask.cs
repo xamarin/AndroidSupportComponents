@@ -64,17 +64,15 @@ namespace Xamarin.Android.Support.Tasks
 
         int GetMajorVersionNumber (string version)
         {
+            int major = -1;
+
             if (!string.IsNullOrEmpty (version) && version.Any (c => c == '.')) {
                 var parts = version.Split ('.');
 
-                if (parts != null && parts.Length > 0) {
-                    int major = -1;
-                    if (int.TryParse (parts [0], out major))
-                        return major;
-                }
+                int.TryParse(parts[0], out major);
             }
 
-            return -1;
+            return major;
         }
     }
 }
