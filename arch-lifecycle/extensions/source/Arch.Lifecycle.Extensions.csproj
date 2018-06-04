@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Android.Arch.Lifecycle.Extensions</RootNamespace>
     <AssemblyName>Xamarin.Android.Arch.Lifecycle.Extensions</AssemblyName>
-    <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
     <AndroidUseLatestPlatformSdk>true</AndroidUseLatestPlatformSdk>

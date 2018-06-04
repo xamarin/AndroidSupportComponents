@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>Xamarin.Android.Arch.Navigation.Fragment</id>
+    <title>Xamarin Android Architecture Navigation - Fragment</title>
+    <version>$version$</version>
+    <authors>Xamarin Inc.</authors>
+    <owners>Xamarin Inc.</owners>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Android Architecture Navigation - Fragment C# bindings for Xamarin</description>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <projectUrl>https://go.microsoft.com/fwlink/?linkid=865327</projectUrl>
+    <licenseUrl>https://go.microsoft.com/fwlink/?linkid=865385</licenseUrl>
+    <iconUrl>https://raw.githubusercontent.com/xamarin/AndroidSupportComponents/master/icons/arch-core-common_128x128.png</iconUrl>
+  </metadata>
+  <files>
+    <file src="arch-core/Fragment/nuget/Xamarin.Android.Arch.Navigation.Fragment.targets" target="build/MonoAndroid80" />
+    <file src="output/Xamarin.Android.Arch.Navigation.Fragment.dll" target="lib/MonoAndroid80" />
+    <file src="External-Dependency-Info.txt" target="THIRD-PARTY-NOTICES.txt" />
+  </files>
+</package>

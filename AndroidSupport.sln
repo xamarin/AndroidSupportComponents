@@ -81,6 +81,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arch.Core.Runtime", "arch-c
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arch.Lifecycle.Extensions", "arch-lifecycle\extensions\source\Arch.Lifecycle.Extensions.csproj", "{8DFA4E1A-7DF0-4FC5-A8F3-8E6E30E3DA70}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arch.Navigation.Common", "arch-navigation\navigation-common\source\Arch.Navigation.Common.csproj", "{825A3479-EBB2-4A8F-BCDB-0ABE42760F69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arch.Navigation.Fragment", "arch-navigation\navigation-fragment\source\Arch.Navigation.Fragment.csproj", "{A2824605-ABC1-4776-9535-9854601FA1D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arch.Navigation.Runtime", "arch-navigation\navigation-runtime\source\Arch.Navigation.Runtime.csproj", "{B0B6DE96-72EE-4090-BB66-040D48A1773F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arch.Navigation.Testing", "arch-navigation\navigation-testing\source\Arch.Navigation.Testing.csproj", "{1550BA08-40D2-4CEF-8AF9-58B61A7FDDB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arch.Navigation.Ui", "arch-navigation\navigation-ui\source\Arch.Navigation.Ui.csproj", "{7E2B7F6A-B387-489B-9DD6-27C1C142F893}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -243,6 +253,26 @@ Global
 		{8DFA4E1A-7DF0-4FC5-A8F3-8E6E30E3DA70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DFA4E1A-7DF0-4FC5-A8F3-8E6E30E3DA70}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DFA4E1A-7DF0-4FC5-A8F3-8E6E30E3DA70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{825A3479-EBB2-4A8F-BCDB-0ABE42760F69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{825A3479-EBB2-4A8F-BCDB-0ABE42760F69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{825A3479-EBB2-4A8F-BCDB-0ABE42760F69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{825A3479-EBB2-4A8F-BCDB-0ABE42760F69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2824605-ABC1-4776-9535-9854601FA1D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2824605-ABC1-4776-9535-9854601FA1D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2824605-ABC1-4776-9535-9854601FA1D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2824605-ABC1-4776-9535-9854601FA1D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0B6DE96-72EE-4090-BB66-040D48A1773F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0B6DE96-72EE-4090-BB66-040D48A1773F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0B6DE96-72EE-4090-BB66-040D48A1773F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0B6DE96-72EE-4090-BB66-040D48A1773F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1550BA08-40D2-4CEF-8AF9-58B61A7FDDB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1550BA08-40D2-4CEF-8AF9-58B61A7FDDB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1550BA08-40D2-4CEF-8AF9-58B61A7FDDB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1550BA08-40D2-4CEF-8AF9-58B61A7FDDB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E2B7F6A-B387-489B-9DD6-27C1C142F893}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E2B7F6A-B387-489B-9DD6-27C1C142F893}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E2B7F6A-B387-489B-9DD6-27C1C142F893}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E2B7F6A-B387-489B-9DD6-27C1C142F893}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{4C9E1C1E-09C3-469C-B3C2-79651DF13870} = {3AC04D8E-9E4C-401F-AED5-239F226BF9C2}
@@ -250,5 +280,10 @@ Global
 		{25CE44A9-FA51-4468-952F-21A13F066384} = {3AC04D8E-9E4C-401F-AED5-239F226BF9C2}
 		{4C9E1C1E-09C3-469C-B3C2-79651DF13871} = {3AC04D8E-9E4C-401F-AED5-239F226BF9C2}
 		{8DFA4E1A-7DF0-4FC5-A8F3-8E6E30E3DA70} = {3AC04D8E-9E4C-401F-AED5-239F226BF9C2}
+		{825A3479-EBB2-4A8F-BCDB-0ABE42760F69} = {3AC04D8E-9E4C-401F-AED5-239F226BF9C2}
+		{A2824605-ABC1-4776-9535-9854601FA1D4} = {3AC04D8E-9E4C-401F-AED5-239F226BF9C2}
+		{B0B6DE96-72EE-4090-BB66-040D48A1773F} = {3AC04D8E-9E4C-401F-AED5-239F226BF9C2}
+		{1550BA08-40D2-4CEF-8AF9-58B61A7FDDB9} = {3AC04D8E-9E4C-401F-AED5-239F226BF9C2}
+		{7E2B7F6A-B387-489B-9DD6-27C1C142F893} = {3AC04D8E-9E4C-401F-AED5-239F226BF9C2}
 	EndGlobalSection
 EndGlobal

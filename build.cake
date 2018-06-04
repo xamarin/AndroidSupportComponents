@@ -45,12 +45,22 @@ var ARCH_CORE_RUNTIME_AAR_VERSION = "1.0.0";
 var ARCH_LIFECYCLE_COMMON_AAR_VERSION = "1.0.3";
 var ARCH_LIFECYCLE_RUNTIME_AAR_VERSION = "1.0.3";
 var ARCH_LIFECYCLE_EXTENSIONS_AAR_VERSION = "1.0.0";
+var ARCH_NAVIGATION_COMMON_AAR_VERSION = "1.0.0-alpha01";
+var ARCH_NAVIGATION_RUNTIME_AAR_VERSION = "1.0.0-alpha01";
+var ARCH_NAVIGATION_FRAGMENT_AAR_VERSION = "1.0.0-alpha01";
+var ARCH_NAVIGATION_UI_AAR_VERSION = "1.0.0-alpha01";
+var ARCH_NAVIGATION_TESTING_AAR_VERSION = "1.0.0-alpha01";
 
 var ARCH_CORE_COMMON_NUGET_VERSION = "1.0.0" + NUGET_PRE;
 var ARCH_CORE_RUNTIME_NUGET_VERSION = "1.0.0" + NUGET_PRE;
 var ARCH_LIFECYCLE_COMMON_NUGET_VERSION = "1.0.3" + NUGET_PRE;
 var ARCH_LIFECYCLE_RUNTIME_NUGET_VERSION = "1.0.3" + NUGET_PRE;
 var ARCH_LIFECYCLE_EXTENSIONS_NUGET_VERSION = "1.0.0" + NUGET_PRE;
+var ARCH_NAVIGATION_COMMON_NUGET_VERSION = "1.0.0-alpha01" + NUGET_PRE;
+var ARCH_NAVIGATION_RUNTIME_NUGET_VERSION = "1.0.0-alpha01" + NUGET_PRE;
+var ARCH_NAVIGATION_FRAGMENT_NUGET_VERSION = "1.0.0-alpha01" + NUGET_PRE;
+var ARCH_NAVIGATION_UI_NUGET_VERSION = "1.0.0-alpha01" + NUGET_PRE;
+var ARCH_NAVIGATION_TESTING_NUGET_VERSION = "1.0.0-alpha01" + NUGET_PRE;
 
 
 var DOC_VERSION = "2017-12-18";
@@ -58,8 +68,10 @@ var DOC_VERSION = "2017-12-18";
 var SUPPORT_PKG_NAME = "com.android.support";
 var ARCH_LIFECYCLE_PKG_NAME = "android.arch.lifecycle";
 var ARCH_CORE_PKG_NAME = "android.arch.core";
+var ARCH_NAVIGATION_PKG_NAME = "android.arch.navigation";
 
 // FROM: https://dl.google.com/android/repository/addon2-1.xml
+// google maven index.html https://dl.google.com/dl/android/maven2/index.html
 var MAVEN_REPO_URL = "https://dl.google.com/dl/android/maven2/";
 var BUILD_TOOLS_URL = "https://dl-ssl.google.com/android/repository/build-tools_r27-macosx.zip";
 var ANDROID_SDK_VERSION = IsRunningOnWindows () ? "v8.0" : "android-26";
@@ -79,6 +91,13 @@ var ARTIFACTS = new [] {
 	new ArtifactInfo (ARCH_LIFECYCLE_PKG_NAME, "common", "Xamarin.Android.Arch.Lifecycle.Common", ARCH_LIFECYCLE_COMMON_AAR_VERSION, ARCH_LIFECYCLE_COMMON_NUGET_VERSION, "1.0.3.0", true) { PathPrefix = "arch-lifecycle/" },
 	new ArtifactInfo (ARCH_LIFECYCLE_PKG_NAME, "runtime", "Xamarin.Android.Arch.Lifecycle.Runtime", ARCH_LIFECYCLE_RUNTIME_AAR_VERSION, ARCH_LIFECYCLE_RUNTIME_NUGET_VERSION, "1.0.3.0") { PathPrefix = "arch-lifecycle/" },
 	new ArtifactInfo (ARCH_LIFECYCLE_PKG_NAME, "extensions", "Xamarin.Android.Arch.Lifecycle.Extensions", ARCH_LIFECYCLE_EXTENSIONS_AAR_VERSION, ARCH_LIFECYCLE_EXTENSIONS_NUGET_VERSION, "1.0.0.0") { PathPrefix = "arch-lifecycle/" },
+
+    new ArtifactInfo (ARCH_NAVIGATION_PKG_NAME, "navigation-common", "Xamarin.Android.Arch.Navigation.Common", ARCH_NAVIGATION_COMMON_AAR_VERSION, ARCH_NAVIGATION_COMMON_NUGET_VERSION, ARCH_NAVIGATION_COMMON_AAR_VERSION + ".0") { PathPrefix = "arch-navigation/" },
+	new ArtifactInfo (ARCH_NAVIGATION_PKG_NAME, "navigation-runtime", "Xamarin.Android.Arch.Navigation.Runtime", ARCH_NAVIGATION_RUNTIME_AAR_VERSION, ARCH_NAVIGATION_RUNTIME_NUGET_VERSION, ARCH_NAVIGATION_RUNTIME_AAR_VERSION + ".0") { PathPrefix = "arch-navigation/" },
+	new ArtifactInfo (ARCH_NAVIGATION_PKG_NAME, "navigation-fragment", "Xamarin.Android.Arch.Navigation.Fragment", ARCH_NAVIGATION_FRAGMENT_AAR_VERSION, ARCH_NAVIGATION_FRAGMENT_NUGET_VERSION, ARCH_NAVIGATION_FRAGMENT_AAR_VERSION + ".0") { PathPrefix = "arch-navigation/" },
+	new ArtifactInfo (ARCH_NAVIGATION_PKG_NAME, "navigation-ui", "Xamarin.Android.Arch.Navigation.UI", ARCH_NAVIGATION_UI_AAR_VERSION, ARCH_NAVIGATION_UI_NUGET_VERSION, ARCH_NAVIGATION_UI_AAR_VERSION + ".0") { PathPrefix = "arch-navigation/" },
+	new ArtifactInfo (ARCH_NAVIGATION_PKG_NAME, "navigation-testing", "Xamarin.Android.Arch.Navigation.Testing", ARCH_NAVIGATION_TESTING_AAR_VERSION, ARCH_NAVIGATION_TESTING_NUGET_VERSION, ARCH_NAVIGATION_TESTING_AAR_VERSION + ".0") { PathPrefix = "arch-navigation/" },
+
 
 	//new ArtifactInfo (SUPPORT_PKG_NAME, "support-v4", "Xamarin.Android.Support.v4", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
 	new ArtifactInfo (SUPPORT_PKG_NAME, "support-v13", "Xamarin.Android.Support.v13", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
