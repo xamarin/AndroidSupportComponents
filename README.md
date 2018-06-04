@@ -1,7 +1,11 @@
 # Xamarin Component for Android Support Library
 
 Xamarin creates and maintains Xamarin.Android bindings for the Google Android Support Libraries, including:
-
+ 
+ - Architecture Components
+    - Core
+    - Lifecycle
+    - Navigation
  - Design
  - Animated Vector Drawable
  - Vector Drawable
