@@ -16,11 +16,12 @@
 #addin nuget:?package=Cake.Xamarin&version=3.0.0
 #addin nuget:?package=Cake.XCode&version=4.0.0
 #addin nuget:?package=Cake.Xamarin.Build&version=4.0.0
-#addin nuget:?package=Cake.Compression&version=0.1.4
+#addin nuget:?package=Cake.Compression&version=0.1.6
 #addin nuget:?package=Cake.Android.SdkManager&version=3.0.0
 #addin nuget:?package=Cake.Android.Adb&version=3.0.0
 #addin nuget:?package=Cake.MonoApiTools&version=2.0.0
 #addin nuget:?package=Cake.Xamarin.Binding.Util&version=2.0.0
+#addin nuget:?package=ICSharpCode.SharpZipLib&version=0.86.0.518
 
 // From Cake.Xamarin.Build, dumps out versions of things
 LogSystemInfo ();
