@@ -5,4 +5,7 @@
 
 	<remove-node path="/api/package[@name='android.support.animation']/class[@name='SpringForce']/implements[@name='android.support.animation.Force']" />
 
+    <remove-node path="/api/package[@name='android.support.animation']/class[@name='FlingAnimation']/constructor[@name='FlingAnimation' and count(parameter)=2 and parameter[1][@type='K'] and parameter[2][@type='android.support.animation.FloatPropertyCompat&lt;K&gt;']]"/>
+    <remove-node path="/api/package[@name='android.support.animation']/class[@name='SpringAnimation']/constructor[@name='SpringAnimation' and count(parameter)=3 and parameter[1][@type='K'] and parameter[2][@type='android.support.animation.FloatPropertyCompat&lt;K&gt;'] and parameter[3][@type='float']]" />
+    <remove-node path="/api/package[@name='android.support.animation']/class[@name='SpringAnimation']/constructor[@name='SpringAnimation' and count(parameter)=2 and parameter[1][@type='K'] and parameter[2][@type='android.support.animation.FloatPropertyCompat&lt;K&gt;']]" />
 </metadata>
