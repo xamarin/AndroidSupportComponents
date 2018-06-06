@@ -48,7 +48,10 @@ fi
 # Make sure that packages.config exist.
 if [ ! -f "$TOOLS_DIR/packages.config" ]; then
     echo "Downloading packages.config..."
-    curl -Lsfo "$TOOLS_DIR/packages.config" https://cakebuild.net/download/bootstrapper/packages
+
+    # curl -Lsfo "$TOOLS_DIR/packages.config" https://cakebuild.net/download/bootstrapper/packages
+    # downgraded to 0.27.2 since latest version 0.28.0 doesn't compile
+    curl -Lsfo "$TOOLS_DIR/packages.config" https://raw.githubusercontent.com/cake-build/resources/d97d1204f3e80389092fa874314629282e03454e/packages.config
     if [ $? -ne 0 ]; then
         echo "An error occurred while downloading packages.config."
         exit 1
