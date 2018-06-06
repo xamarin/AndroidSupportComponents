@@ -1,4 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <metadata>
-   
+    <!--    path="/api/package[@name='androidx.navigation']/class[@name='NavGraphNavigator']-->
+    <add-node path="/api/package[@name='androidx.navigation']">
+        <class abstract="false" deprecated="not deprecated" final="false" name="NavGraphNavigator" static="false" visibility="public" extends="Java.Lang.Object" />
+    </add-node>
+    <!--    path="/api/package[@name='androidx.navigation']/class[@name='ActivityNavigator']-->
+    <!--    androidx.navigation.Navigator<androidx.navigation.ActivityNavigator.Destination>-->
+    <add-node path="/api/package[@name='androidx.navigation']">
+        <class abstract="false" deprecated="not deprecated" final="false" name="ActivityNavigator" static="false" visibility="public" extends="Java.Lang.Object" />
+    </add-node>
 </metadata>

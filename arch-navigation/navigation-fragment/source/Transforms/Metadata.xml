@@ -1,4 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <metadata>
-
+    <!--    path="/api/package[@name='androidx.navigation.fragment']/class[@name='FragmentNavigator']"-->
+    <add-node path="/api/package[@name='androidx.navigation.fragment']">
+        <class abstract="false" deprecated="not deprecated" final="false" name="FragmentNavigator" static="false" visibility="public" extends="Java.Lang.Object" />
+    </add-node>
 </metadata>
