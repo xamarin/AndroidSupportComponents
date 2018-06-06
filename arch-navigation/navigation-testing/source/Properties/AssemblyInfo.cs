@@ -6,22 +6,24 @@ using Android.App;
 // Change them to the values specific to your project.
 
 [assembly: AssemblyTitle("Xamarin.Arch.Navigation.Testing")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("${AuthorCopyright}")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
+[assembly: AssemblyDescription ("")]
+[assembly: AssemblyConfiguration ("")]
+[assembly: AssemblyCompany ("Microsoft Corporation")]
+[assembly: AssemblyProduct ("")]
+[assembly: AssemblyCopyright ("Copyright © Microsoft Corporation")]
+[assembly: AssemblyTrademark ("")]
+[assembly: AssemblyCulture ("")]
 
 // The assembly version has the format "{Major}.{Minor}.{Build}.{Revision}".
 // The form "{Major}.{Minor}.*" will automatically update the build and revision,
 // and "{Major}.{Minor}.{Build}.*" will update just the revision.
 
-[assembly: AssemblyVersion("1.0.0")]
+[assembly: AssemblyVersion ("1.1.0.0")]
 
-// The following attributes are used to specify the signing key for the assembly, 
-// if desired. See the Mono documentation for more information about signing.
+[assembly: AssemblyMetadata ("BUILD_COMMIT",      "{BUILD_COMMIT}")]
+[assembly: AssemblyMetadata ("BUILD_NUMBER",    "{BUILD_NUMBER}")]
+[assembly: AssemblyMetadata ("BUILD_TIMESTAMP", "{BUILD_TIMESTAMP}")]
 
-//[assembly: AssemblyDelaySign(false)]
-//[assembly: AssemblyKeyFile("")]
+[assembly: AssemblyInformationalVersion ("{NUGET_VERSION}")]
+
+[assembly: Android.LinkerSafe]
