@@ -106,7 +106,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Additions\AboutAdditions.txt" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -116,6 +115,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Jars\" />
+    <Folder Include="Additions\" />
   </ItemGroup>
   <ItemGroup>
     <LibraryProjectZip Include="..\..\..\externals\arch-navigation\navigation-ui.aar">
