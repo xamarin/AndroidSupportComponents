@@ -86,11 +86,11 @@ var CPU_COUNT = 1;
 var USE_MSBUILD_ON_MAC = true;
 
 var ARTIFACTS = new [] {
-	new ArtifactInfo (ARCH_CORE_PKG_NAME, "common", "Xamarin.Android.Arch.Core.Common", ARCH_CORE_COMMON_AAR_VERSION, ARCH_CORE_COMMON_NUGET_VERSION, "1.0.0.0", true) { PathPrefix = "arch-core/" },
-	new ArtifactInfo (ARCH_CORE_PKG_NAME, "runtime", "Xamarin.Android.Arch.Core.Runtime", ARCH_CORE_RUNTIME_AAR_VERSION, ARCH_CORE_RUNTIME_NUGET_VERSION, "1.0.0.0") { PathPrefix = "arch-core/" },
-	new ArtifactInfo (ARCH_LIFECYCLE_PKG_NAME, "common", "Xamarin.Android.Arch.Lifecycle.Common", ARCH_LIFECYCLE_COMMON_AAR_VERSION, ARCH_LIFECYCLE_COMMON_NUGET_VERSION, "1.0.3.0", true) { PathPrefix = "arch-lifecycle/" },
-	new ArtifactInfo (ARCH_LIFECYCLE_PKG_NAME, "runtime", "Xamarin.Android.Arch.Lifecycle.Runtime", ARCH_LIFECYCLE_RUNTIME_AAR_VERSION, ARCH_LIFECYCLE_RUNTIME_NUGET_VERSION, "1.0.3.0") { PathPrefix = "arch-lifecycle/" },
-	new ArtifactInfo (ARCH_LIFECYCLE_PKG_NAME, "extensions", "Xamarin.Android.Arch.Lifecycle.Extensions", ARCH_LIFECYCLE_EXTENSIONS_AAR_VERSION, ARCH_LIFECYCLE_EXTENSIONS_NUGET_VERSION, "1.0.0.0") { PathPrefix = "arch-lifecycle/" },
+	new ArtifactInfo (ARCH_CORE_PKG_NAME, "common", "Xamarin.Android.Arch.Core.Common", ARCH_CORE_COMMON_AAR_VERSION, ARCH_CORE_COMMON_NUGET_VERSION, ARCH_CORE_COMMON_AAR_VERSION + ".0", true) { PathPrefix = "arch-core/" },
+	new ArtifactInfo (ARCH_CORE_PKG_NAME, "runtime", "Xamarin.Android.Arch.Core.Runtime", ARCH_CORE_RUNTIME_AAR_VERSION, ARCH_CORE_RUNTIME_NUGET_VERSION, ARCH_CORE_RUNTIME_AAR_VERSION + ".0") { PathPrefix = "arch-core/" },
+	new ArtifactInfo (ARCH_LIFECYCLE_PKG_NAME, "common", "Xamarin.Android.Arch.Lifecycle.Common", ARCH_LIFECYCLE_COMMON_AAR_VERSION, ARCH_LIFECYCLE_COMMON_NUGET_VERSION, ARCH_LIFECYCLE_COMMON_AAR_VERSION + ".0", true) { PathPrefix = "arch-lifecycle/" },
+	new ArtifactInfo (ARCH_LIFECYCLE_PKG_NAME, "runtime", "Xamarin.Android.Arch.Lifecycle.Runtime", ARCH_LIFECYCLE_RUNTIME_AAR_VERSION, ARCH_LIFECYCLE_RUNTIME_NUGET_VERSION, ARCH_LIFECYCLE_RUNTIME_AAR_VERSION + ".0") { PathPrefix = "arch-lifecycle/" },
+	new ArtifactInfo (ARCH_LIFECYCLE_PKG_NAME, "extensions", "Xamarin.Android.Arch.Lifecycle.Extensions", ARCH_LIFECYCLE_EXTENSIONS_AAR_VERSION, ARCH_LIFECYCLE_EXTENSIONS_NUGET_VERSION, ARCH_LIFECYCLE_EXTENSIONS_AAR_VERSION + ".0") { PathPrefix = "arch-lifecycle/" },
 
     new ArtifactInfo (ARCH_NAVIGATION_PKG_NAME, "navigation-common", "Xamarin.Android.Arch.Navigation.Common", ARCH_NAVIGATION_COMMON_AAR_VERSION, ARCH_NAVIGATION_COMMON_NUGET_VERSION, ARCH_NAVIGATION_COMMON_AAR_VERSION + ".0") { PathPrefix = "arch-navigation/" },
 	new ArtifactInfo (ARCH_NAVIGATION_PKG_NAME, "navigation-runtime", "Xamarin.Android.Arch.Navigation.Runtime", ARCH_NAVIGATION_RUNTIME_AAR_VERSION, ARCH_NAVIGATION_RUNTIME_NUGET_VERSION, ARCH_NAVIGATION_RUNTIME_AAR_VERSION + ".0") { PathPrefix = "arch-navigation/" },
