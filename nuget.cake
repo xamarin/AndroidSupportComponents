@@ -118,7 +118,7 @@ var seedPackages = new [] {
     "Xamarin.Android.Support.Transition",
     "Xamarin.Android.Support.Vector.Drawable",
     "Xamarin.Android.Support.Wear",
-    "Xamarin.Android.Support.Wearable",
+    //"Xamarin.Android.Support.Wearable",
     "Xamarin.Android.Support.v13",
     "Xamarin.Android.Support.v14.Preference",
     "Xamarin.Android.Support.v17.Leanback",
@@ -564,6 +564,7 @@ Task("PackNuGets")
             var nuspec = GetFiles($"{version.Dir}/*.nuspec").FirstOrDefault();
             Information($"Packing {nuspec}...");
             NuGetPack(nuspec, new NuGetPackSettings {
+                Version = version.Ver.ToString(),
                 BasePath = nuspec.GetDirectory(),
                 OutputDirectory = outputPath
             });
