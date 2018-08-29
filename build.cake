@@ -40,17 +40,19 @@ var NUGET_VERSION = "27.0.2.1" + NUGET_PRE;
 var COMPONENT_VERSION = "27.0.2.0";
 var AAR_VERSION = "27.0.2";
 
-var ARCH_CORE_COMMON_AAR_VERSION = "1.0.0";
-var ARCH_CORE_RUNTIME_AAR_VERSION = "1.0.0";
-var ARCH_LIFECYCLE_COMMON_AAR_VERSION = "1.0.3";
-var ARCH_LIFECYCLE_RUNTIME_AAR_VERSION = "1.0.3";
-var ARCH_LIFECYCLE_EXTENSIONS_AAR_VERSION = "1.0.0";
+var ARCH_CORE_COMMON_AAR_VERSION = "1.1.1";
+var ARCH_CORE_RUNTIME_AAR_VERSION = "1.1.1";
+var ARCH_LIFECYCLE_COMMON_AAR_VERSION = "1.1.1";
+var ARCH_LIFECYCLE_RUNTIME_AAR_VERSION = "1.1.1";
+var ARCH_LIFECYCLE_EXTENSIONS_AAR_VERSION = "1.1.1";
+var ARCH_LIFECYCLE_LIVEDATA_AAR_VERSION = "1.1.1";
+var ARCH_LIFECYCLE_LIVEDATACORE_AAR_VERSION = "1.1.1";
 
-var ARCH_CORE_COMMON_NUGET_VERSION = "1.0.0.1" + NUGET_PRE;
-var ARCH_CORE_RUNTIME_NUGET_VERSION = "1.0.0.1" + NUGET_PRE;
-var ARCH_LIFECYCLE_COMMON_NUGET_VERSION = "1.0.3.1" + NUGET_PRE;
-var ARCH_LIFECYCLE_RUNTIME_NUGET_VERSION = "1.0.3.1" + NUGET_PRE;
-var ARCH_LIFECYCLE_EXTENSIONS_NUGET_VERSION = "1.0.0.1" + NUGET_PRE;
+var ARCH_CORE_COMMON_NUGET_VERSION = "1.1.1" + NUGET_PRE;
+var ARCH_CORE_RUNTIME_NUGET_VERSION = "1.1.1" + NUGET_PRE;
+var ARCH_LIFECYCLE_COMMON_NUGET_VERSION = "1.1.1" + NUGET_PRE;
+var ARCH_LIFECYCLE_RUNTIME_NUGET_VERSION = "1.1.1" + NUGET_PRE;
+var ARCH_LIFECYCLE_EXTENSIONS_NUGET_VERSION = "1.1.1" + NUGET_PRE;
 
 
 var DOC_VERSION = "2017-12-18";
@@ -79,42 +81,45 @@ var ARTIFACTS = new [] {
 	new ArtifactInfo (ARCH_LIFECYCLE_PKG_NAME, "common", "Xamarin.Android.Arch.Lifecycle.Common", ARCH_LIFECYCLE_COMMON_AAR_VERSION, ARCH_LIFECYCLE_COMMON_NUGET_VERSION, "1.0.3.0", true) { PathPrefix = "arch-lifecycle/" },
 	new ArtifactInfo (ARCH_LIFECYCLE_PKG_NAME, "runtime", "Xamarin.Android.Arch.Lifecycle.Runtime", ARCH_LIFECYCLE_RUNTIME_AAR_VERSION, ARCH_LIFECYCLE_RUNTIME_NUGET_VERSION, "1.0.3.0") { PathPrefix = "arch-lifecycle/" },
 	new ArtifactInfo (ARCH_LIFECYCLE_PKG_NAME, "extensions", "Xamarin.Android.Arch.Lifecycle.Extensions", ARCH_LIFECYCLE_EXTENSIONS_AAR_VERSION, ARCH_LIFECYCLE_EXTENSIONS_NUGET_VERSION, "1.0.0.0") { PathPrefix = "arch-lifecycle/" },
+	new ArtifactInfo (ARCH_LIFECYCLE_PKG_NAME, "livedata", "Xamarin.Android.Arch.Lifecycle.LiveData", ARCH_LIFECYCLE_LIVEDATA_AAR_VERSION, ARCH_LIFECYCLE_LIVEDATA_AAR_VERSION, "1.0.0.0") { PathPrefix = "arch-lifecycle/" },
+	new ArtifactInfo (ARCH_LIFECYCLE_PKG_NAME, "livedata-core", "Xamarin.Android.Arch.Lifecycle.LiveDataCore", ARCH_LIFECYCLE_LIVEDATACORE_AAR_VERSION, ARCH_LIFECYCLE_LIVEDATACORE_AAR_VERSION, "1.0.0.0") { PathPrefix = "arch-lifecycle/" },
+	
 
-	//new ArtifactInfo (SUPPORT_PKG_NAME, "support-v4", "Xamarin.Android.Support.v4", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
-	new ArtifactInfo (SUPPORT_PKG_NAME, "support-v13", "Xamarin.Android.Support.v13", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
-	new ArtifactInfo (SUPPORT_PKG_NAME, "appcompat-v7", "Xamarin.Android.Support.v7.AppCompat", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
-	new ArtifactInfo (SUPPORT_PKG_NAME, "gridlayout-v7", "Xamarin.Android.Support.v7.GridLayout", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
-	new ArtifactInfo (SUPPORT_PKG_NAME, "mediarouter-v7", "Xamarin.Android.Support.v7.MediaRouter", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
-	new ArtifactInfo (SUPPORT_PKG_NAME, "recyclerview-v7", "Xamarin.Android.Support.v7.RecyclerView", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
-	new ArtifactInfo (SUPPORT_PKG_NAME, "palette-v7", "Xamarin.Android.Support.v7.Palette", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
-	new ArtifactInfo (SUPPORT_PKG_NAME, "cardview-v7", "Xamarin.Android.Support.v7.CardView", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
-	new ArtifactInfo (SUPPORT_PKG_NAME, "leanback-v17", "Xamarin.Android.Support.v17.Leanback", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
-	new ArtifactInfo (SUPPORT_PKG_NAME, "design", "Xamarin.Android.Support.Design", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
-	new ArtifactInfo (SUPPORT_PKG_NAME, "percent", "Xamarin.Android.Support.Percent", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
-	new ArtifactInfo (SUPPORT_PKG_NAME, "customtabs", "Xamarin.Android.Support.CustomTabs", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
-	new ArtifactInfo (SUPPORT_PKG_NAME, "preference-v7", "Xamarin.Android.Support.v7.Preference", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
-	new ArtifactInfo (SUPPORT_PKG_NAME, "preference-v14", "Xamarin.Android.Support.v14.Preference", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
-	new ArtifactInfo (SUPPORT_PKG_NAME, "preference-leanback-v17", "Xamarin.Android.Support.v17.Preference.Leanback", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
-	new ArtifactInfo (SUPPORT_PKG_NAME, "recommendation", "Xamarin.Android.Support.Recommendation", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
-	new ArtifactInfo (SUPPORT_PKG_NAME, "animated-vector-drawable", "Xamarin.Android.Support.Animated.Vector.Drawable", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
-	new ArtifactInfo (SUPPORT_PKG_NAME, "support-vector-drawable", "Xamarin.Android.Support.Vector.Drawable", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
-	new ArtifactInfo (SUPPORT_PKG_NAME, "support-compat", "Xamarin.Android.Support.Compat", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
-	new ArtifactInfo (SUPPORT_PKG_NAME, "support-content", "Xamarin.Android.Support.Content", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
-	new ArtifactInfo (SUPPORT_PKG_NAME, "support-core-utils", "Xamarin.Android.Support.Core.Utils", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
-	new ArtifactInfo (SUPPORT_PKG_NAME, "support-core-ui", "Xamarin.Android.Support.Core.UI", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
-	new ArtifactInfo (SUPPORT_PKG_NAME, "support-dynamic-animation", "Xamarin.Android.Support.Dynamic.Animation", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
-	new ArtifactInfo (SUPPORT_PKG_NAME, "support-media-compat", "Xamarin.Android.Support.Media.Compat", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
-	new ArtifactInfo (SUPPORT_PKG_NAME, "support-fragment", "Xamarin.Android.Support.Fragment", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
-	new ArtifactInfo (SUPPORT_PKG_NAME, "support-tv-provider", "Xamarin.Android.Support.TV.Provider", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
-	new ArtifactInfo (SUPPORT_PKG_NAME, "transition", "Xamarin.Android.Support.Transition", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
-	new ArtifactInfo (SUPPORT_PKG_NAME, "exifinterface", "Xamarin.Android.Support.Exif", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
-	new ArtifactInfo (SUPPORT_PKG_NAME, "wear", "Xamarin.Android.Support.Wear", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
-	new ArtifactInfo (SUPPORT_PKG_NAME, "support-annotations", "Xamarin.Android.Support.Annotations", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION, true),
-	new ArtifactInfo (SUPPORT_PKG_NAME, "support-emoji", "Xamarin.Android.Support.Emoji", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
-	new ArtifactInfo (SUPPORT_PKG_NAME, "support-emoji-appcompat", "Xamarin.Android.Support.Emoji.AppCompat", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
-	new ArtifactInfo (SUPPORT_PKG_NAME, "support-emoji-bundled", "Xamarin.Android.Support.Emoji.Bundled", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
+// //	new ArtifactInfo (SUPPORT_PKG_NAME, "support-v4", "Xamarin.Android.Support.v4", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
+// 	new ArtifactInfo (SUPPORT_PKG_NAME, "support-v13", "Xamarin.Android.Support.v13", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
+// 	new ArtifactInfo (SUPPORT_PKG_NAME, "appcompat-v7", "Xamarin.Android.Support.v7.AppCompat", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
+// 	new ArtifactInfo (SUPPORT_PKG_NAME, "gridlayout-v7", "Xamarin.Android.Support.v7.GridLayout", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
+// 	new ArtifactInfo (SUPPORT_PKG_NAME, "mediarouter-v7", "Xamarin.Android.Support.v7.MediaRouter", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
+// 	new ArtifactInfo (SUPPORT_PKG_NAME, "recyclerview-v7", "Xamarin.Android.Support.v7.RecyclerView", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
+// 	new ArtifactInfo (SUPPORT_PKG_NAME, "palette-v7", "Xamarin.Android.Support.v7.Palette", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
+// 	new ArtifactInfo (SUPPORT_PKG_NAME, "cardview-v7", "Xamarin.Android.Support.v7.CardView", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
+// 	new ArtifactInfo (SUPPORT_PKG_NAME, "leanback-v17", "Xamarin.Android.Support.v17.Leanback", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
+// 	new ArtifactInfo (SUPPORT_PKG_NAME, "design", "Xamarin.Android.Support.Design", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
+// 	new ArtifactInfo (SUPPORT_PKG_NAME, "percent", "Xamarin.Android.Support.Percent", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
+// 	new ArtifactInfo (SUPPORT_PKG_NAME, "customtabs", "Xamarin.Android.Support.CustomTabs", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
+// 	new ArtifactInfo (SUPPORT_PKG_NAME, "preference-v7", "Xamarin.Android.Support.v7.Preference", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
+// 	new ArtifactInfo (SUPPORT_PKG_NAME, "preference-v14", "Xamarin.Android.Support.v14.Preference", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
+// 	new ArtifactInfo (SUPPORT_PKG_NAME, "preference-leanback-v17", "Xamarin.Android.Support.v17.Preference.Leanback", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
+// 	new ArtifactInfo (SUPPORT_PKG_NAME, "recommendation", "Xamarin.Android.Support.Recommendation", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
+// 	new ArtifactInfo (SUPPORT_PKG_NAME, "animated-vector-drawable", "Xamarin.Android.Support.Animated.Vector.Drawable", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
+// 	new ArtifactInfo (SUPPORT_PKG_NAME, "support-vector-drawable", "Xamarin.Android.Support.Vector.Drawable", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
+// 	new ArtifactInfo (SUPPORT_PKG_NAME, "support-compat", "Xamarin.Android.Support.Compat", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
+// 	new ArtifactInfo (SUPPORT_PKG_NAME, "support-content", "Xamarin.Android.Support.Content", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
+// 	new ArtifactInfo (SUPPORT_PKG_NAME, "support-core-utils", "Xamarin.Android.Support.Core.Utils", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
+// 	new ArtifactInfo (SUPPORT_PKG_NAME, "support-core-ui", "Xamarin.Android.Support.Core.UI", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
+// 	new ArtifactInfo (SUPPORT_PKG_NAME, "support-dynamic-animation", "Xamarin.Android.Support.Dynamic.Animation", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
+// 	new ArtifactInfo (SUPPORT_PKG_NAME, "support-media-compat", "Xamarin.Android.Support.Media.Compat", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
+// 	new ArtifactInfo (SUPPORT_PKG_NAME, "support-fragment", "Xamarin.Android.Support.Fragment", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
+// 	new ArtifactInfo (SUPPORT_PKG_NAME, "support-tv-provider", "Xamarin.Android.Support.TV.Provider", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
+// 	new ArtifactInfo (SUPPORT_PKG_NAME, "transition", "Xamarin.Android.Support.Transition", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
+// 	new ArtifactInfo (SUPPORT_PKG_NAME, "exifinterface", "Xamarin.Android.Support.Exif", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
+// 	new ArtifactInfo (SUPPORT_PKG_NAME, "wear", "Xamarin.Android.Support.Wear", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
+//	new ArtifactInfo (SUPPORT_PKG_NAME, "support-annotations", "Xamarin.Android.Support.Annotations", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION, true),
+	// new ArtifactInfo (SUPPORT_PKG_NAME, "support-emoji", "Xamarin.Android.Support.Emoji", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
+	// new ArtifactInfo (SUPPORT_PKG_NAME, "support-emoji-appcompat", "Xamarin.Android.Support.Emoji.AppCompat", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
+	// new ArtifactInfo (SUPPORT_PKG_NAME, "support-emoji-bundled", "Xamarin.Android.Support.Emoji.Bundled", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
 
-	new ArtifactInfo (SUPPORT_PKG_NAME, "renderscript-v8", "Xamarin.Android.Support.v8.RenderScript", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
+	// new ArtifactInfo (SUPPORT_PKG_NAME, "renderscript-v8", "Xamarin.Android.Support.v8.RenderScript", AAR_VERSION, NUGET_VERSION, COMPONENT_VERSION),
 };
 
 class PartialZipInfo {
@@ -255,6 +260,7 @@ Task ("externals")
 		var localArtifact = new FilePath ("./externals/"  + art.PathPrefix + art.ArtifactId + (art.IsJar ? ".jar" : ".aar"));
 		var artifactUrl = MAVEN_REPO_URL + art.Package.Replace (".", "/") + "/" + art.ArtifactId + "/" + art.ArtifactVersion + "/" + art.ArtifactId + "-" + art.ArtifactVersion + (art.IsJar ? ".jar" : ".aar");
 
+		System.Console.WriteLine(artifactUrl);
 		if (!FileExists (localArtifact)) {
 			EnsureDirectoryExists (localArtifact.GetDirectory ());
 			DownloadFile (artifactUrl, localArtifact);
@@ -292,6 +298,9 @@ Task ("externals")
 	MoveFile ("./externals/arch-lifecycle/common.jar", "./externals/arch-lifecycle/arch-lifecycle-common.jar");
 	MoveFile ("./externals/arch-lifecycle/runtime.aar", "./externals/arch-lifecycle/arch-lifecycle-runtime.aar");
 	MoveFile ("./externals/arch-lifecycle/extensions.aar", "./externals/arch-lifecycle/arch-lifecycle-extensions.aar");
+	MoveFile ("./externals/arch-lifecycle/livedata.aar", "./externals/arch-lifecycle/arch-lifecycle-livedata.aar");
+	MoveFile ("./externals/arch-lifecycle/livedata-core.aar", "./externals/arch-lifecycle/arch-lifecycle-livedata-core.aar");
+	
 });
 
 Task ("diff")
