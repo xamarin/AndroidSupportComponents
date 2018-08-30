@@ -37,7 +37,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Animated-Vector-Drawable", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vector-Drawable", "support-vector-drawable\source\Vector-Drawable.csproj", "{418B64BA-2BAC-4B92-8888-CAFEAAF7E860}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vector-Drawable-BuildTasks", "support-vector-drawable\buildtask\Vector-Drawable-BuildTasks.csproj", "{DB19F806-FEF2-4BBB-8A0B-37EA54DB3A0D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildTasks", "support-annotations\buildtasks\BuildTasks.csproj", "{DB19F806-FEF2-4BBB-8A0B-37EA54DB3A0D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core-UI", "support-core-ui\source\Core-UI.csproj", "{071EAE48-7BCE-4D68-8098-745B923A122F}"
 EndProject
@@ -84,6 +84,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arch.Lifecycle.LiveData.Core", "arch-lifecycle\livedata-core\source\Arch.Lifecycle.LiveData.Core.csproj", "{D2F466C7-CEE0-43FE-938C-7961CF9AB483}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arch.Lifecycle.LiveData", "arch-lifecycle\livedata\source\Arch.Lifecycle.LiveData.csproj", "{07E739CC-71BA-44F9-B461-A001624D71CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildTasks.Tests", "support-annotations\buildtasks.tests\buildtasks.tests.csproj", "{9A8F8560-6F80-4FCD-8F8E-CEA80FE12F45}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildTasks", "BuildTasks", "{77F09AA6-1B21-4B7A-A508-DD2148FA9798}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -255,6 +259,10 @@ Global
 		{07E739CC-71BA-44F9-B461-A001624D71CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07E739CC-71BA-44F9-B461-A001624D71CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07E739CC-71BA-44F9-B461-A001624D71CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A8F8560-6F80-4FCD-8F8E-CEA80FE12F45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A8F8560-6F80-4FCD-8F8E-CEA80FE12F45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A8F8560-6F80-4FCD-8F8E-CEA80FE12F45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A8F8560-6F80-4FCD-8F8E-CEA80FE12F45}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{4C9E1C1E-09C3-469C-B3C2-79651DF13870} = {3AC04D8E-9E4C-401F-AED5-239F226BF9C2}
@@ -264,5 +272,7 @@ Global
 		{ACAF71C0-C260-410E-B572-1C28F6178CBB} = {3AC04D8E-9E4C-401F-AED5-239F226BF9C2}
 		{D2F466C7-CEE0-43FE-938C-7961CF9AB483} = {3AC04D8E-9E4C-401F-AED5-239F226BF9C2}
 		{07E739CC-71BA-44F9-B461-A001624D71CC} = {3AC04D8E-9E4C-401F-AED5-239F226BF9C2}
+		{9A8F8560-6F80-4FCD-8F8E-CEA80FE12F45} = {77F09AA6-1B21-4B7A-A508-DD2148FA9798}
+		{DB19F806-FEF2-4BBB-8A0B-37EA54DB3A0D} = {77F09AA6-1B21-4B7A-A508-DD2148FA9798}
 	EndGlobalSection
 EndGlobal
