@@ -1,2 +1,3 @@
 <metadata>
+    <remove-node path="/api/package[@name='android.arch.core.util']/interface[@name='Function']"/>
 </metadata>

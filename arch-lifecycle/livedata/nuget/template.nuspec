@@ -16,7 +16,7 @@
       <group targetFramework="MonoAndroid80">
          <dependency id="Xamarin.Android.Arch.Core.Runtime" version="$android.arch.core.runtime$" />
          <dependency id="Xamarin.Android.Arch.Core.Common" version="$android.arch.core.common$" />
-         <dependency id="Xamarin.Android.Arch.Lifecycle.LiveDataCore" version="$android.arch.lifecycle.livedatacore$" />
+         <dependency id="Xamarin.Android.Arch.Lifecycle.LiveDataCore" version="$android.arch.lifecycle.livedata-core$" />
       </group>
     </dependencies>
   </metadata>
