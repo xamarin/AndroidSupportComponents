@@ -381,8 +381,8 @@ Task("PrepareWorkingDirectory")
 
     NuGetFramework NormalizeNuspec(FilePath nuspec)
     {
-        var version = GetSupportVersion(nuspec);
-        var targetFw = apiLevelVersion[version.Major];
+        var supportVersion = GetSupportVersion(nuspec);
+        var targetFw = apiLevelVersion[supportVersion.Major];
 
         var xdoc = XDocument.Load(nuspec.FullPath);
         var ns = xdoc.Root.Name.Namespace;
@@ -390,6 +390,7 @@ Task("PrepareWorkingDirectory")
 
         // set the new version of the package
         var xv = xmd.Element(ns + "version");
+        var version = NuGetVersion.Parse(xv.Value);
         xv.Value = GetNewVersion(xmd.Element(ns + "id").Value, version).ToNormalizedString();
 
         // make sure the <dependencies> element exists
@@ -410,7 +411,7 @@ Task("PrepareWorkingDirectory")
         // some packages have the wrong <group> targets, so recreate everything
         var xnewGroups = new Dictionary<int, XElement>();
         foreach (var pair in apiLevelVersion) {
-            if (pair.Key > version.Major)
+            if (pair.Key > supportVersion.Major)
                 continue;
             xnewGroups.Add(pair.Key, new XElement(ns + "group",
                 new XAttribute("targetFramework", pair.Value.GetShortFolderName())));
@@ -425,7 +426,7 @@ Task("PrepareWorkingDirectory")
                 .Where(x => x.Attribute("id").Value.ToLower().StartsWith("xamarin.android.support"))
                 .Select(x => VersionRange.Parse(x.Attribute("version").Value))
                 .FirstOrDefault();
-            var minVersion = firstSupportVersion?.MinVersion ?? version;
+            var minVersion = firstSupportVersion?.MinVersion ?? supportVersion;
             xnewGroups[minVersion.Major].Add(xgroupDeps);
         }
 
