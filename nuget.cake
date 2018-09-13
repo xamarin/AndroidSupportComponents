@@ -154,6 +154,12 @@ bool IsBlacklisted(string id)
 
 NuGetVersion GetSupportVersion(FilePath nuspec)
 {
+    var range = GetSupportVersionRange(nuspec);
+    return range.MinVersion ?? range.MaxVersion;
+}
+
+VersionRange GetSupportVersionRange(FilePath nuspec)
+{
     var xdoc = XDocument.Load(nuspec.FullPath);
     var ns = xdoc.Root.Name.Namespace;
 
@@ -171,7 +177,35 @@ NuGetVersion GetSupportVersion(FilePath nuspec)
         version = xmd.Element(ns + "version").Value;
     }
 
-    return NuGetVersion.Parse(version);
+    return VersionRange.Parse(version);
+}
+
+NuGetVersion GetArchVersion(FilePath nuspec)
+{
+    var range = GetArchVersionRange(nuspec);
+    return range.MinVersion ?? range.MaxVersion;
+}
+
+VersionRange GetArchVersionRange(FilePath nuspec)
+{
+    var xdoc = XDocument.Load(nuspec.FullPath);
+    var ns = xdoc.Root.Name.Namespace;
+
+    var xmd = xdoc.Root.Element(ns + "metadata");
+    var xid = xmd.Element(ns + "id");
+
+    string version;
+    if (xid.Value.ToLower().StartsWith("xamarin.android.support")) {
+        version = xmd
+            .Descendants(ns + "dependency")
+            .First(e => e.Attribute("id").Value.ToLower().StartsWith("xamarin.android.arch"))
+            .Attribute("version")
+            .Value;
+    } else {
+        version = xmd.Element(ns + "version").Value;
+    }
+
+    return VersionRange.Parse(version);
 }
 
 NuGetVersion GetNewVersion(string id, string old)
@@ -525,6 +559,7 @@ Task("CreateFatNuGets")
         var xversion = xmd.Element(ns + "version");
         var xdeps = xmd.Element(ns + "dependencies");
         var xgroups = xdeps.Elements(ns + "group");
+        var isArch = id.ToLower().StartsWith("xamarin.android.arch");
 
         foreach (var included in includedVersions) {
             var includedNuspec = $"{workingPath}/{id}/{included.ToNormalizedString()}/{id}.nuspec";
@@ -538,11 +573,19 @@ Task("CreateFatNuGets")
             foreach (var ixgroup in ixgroups) {
                 var xgroup = xgroups.FirstOrDefault(g => g.Attribute("targetFramework").Value == ixgroup.Attribute("targetFramework").Value);
                 foreach (var ixdep in ixgroup.Elements(ins + "dependency")) {
-                    ixdep.SetAttributeValue("version", xversion.Value);
-                    if (useExplicitVersion) {
-                        var xdv = ixdep.Attribute("version");
-                        xdv.Value = $"[{xdv.Value}]";
+                    var includedArch = ixdep.Attribute("id").Value.ToLower().StartsWith("xamarin.android.arch");
+                    string newVersion = null;
+                    if (isArch == includedArch) {
+                        // if both are arch, or both are support, use the current version
+                        newVersion = xversion.Value;
+                    } else if (isArch) {
+                        // if the main is arch, but this is support
+                        newVersion = GetSupportVersion(nuspec).ToNormalizedString();
+                    } else {
+                        // if the main is support and this is arch
+                        newVersion = GetArchVersion(nuspec).ToNormalizedString();
                     }
+                    ixdep.SetAttributeValue("version", useExplicitVersion ? $"[{newVersion}]" : newVersion);
                 }
                 xgroup.Add(ixgroup.Elements());
             }
