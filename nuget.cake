@@ -522,6 +522,7 @@ Task("CreateFatNuGets")
         var xdoc = XDocument.Load(nuspec);
         var ns = xdoc.Root.Name.Namespace;
         var xmd = xdoc.Root.Element(ns + "metadata");
+        var xversion = xmd.Element(ns + "version");
         var xdeps = xmd.Element(ns + "dependencies");
         var xgroups = xdeps.Elements(ns + "group");
 
@@ -536,6 +537,13 @@ Task("CreateFatNuGets")
 
             foreach (var ixgroup in ixgroups) {
                 var xgroup = xgroups.FirstOrDefault(g => g.Attribute("targetFramework").Value == ixgroup.Attribute("targetFramework").Value);
+                foreach (var ixdep in ixgroup.Elements(ins + "dependency")) {
+                    ixdep.SetAttributeValue("version", xversion.Value);
+                    if (useExplicitVersion) {
+                        var xdv = ixdep.Attribute("version");
+                        xdv.Value = $"[{xdv.Value}]";
+                    }
+                }
                 xgroup.Add(ixgroup.Elements());
             }
         }
