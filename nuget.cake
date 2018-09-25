@@ -402,10 +402,12 @@ Task("PrepareWorkingDirectory")
         if (GetDirectories($"{dir}/{subdir}/*/*").Any())
             throw new Exception($"'{dir}' contains sub directories.");
 
-        // make sure the files are in the right folder, but
-        // only if there is one folder - more means this is
-        // already a fat package
-        if (GetDirectories($"{dir}/{subdir}/*").Count() == 1) {
+        // make sure the files are in the right folder:
+        //  - 0 means that this is a thin package
+        //      probably not the core build/lib folders (probably proguard)
+        //  - 1 means that this is a thin package
+        //  - 2+ more means this is already a fat package
+        if (GetDirectories($"{dir}/{subdir}/*").Count() <= 1) {
             EnsureDirectoryExists(dir.Combine("temp"));
             MoveFiles($"{dir}/{subdir}/**/*", dir.Combine("temp"));
             CleanDirectories($"{dir}/{subdir}");
