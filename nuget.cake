@@ -230,7 +230,7 @@ NuGetVersion GetNewVersion(string id, NuGetVersion old)
         old.Minor,
         old.Patch,
         incrementVersion ? 990 + old.Revision : old.Revision,
-        prereleaseLabel,
+        prereleaseLabel ?? old.Release,
         (string)null);
 }
 
