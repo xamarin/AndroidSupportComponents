@@ -172,11 +172,25 @@ VersionRange GetSupportVersionRange(FilePath nuspec)
 
     string version;
     if (xid.Value.ToLower().StartsWith("xamarin.android.arch")) {
+        // search this nuget for a support version
         version = xmd
             .Descendants(ns + "dependency")
-            .First(e => e.Attribute("id").Value.ToLower().StartsWith("xamarin.android.support"))
-            .Attribute("version")
-            .Value;
+            .FirstOrDefault(e => e.Attribute("id").Value.ToLower().StartsWith("xamarin.android.support"))
+            ?.Attribute("version")
+            ?.Value;
+
+        // if none was found, look in the dependencies
+        if (string.IsNullOrEmpty(version)) {
+            foreach (var xdep in xmd.Descendants(ns + "dependency")) {
+                var id = xdep.Attribute("id").Value.ToLower();
+                var range = VersionRange.Parse(xdep.Attribute("version").Value);
+                var depNuspec = $"{packagesPath}/{id}/{range.MinVersion ?? range.MaxVersion}/{id}.nuspec";
+                // if a support version was found, use it, otherwise continue looking
+                var suppRange = GetSupportVersionRange(depNuspec);
+                if (suppRange != null)
+                    return suppRange;
+            }
+        }
     } else {
         version = xmd.Element(ns + "version").Value;
     }
