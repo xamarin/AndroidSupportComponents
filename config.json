@@ -125,7 +125,7 @@
 		{
 			"groupId" : "com.android.support",
 			"artifactId" : "design",
-			"version" : "28.0.0-rc01",
+			"version" : "28.0.0",
 			"nugetId" : "Xamarin.Android.Support.Design"
 		},
 		{
