@@ -7,4 +7,5 @@
   <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='CursorLoader']/method[@name='loadInBackground']" />
   -->
   <attr path="/api/package[@name='android.support.customtabs']" name="managedName">Android.Support.CustomTabs</attr>
+   <remove-node path="/api/package[@name='androidx.browser.browseractions']/interface[@name='BrowserActionsIntent.BrowserActionsFallDialogListener']" />
 </metadata>
