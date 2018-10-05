@@ -29,4 +29,5 @@
     <remove-node path="/api/package[@name='android.support.v7.media']/class[@name='SystemMediaRouteProvider.JellybeanImpl']" />
     <remove-node path="/api/package[@name='android.support.v7.media']/class[@name='RemoteControlClientCompat.JellybeanImpl']" />
     
+    <remove-node path="/api/package[@name='android.support.v7.app']/class[@name='MediaRouteDevicePickerDialog.RouteComparator']" />
 </metadata>
