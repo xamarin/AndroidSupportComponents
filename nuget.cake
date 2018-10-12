@@ -403,11 +403,18 @@ Task("PrepareWorkingDirectory")
             NormalizeContents(nuspec.GetDirectory(), targetFw, "lib");
             NormalizeContents(nuspec.GetDirectory(), targetFw, "build");
             NormalizeContents(nuspec.GetDirectory(), targetFw, "proguard");
+            NormalizeContents(nuspec.GetDirectory(), targetFw, "aar");
 
             // change the path to the proguard.txt files, nothing clever, just a replace
-            var oldLink = @"..\..\proguard\proguard.txt";
-            var newLink = $@"..\..\proguard\{targetFw.GetShortFolderName()}\proguard.txt";
+            var oldLink = @"..\..\proguard\";
+            var newLink = $@"..\..\proguard\{targetFw.GetShortFolderName()}\";
             var targets = $"{nuspec.GetDirectory()}/build/{targetFw.GetShortFolderName()}/*.targets";
+            ReplaceTextInFiles(targets, oldLink, newLink);
+
+            // same with the aar
+            oldLink = @"..\..\aar\";
+            newLink = $@"..\..\aar\{targetFw.GetShortFolderName()}\";
+            targets = $"{nuspec.GetDirectory()}/build/{targetFw.GetShortFolderName()}/*.targets";
             ReplaceTextInFiles(targets, oldLink, newLink);
         }
     }
