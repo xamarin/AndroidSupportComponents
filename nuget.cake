@@ -647,7 +647,8 @@ Task("PackNuGets")
             Information($"Packing {nuspec}...");
             NuGetPack(nuspec, new NuGetPackSettings {
                 BasePath = nuspec.GetDirectory(),
-                OutputDirectory = outputPath
+                OutputDirectory = outputPath,
+                RequireLicenseAcceptance = true, // TODO: work around a bug: https://github.com/cake-build/cake/issues/2061
             });
 
             if (packLatestOnly)
