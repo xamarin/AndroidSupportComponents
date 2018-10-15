@@ -114,11 +114,12 @@ Task("nuget")
 	.Does(() =>
 {
 	MSBuild ("./generated/AndroidSupport.sln", c => {
-        c.Configuration = "Release";
-        c.Targets.Clear();
-        c.Targets.Add("Pack");
+		c.Configuration = "Release";
+		c.Targets.Clear();
+		c.Targets.Add("Pack");
 		c.Properties.Add("PackageOutputPath", new [] { MakeAbsolute(new FilePath("./output")).FullPath });
-    });
+		c.Properties.Add("PackageRequireLicenseAcceptance", new [] { "true" });
+	});
 });
 
 Task ("diff")
