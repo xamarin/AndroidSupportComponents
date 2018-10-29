@@ -28,14 +28,6 @@
   </ItemGroup>
   }
 
-  <ItemGroup>
-    @foreach (var art in @Model.MavenArtifacts) {
-      if (art.MavenArtifactPackaging == "aar") {
-    <AndroidAarLibrary Include="$(MSBuildThisFileDirectory)..\..\aar\@(art.MavenGroupId).@(art.MavenArtifactId).aar" />
-      }
-    }   
-  </ItemGroup>
-
 @{
   string mergeTargets = Path.Combine(Model.Config.BasePath, "source", Model.MavenGroupId, Model.Name, "merge.targets");
   if (File.Exists(mergeTargets)) {

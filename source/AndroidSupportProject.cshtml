@@ -71,6 +71,15 @@
   }
 
   <ItemGroup>
+    @foreach (var art in @Model.MavenArtifacts) {
+      if (art.MavenArtifactPackaging == "aar") {
+    <LibraryProjectZip Include="..\..\externals\@(art.MavenGroupId).@(art.MavenArtifactId).aar" />
+      }
+    }   
+  </ItemGroup>
+
+
+  <ItemGroup>
     <Folder Include="Additions\" />
     <Folder Include="Jars\" />
     <Folder Include="Transforms\" />
@@ -93,7 +102,7 @@
 
   <ItemGroup>
     @foreach (var art in @Model.MavenArtifacts) {
-      if (art.MavenArtifactPackaging == "aar") {
+      if (1==2 && art.MavenArtifactPackaging == "aar") {
     <None Include="..\..\externals\@(art.MavenGroupId).@(art.MavenArtifactId).aar" Pack="True" PackagePath="aar\" />
       }
     }   
