@@ -1,6 +1,14 @@
 ﻿<metadata>
     <attr path="/api/package[@name='android.support.design.circularreveal']" name="managedName">Android.Support.Design.CircularReveal</attr>
-    
+    <attr path="/api/package[@name='android.support.design.bottomappbar']" name="managedName">Android.Support.Design.BottomAppBar</attr>
+    <attr path="/api/package[@name='android.support.design.bottomnavigation']" name="managedName">Android.Support.Design.BottomNavigation</attr>
+    <attr path="/api/package[@name='android.support.design.circularreveal.cardview']" name="managedName">Android.Support.Design.CircularReveal.CardView</attr>
+    <attr path="/api/package[@name='android.support.design.circularreveal.coordinatorlayout']" name="managedName">Android.Support.Design.CircularReveal.CoordinatorLayout</attr>
+
+
+
+
+
 	<attr path="/api/package[@name='android.support.design.widget']/class[@name='TabLayout']/method[@name='setOnTabSelectedListener']" name="eventName"></attr>
 
 	<remove-node path="/api/package[@name='android.support.design.internal']/class[@name='NavigationMenuPresenter']" />

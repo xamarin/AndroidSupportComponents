@@ -1,5 +1,6 @@
 <metadata>
 	<attr path="/api/package[@name='android.support.mediacompat']" name="managedName">Android.Support.MediaCompat</attr>
+	<attr path="/api/package[@name='androidx.media']" name="managedName">AndroidX.Media</attr>
 
 	<attr path="/api/package[@name='android.support.v4.media.session']/class[@name='MediaSessionCompat.MediaSessionImplBase.Command']/field[@name='command']" name="managedName">CommandValue</attr>
 

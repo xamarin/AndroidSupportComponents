@@ -1,0 +1,7 @@
+<metadata>
+	<attr path="/api/package[@name='androidx.webkit']" name="managedName">AndroidX.WebKit</attr>
+	<attr path="/api/package[@name='androidx.webkit.internal']" name="managedName">AndroidX.WebKit.Internal</attr>
+	<attr path="/api/package[@name='org.chromium.support_lib_boundary']" name="managedName">Org.Chromium.SupportLibBoundary</attr>
+	<attr path="/api/package[@name='org.chromium.support_lib_boundary.util']" name="managedName">Org.Chromium.SupportLibBoundary.Util</attr>
+</metadata>
+
