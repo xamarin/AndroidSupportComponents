@@ -87,10 +87,6 @@
 
     <attr path="/api/package[@name='android.support.design.widget']/interface[@name='AppBarLayout.OnOffsetChangedListener']/method[@name='onOffsetChanged' and count(parameter)=2 and parameter[1][@type='android.support.design.widget.AppBarLayout'] and parameter[2][@type='int']]/parameter[1]" name="managedType">Java.Lang.Object</attr>
 
-    <attr path="/api/package[@name='android.support.design.widget']/class[@name='TabLayout.ViewPagerOnTabSelectedListener']/method[@name='onTabReselected' and count(parameter)=1 and parameter[1][@type='android.support.design.widget.TabLayout.Tab']]/parameter[1]" name="managedType">Java.Lang.Object</attr>
-    <attr path="/api/package[@name='android.support.design.widget']/class[@name='TabLayout.ViewPagerOnTabSelectedListener']/method[@name='onTabSelected' and count(parameter)=1 and parameter[1][@type='android.support.design.widget.TabLayout.Tab']]/parameter[1]" name="managedType">Java.Lang.Object</attr>
-    <attr path="/api/package[@name='android.support.design.widget']/class[@name='TabLayout.ViewPagerOnTabSelectedListener']/method[@name='onTabUnselected' and count(parameter)=1 and parameter[1][@type='android.support.design.widget.TabLayout.Tab']]/parameter[1]" name="managedType">Java.Lang.Object</attr>
-
     <remove-node path="/api/package[@name='android.support.design.circularreveal']/class[@name='CircularRevealWidget.CircularRevealScrimColorProperty']" />
     <remove-node path="/api/package[@name='android.support.design.circularreveal']/class[@name='CircularRevealWidget.CircularRevealProperty']" />
 
@@ -108,7 +104,25 @@
     <attr path="/api/package[@name='android.support.design.widget']/class[@name='AppBarLayout.Behavior']/method[@name='onStopNestedScroll' and count(parameter)=4 and parameter[1][@type='android.support.design.widget.CoordinatorLayout'] and parameter[2][@type='android.support.design.widget.AppBarLayout'] and parameter[3][@type='android.view.View'] and parameter[4][@type='int']]/parameter[2]" name="managedType">Java.Lang.Object</attr>
     
 
+    <attr path="/api/package[@name='android.support.design.widget']/interface[@name='TabLayout.BaseOnTabSelectedListener']" name="managedName">IOnTabSelectedListener</attr>
+    <attr path="/api/package[@name='android.support.design.widget']/interface[@name='TabLayout.BaseOnTabSelectedListener']/method[@name='onTabSelected']/parameter[1]" name="managedType">Android.Support.Design.Widget.TabLayout.Tab</attr>
+    <attr path="/api/package[@name='android.support.design.widget']/interface[@name='TabLayout.BaseOnTabSelectedListener']/method[@name='onTabReselected']/parameter[1]" name="managedType">Android.Support.Design.Widget.TabLayout.Tab</attr>
+    <attr path="/api/package[@name='android.support.design.widget']/interface[@name='TabLayout.BaseOnTabSelectedListener']/method[@name='onTabUnselected']/parameter[1]" name="managedType">Android.Support.Design.Widget.TabLayout.Tab</attr>
     
+    <attr path="/api/package[@name='android.support.design.widget']/interface[@name='TabLayout.BaseOnTabSelectedListener']/method[@name='onTabSelected']/parameter[1]" name="type">android.support.design.widget.TabLayout.Tab</attr>
+    <attr path="/api/package[@name='android.support.design.widget']/interface[@name='TabLayout.BaseOnTabSelectedListener']/method[@name='onTabReselected']/parameter[1]" name="type">android.support.design.widget.TabLayout.Tab</attr>
+    <attr path="/api/package[@name='android.support.design.widget']/interface[@name='TabLayout.BaseOnTabSelectedListener']/method[@name='onTabUnselected']/parameter[1]" name="type">android.support.design.widget.TabLayout.Tab</attr>
+    <attr path="/api/package[@name='android.support.design.widget']/interface[@name='TabLayout.BaseOnTabSelectedListener']/method[@name='onTabSelected']/parameter[1]" name="managedName">tab</attr>
+    <attr path="/api/package[@name='android.support.design.widget']/interface[@name='TabLayout.BaseOnTabSelectedListener']/method[@name='onTabReselected']/parameter[1]" name="managedName">tab</attr>
+    <attr path="/api/package[@name='android.support.design.widget']/interface[@name='TabLayout.BaseOnTabSelectedListener']/method[@name='onTabUnselected']/parameter[1]" name="managedName">tab</attr>
+    
+
+    <attr path="/api/package[@name='android.support.design.widget']/class[@name='TabLayout.ViewPagerOnTabSelectedListener']/method[@name='onTabSelected']/parameter[1]" name="managedType">Android.Support.Design.Widget.TabLayout.Tab</attr>
+    <attr path="/api/package[@name='android.support.design.widget']/class[@name='TabLayout.ViewPagerOnTabSelectedListener']/method[@name='onTabReselected']/parameter[1]" name="managedType">Android.Support.Design.Widget.TabLayout.Tab</attr>
+    <attr path="/api/package[@name='android.support.design.widget']/class[@name='TabLayout.ViewPagerOnTabSelectedListener']/method[@name='onTabUnselected']/parameter[1]" name="managedType">Android.Support.Design.Widget.TabLayout.Tab</attr>
+    
+    <attr path="/api/package[@name='android.support.design.widget']/interface[@name='TabLayout.OnTabSelectedListener']" name="managedName">IOnTabSelectedListener2</attr>
+
     
     <attr 
         path="/api/package[@name='android.support.design.widget']/class[@name='AppBarLayout.Behavior']/method[@name='onLayoutChild' and count(parameter)=3 and parameter[1][@type='android.support.design.widget.CoordinatorLayout'] and parameter[2][@type='android.support.design.widget.AppBarLayout'] and parameter[3][@type='int']]/parameter[1]"
