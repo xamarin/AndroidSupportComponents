@@ -9,6 +9,10 @@
   <attr path="/api/package[@name='android.support.customtabs']" name="managedName">Android.Support.CustomTabs</attr>
   <attr path="/api/package[@name='androidx.browser.browseractions']" name="managedName">AndroidX.Browser.BrowserActions</attr>
 
+
+  <remove-node path="/api/package[@name='androidx.browser.browseractions']/interface[@name='BrowserActionsIntent.BrowserActionsFallDialogListener']" />
+  <remove-node path="/api/package[@name='androidx.browser.browseractions']/interface[@name='BrowserActionsFallbackMenuUi.BrowserActionsFallMenuUiListener']" />
+  
     <attr
         path="/api/package[@name='android.support.customtabs']/class[@name='CustomTabsServiceConnection']/method[@name='onCustomTabsServiceConnected' and count(parameter)=2 and parameter[1][@type='android.content.ComponentName'] and parameter[2][@type='android.support.customtabs.CustomTabsClient']]/parameter[1]"
         name="managedName"
