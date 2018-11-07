@@ -1,0 +1,5 @@
+[assembly: global::System.Runtime.CompilerServices.TypeForwardedTo(typeof(global::Android.Support.V13.View.DragAndDropPermissionsCompat))]
+[assembly: global::System.Runtime.CompilerServices.TypeForwardedTo(typeof(global::Android.Support.V13.View.DragStartHelper))]
+[assembly: global::System.Runtime.CompilerServices.TypeForwardedTo(typeof(global::Android.Support.V13.View.Inputmethod.EditorInfoCompat))]
+[assembly: global::System.Runtime.CompilerServices.TypeForwardedTo(typeof(global::Android.Support.V13.View.Inputmethod.InputConnectionCompat))]
+[assembly: global::System.Runtime.CompilerServices.TypeForwardedTo(typeof(global::Android.Support.V13.View.Inputmethod.InputContentInfoCompat))]
