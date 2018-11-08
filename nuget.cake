@@ -108,7 +108,7 @@ var seedPackages = new [] {
     "Xamarin.Android.Support.Compat",
     // "Xamarin.Android.Support.Constraint.Layout",
     // "Xamarin.Android.Support.Constraint.Layout.Solver",
-    "Xamarin.Android.Support.Content",
+    //"Xamarin.Android.Support.Content",
     "Xamarin.Android.Support.Core.UI",
     "Xamarin.Android.Support.Core.Utils",
     "Xamarin.Android.Support.CustomTabs",
@@ -119,7 +119,7 @@ var seedPackages = new [] {
     "Xamarin.Android.Support.Emoji.Bundled",
     "Xamarin.Android.Support.Exif",
     "Xamarin.Android.Support.Fragment",
-    "Xamarin.Android.Support.InstantVideo",
+    //"Xamarin.Android.Support.InstantVideo",
     "Xamarin.Android.Support.Media.Compat",
     "Xamarin.Android.Support.Percent",
     "Xamarin.Android.Support.Recommendation",
@@ -127,7 +127,7 @@ var seedPackages = new [] {
     "Xamarin.Android.Support.Transition",
     "Xamarin.Android.Support.Vector.Drawable",
     "Xamarin.Android.Support.Wear",
-    "Xamarin.Android.Support.Wearable",
+    //"Xamarin.Android.Support.Wearable",
     "Xamarin.Android.Support.v13",
     "Xamarin.Android.Support.v14.Preference",
     "Xamarin.Android.Support.v17.Leanback",
@@ -140,7 +140,7 @@ var seedPackages = new [] {
     "Xamarin.Android.Support.v7.Palette",
     "Xamarin.Android.Support.v7.Preference",
     "Xamarin.Android.Support.v7.RecyclerView",
-    "Xamarin.Android.Support.v8.RenderScript",
+    //"Xamarin.Android.Support.v8.RenderScript",
 };
 
 bool IsBlacklisted(string id)
