@@ -191,10 +191,12 @@ Task ("ci-setup")
 	var buildNumber = "DEBUG";
 	var buildTimestamp = DateTime.UtcNow.ToString ();
 
+
 	if (BuildSystem.IsRunningOnJenkins) {
 		buildNumber = BuildSystem.Jenkins.Environment.Build.BuildTag;
 		buildCommit = EnvironmentVariable("GIT_COMMIT") ?? buildCommit;
-	} else if (BuildSystem.IsRunningOnVSTS) {
+	} else if (!string.IsNullOrWhiteSpace(EnvironmentVariable("TF_BUILD"))) {
+		// Running on AzureDevOps
 		buildNumber = BuildSystem.TFBuild.Environment.Build.Number;
 		buildCommit = BuildSystem.TFBuild.Environment.Repository.SourceVersion;
 	}
