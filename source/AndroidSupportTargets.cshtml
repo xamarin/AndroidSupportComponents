@@ -29,7 +29,7 @@
   }
   <ItemGroup>
     @foreach (var art in @Model.MavenArtifacts) {
-      if (art.MavenArtifactPackaging == "aar") {
+      if (1==2 && art.MavenArtifactPackaging == "aar") {
     <AndroidAarLibrary Include="$(MSBuildThisFileDirectory)..\..\aar\@(art.MavenGroupId).@(art.MavenArtifactId).aar" />
       }
     }   
