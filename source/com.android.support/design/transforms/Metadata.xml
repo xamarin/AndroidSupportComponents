@@ -123,6 +123,17 @@
     
     <attr path="/api/package[@name='android.support.design.widget']/interface[@name='TabLayout.OnTabSelectedListener']" name="managedName">IOnTabSelectedListener2</attr>
 
+
+    <attr path="/api/package[@name='android.support.design.widget']/interface[@name='AppBarLayout.OnOffsetChangedListener']/method[@name='onOffsetChanged']/parameter[1]" name="type">android.support.design.widget.AppBarLayout</attr>
+    <attr path="/api/package[@name='android.support.design.widget']/interface[@name='AppBarLayout.OnOffsetChangedListener']/method[@name='onOffsetChanged']/parameter[1]" name="managedType">Android.Support.Design.Widget.AppBarLayout</attr>
+    <attr path="/api/package[@name='android.support.design.widget']/interface[@name='AppBarLayout.OnOffsetChangedListener']/method[@name='onOffsetChanged']/parameter[1]" name="managedName">appBarLayout</attr>
+
+    <attr path="/api/package[@name='android.support.design.widget']/interface[@name='AppBarLayout.BaseOnOffsetChangedListener']/method[@name='onOffsetChanged']/parameter[1]" name="type">android.support.design.widget.AppBarLayout</attr>
+    <attr path="/api/package[@name='android.support.design.widget']/interface[@name='AppBarLayout.BaseOnOffsetChangedListener']/method[@name='onOffsetChanged']/parameter[1]" name="managedType">Android.Support.Design.Widget.AppBarLayout</attr>
+    <attr path="/api/package[@name='android.support.design.widget']/interface[@name='AppBarLayout.BaseOnOffsetChangedListener']/method[@name='onOffsetChanged']/parameter[1]" name="managedName">appBarLayout</attr>
+
+
+
     
     <attr 
         path="/api/package[@name='android.support.design.widget']/class[@name='AppBarLayout.Behavior']/method[@name='onLayoutChild' and count(parameter)=3 and parameter[1][@type='android.support.design.widget.CoordinatorLayout'] and parameter[2][@type='android.support.design.widget.AppBarLayout'] and parameter[3][@type='int']]/parameter[1]"
