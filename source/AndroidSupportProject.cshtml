@@ -165,7 +165,7 @@
 
   @if (@Model.NuGetPackageId == "Xamarin.Android.Support.v4") 
   {
-    <Target Name="AndroidSupportLibrariesTypeForwardersGenerationWithGenAPI">
+    <Target Name="AndroidSupportLibrariesTypeForwardersGenerationWithGenAPI" BeforeTargets="Build">
       <Message Text="AndroidSupportLibrariesTypeForwardersGenerationWithGenAPI" ></Message>
       <PropertyGroup>
         <GenAPIPath>$(MSBuildProjectDirectory)/../../tools/microsoft.dotnet.buildtools.genapi.1.0.0-beta-00081/Microsoft.DotNet.BuildTools.GenAPI/tools/GenAPI.exe</GenAPIPath>
