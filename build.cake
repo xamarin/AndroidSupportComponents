@@ -1,7 +1,7 @@
 // Tools needed by cake addins
 #tool nuget:?package=ILRepack&version=2.0.13
 #tool nuget:?package=Cake.MonoApiTools&version=3.0.1
-//#tool nuget:?package=Microsoft.DotNet.BuildTools.GenAPI&version=1.0.0-beta-00081
+#tool nuget:?package=Microsoft.DotNet.BuildTools.GenAPI&version=1.0.0-beta-00081
 #tool nuget:?package=vswhere
 
 // Cake Addins
