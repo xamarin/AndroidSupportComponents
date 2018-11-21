@@ -34,3 +34,4 @@ cake.sh
 **/.mfractor/**
 
 util/
+*.binlog
