@@ -1,6 +1,9 @@
 <metadata>
 
 	<attr path="/api/package[@name='android.support.compat']" name="managedName">Android.Support.Compat</attr>
+	<attr path="/api/package[@name='androidx.core.graphics.drawable']" name="managedName">AndroidX.Core.Graphics.Drawable</attr>
+	<attr path="/api/package[@name='androidx.core.internal']" name="managedName">AndroidX.Core.Internal</attr>
+
 
 	<!-- Fix params for some inherited parcelable types -->
 	<attr path="/api/*/*/method[@name='newArray']/parameter[@name='p0']" name="managedName">size</attr>
