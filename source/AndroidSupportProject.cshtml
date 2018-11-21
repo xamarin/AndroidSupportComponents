@@ -175,7 +175,7 @@
         <GenAPIIntermediateOutputPath>bin\Release\MonoAndroid90\</GenAPIIntermediateOutputPath>
 
         <GenAPILibPaths Condition=" '$(OS)' == 'Windows_NT' ">$(VsInstallRoot)\Common7\IDE\ReferenceAssemblies\Microsoft\Framework\MonoAndroid\v1.0,$(VsInstallRoot)\Common7\IDE\ReferenceAssemblies\Microsoft\Framework\MonoAndroid\v9.0</GenAPILibPaths>
-        <GenAPILibPaths Condition=" '$(OS)' != 'Windows_NT' ">$(VsInstallRoot)\Common7\IDE\ReferenceAssemblies\Microsoft\Framework\MonoAndroid\v1.0,$(VsInstallRoot)\Common7\IDE\ReferenceAssemblies\Microsoft\Framework\MonoAndroid\v9.0</GenAPILibPaths>
+        <GenAPILibPaths Condition=" '$(OS)' != 'Windows_NT' ">/Library/Frameworks/Xamarin.Android.Framework/Libraries/mono/2.1,/Library/Frameworks/Xamarin.Android.framework/Libraries/mandroid/platforms/android-28</GenAPILibPaths>
 
         <GenAPICommand Condition=" '$(OS)' == 'Windows_NT'">"$(GenAPIPath)"</GenAPICommand>
         <GenAPICommand Condition=" '$(OS)' != 'Windows_NT'">mono --runtime=v4.0.30319 "$(GenAPIPath)"</GenAPICommand>
