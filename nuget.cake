@@ -103,6 +103,7 @@ var blacklistIdPrefix = new List<string> {
 };
 
 var seedPackages = new [] {
+    "Xamarin.Android.Arch.Lifecycle.Extensions",
     "Xamarin.Android.Support.Animated.Vector.Drawable",
     "Xamarin.Android.Support.Annotations",
     "Xamarin.Android.Support.Compat",
