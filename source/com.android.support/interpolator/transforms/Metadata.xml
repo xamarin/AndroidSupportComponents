@@ -1,4 +1,5 @@
 <metadata>
+    <attr path="/api/package[@name='android.support.v4.view.animation']/class[@name='LookupTableInterpolator']" name="visibility">public</attr>
 
     <attr
         path="/api/package[@name='android.support.v4.view.animation']/class[@name='FastOutLinearInInterpolator']/method[@name='getInterpolation' and count(parameter)=1 and parameter[1][@type='float']]/parameter[1]"
