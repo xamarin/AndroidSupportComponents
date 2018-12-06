@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -9,14 +8,13 @@
     <OutputType>Library</OutputType>
     <RootNamespace>AndroidSupport.Tests</RootNamespace>
     <AssemblyName>AndroidSupport.Tests</AssemblyName>
-    <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -29,7 +27,8 @@
     <WarningLevel>4</WarningLevel>
     <AndroidLinkMode>None</AndroidLinkMode>
     <AndroidSupportedAbis>arm64-v8a;armeabi;armeabi-v7a;x86</AndroidSupportedAbis>
-    <NoWarn></NoWarn>
+    <NoWarn>
+    </NoWarn>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <PlatformTarget>anycpu</PlatformTarget>
   </PropertyGroup>
@@ -44,117 +43,13 @@
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.IO.Compression" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="Xamarin.Android.Support.Annotations">
-      <HintPath>..\..\output\Xamarin.Android.Support.Annotations.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.Compat">
-      <HintPath>..\..\output\Xamarin.Android.Support.Compat.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.Core.UI">
-      <HintPath>..\..\output\Xamarin.Android.Support.Core.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.Core.Utils">
-      <HintPath>..\..\output\Xamarin.Android.Support.Core.Utils.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.CustomTabs">
-      <HintPath>..\..\output\Xamarin.Android.Support.CustomTabs.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.Dynamic.Animation">
-      <HintPath>..\..\output\Xamarin.Android.Support.Dynamic.Animation.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.Exif">
-      <HintPath>..\..\output\Xamarin.Android.Support.Exif.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.Fragment">
-      <HintPath>..\..\output\Xamarin.Android.Support.Fragment.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.Media.Compat">
-      <HintPath>..\..\output\Xamarin.Android.Support.Media.Compat.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.Percent">
-      <HintPath>..\..\output\Xamarin.Android.Support.Percent.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.Recommendation">
-      <HintPath>..\..\output\Xamarin.Android.Support.Recommendation.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.Transition">
-      <HintPath>..\..\output\Xamarin.Android.Support.Transition.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.v7.GridLayout">
-      <HintPath>..\..\output\Xamarin.Android.Support.v7.GridLayout.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.v7.Palette">
-      <HintPath>..\..\output\Xamarin.Android.Support.v7.Palette.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.v7.Preference">
-      <HintPath>..\..\output\Xamarin.Android.Support.v7.Preference.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.v8.RenderScript">
-      <HintPath>..\..\output\Xamarin.Android.Support.v8.RenderScript.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.v13">
-      <HintPath>..\..\output\Xamarin.Android.Support.v13.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.v14.Preference">
-      <HintPath>..\..\output\Xamarin.Android.Support.v14.Preference.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.v17.Leanback">
-      <HintPath>..\..\output\Xamarin.Android.Support.v17.Leanback.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.v17.Preference.Leanback">
-      <HintPath>..\..\output\Xamarin.Android.Support.v17.Preference.Leanback.dll</HintPath>
-    </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="Mono.Android" />
-    <Reference Include="Xamarin.Android.Support.v4">
-      <HintPath>..\..\output\Xamarin.Android.Support.v4.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.Design">
-      <HintPath>..\..\output\Xamarin.Android.Support.Design.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.Animated.Vector.Drawable">
-      <HintPath>..\..\output\Xamarin.Android.Support.Animated.Vector.Drawable.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.v7.AppCompat">
-      <HintPath>..\..\output\Xamarin.Android.Support.v7.AppCompat.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.v7.CardView">
-      <HintPath>..\..\output\Xamarin.Android.Support.v7.CardView.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.v7.RecyclerView">
-      <HintPath>..\..\output\Xamarin.Android.Support.v7.RecyclerView.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.v7.MediaRouter">
-      <HintPath>..\..\output\Xamarin.Android.Support.v7.MediaRouter.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.Vector.Drawable">
-      <HintPath>..\..\output\Xamarin.Android.Support.Vector.Drawable.dll</HintPath>
-    </Reference>
-		<Reference Include="Xamarin.Android.Arch.Core.Common">
-		  <HintPath>..\..\output\Xamarin.Android.Arch.Core.Common.dll</HintPath>
-		</Reference>
-		<Reference Include="Xamarin.Android.Arch.Lifecycle.Common">
-		  <HintPath>..\..\output\Xamarin.Android.Arch.Lifecycle.Common.dll</HintPath>
-		</Reference>
-		<Reference Include="Xamarin.Android.Arch.Lifecycle.Runtime">
-		  <HintPath>..\..\output\Xamarin.Android.Arch.Lifecycle.Runtime.dll</HintPath>
-		</Reference>
-		<Reference Include="Xamarin.Android.Support.Emoji.AppCompat">
-		  <HintPath>..\..\output\Xamarin.Android.Support.Emoji.AppCompat.dll</HintPath>
-		</Reference>
-		<Reference Include="Xamarin.Android.Support.Emoji.Bundled">
-		  <HintPath>..\..\output\Xamarin.Android.Support.Emoji.Bundled.dll</HintPath>
-		</Reference>
-		<Reference Include="Xamarin.Android.Support.Emoji">
-		  <HintPath>..\..\output\Xamarin.Android.Support.Emoji.dll</HintPath>
-		</Reference>
-		<Reference Include="Xamarin.Android.Support.TV.Provider">
-		  <HintPath>..\..\output\Xamarin.Android.Support.TV.Provider.dll</HintPath>
-		</Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="xunit.core" Version="2.3.1" />
@@ -162,6 +57,69 @@
     <PackageReference Include="xunit.assert" Version="2.3.1" />
     <PackageReference Include="xunit.extensibility.execution" Version="2.3.1" />
     <PackageReference Include="xunit.runner.utility" Version="2.3.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Android.Arch.Core.Common" Version="1.1.1-preview8" />
+    <PackageReference Include="Xamarin.Android.Arch.Core.Runtime" Version="1.1.1-preview8" />
+    <PackageReference Include="Xamarin.Android.Arch.Lifecycle.Common" Version="1.1.1-preview8" />
+    <PackageReference Include="Xamarin.Android.Arch.Lifecycle.Extensions" Version="1.1.1-preview8" />
+    <PackageReference Include="Xamarin.Android.Arch.Lifecycle.LiveData" Version="1.1.1-preview8" />
+    <PackageReference Include="Xamarin.Android.Arch.Lifecycle.LiveData.Core" Version="1.1.1-preview8" />
+    <PackageReference Include="Xamarin.Android.Arch.Lifecycle.Runtime" Version="1.1.1-preview8" />
+    <PackageReference Include="Xamarin.Android.Arch.Lifecycle.ViewModel" Version="1.1.1-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.Animated.Vector.Drawable" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.Annotations" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.AsyncLayoutInflater" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.Collections" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.Compat" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.CoordinaterLayout" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.Core.UI" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.Core.Utils" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.CursorAdapter" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.CustomTabs" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.CustomView" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.Design" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.DocumentFile" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.DrawerLayout" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.Dynamic.Animation" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.Emoji" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.Emoji.AppCompat" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.Emoji.Bundled" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.Exif" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.Fragment" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.HeifWriter" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.Interpolator" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.Loader" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.LocalBroadcastManager" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.Media.Compat" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.Percent" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.Print" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.Recommendation" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.RecyclerView.Selection" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.Slices.Builders" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.Slices.Core" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.Slices.View" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.SlidingPaneLayout" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.SwipeRefreshLayout" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.Transition" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.TV.Provider" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.v13" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.v14.Preference" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.v17.Leanback" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.v17.Preference.Leanback" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.v4" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.v7.CardView" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.v7.GridLayout" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.v7.MediaRouter" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.v7.Palette" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.v7.Preference" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.v7.RecyclerView" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.Vector.Drawable" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.VersionedParcelable" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.ViewPager" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.Wear" Version="28.0.0-preview8" />
+    <PackageReference Include="Xamarin.Android.Support.WebKit" Version="28.0.0-preview8" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />

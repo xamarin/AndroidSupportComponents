@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Android.App;
 using Android.OS;
+using Android.Support.Design.Widget;
 using Android.Support.V4.App;
 using Xunit;
 using Xunit.Extensions;
@@ -47,7 +48,6 @@ namespace AndroidSupport.Tests
 			var a = new Android.Support.Design.Internal.BottomNavigationItemView(ctx);
 			var b = new Android.Support.Design.Internal.BottomNavigationMenu(ctx);
 			var c = new Android.Support.Design.Internal.BottomNavigationMenuView(ctx);
-			var d = new Android.Support.Design.Internal.SnackbarContentLayout(ctx);
 		}
 
 		[Fact]
@@ -57,5 +57,13 @@ namespace AndroidSupport.Tests
 			var e = new Android.Support.Design.Widget.BottomSheetDialog(ctx);
 			var f = new Android.Support.Design.Widget.BottomSheetDialogFragment();
 		}
-	}
+
+        public class ShellFlyoutTemplatedContentRenderer : Java.Lang.Object, AppBarLayout.IOnOffsetChangedListener, AppBarLayout.IBaseOnOffsetChangedListener
+        {
+            public void OnOffsetChanged(AppBarLayout appBarLayout, int verticalOffset)
+            {
+            }
+        }
+
+    }
 }
