@@ -85,7 +85,7 @@
     <attr path="/api/package[@name='android.support.design.animation']/class[@name='DrawableAlphaProperty']/method[@name='get' and count(parameter)=1 and parameter[1][@type='android.graphics.drawable.Drawable']]" name="managedReturn">Java.Lang.Object</attr>
     <attr path="/api/package[@name='android.support.design.animation']/class[@name='DrawableAlphaProperty']/method[@name='get' and count(parameter)=1 and parameter[1][@type='android.graphics.drawable.Drawable']]/parameter[1]" name="managedType">Java.Lang.Object</attr>
 
-    <attr path="/api/package[@name='android.support.design.widget']/interface[@name='AppBarLayout.OnOffsetChangedListener']/method[@name='onOffsetChanged' and count(parameter)=2 and parameter[1][@type='android.support.design.widget.AppBarLayout'] and parameter[2][@type='int']]/parameter[1]" name="managedType">Java.Lang.Object</attr>
+    <!-- <attr path="/api/package[@name='android.support.design.widget']/interface[@name='AppBarLayout.OnOffsetChangedListener']/method[@name='onOffsetChanged' and count(parameter)=2 and parameter[1][@type='android.support.design.widget.AppBarLayout'] and parameter[2][@type='int']]/parameter[1]" name="managedType">Java.Lang.Object</attr> -->
 
     <remove-node path="/api/package[@name='android.support.design.circularreveal']/class[@name='CircularRevealWidget.CircularRevealScrimColorProperty']" />
     <remove-node path="/api/package[@name='android.support.design.circularreveal']/class[@name='CircularRevealWidget.CircularRevealProperty']" />
@@ -122,6 +122,14 @@
     <attr path="/api/package[@name='android.support.design.widget']/class[@name='TabLayout.ViewPagerOnTabSelectedListener']/method[@name='onTabUnselected']/parameter[1]" name="managedType">Android.Support.Design.Widget.TabLayout.Tab</attr>
     
     <attr path="/api/package[@name='android.support.design.widget']/interface[@name='TabLayout.OnTabSelectedListener']" name="managedName">IOnTabSelectedListener2</attr>
+
+    <!-- 
+      OnOffsetChangedListener now implements BaseOnOffsetChangedListener with just the same method
+      This causes some inheritance problems in .NET so we're going to hide this base interface and make sure everywhere that uses it is patched up and uses OnOffsetChangedListener instead
+      Luckily for now any methods that take BaseOnOffsetChangedListener also have an overload for OnOffsetChangedListener
+     -->
+    <remove-node path="/api/package[@name='android.support.design.widget']/interface[@name='AppBarLayout.BaseOnOffsetChangedListener']" />
+    <remove-node path="/api/package[@name='android.support.design.widget']/interface[@name='AppBarLayout.OnOffsetChangedListener']/implements[@name='android.support.design.widget.AppBarLayout.BaseOnOffsetChangedListener']" />
 
 
     <attr path="/api/package[@name='android.support.design.widget']/interface[@name='AppBarLayout.OnOffsetChangedListener']/method[@name='onOffsetChanged']/parameter[1]" name="type">android.support.design.widget.AppBarLayout</attr>
