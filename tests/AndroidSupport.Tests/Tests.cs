@@ -58,7 +58,7 @@ namespace AndroidSupport.Tests
 			var f = new Android.Support.Design.Widget.BottomSheetDialogFragment();
 		}
 
-        public class ShellFlyoutTemplatedContentRenderer : Java.Lang.Object, AppBarLayout.IOnOffsetChangedListener, AppBarLayout.IBaseOnOffsetChangedListener
+        public class ShellFlyoutTemplatedContentRenderer : Java.Lang.Object, AppBarLayout.IOnOffsetChangedListener
         {
             public void OnOffsetChanged(AppBarLayout appBarLayout, int verticalOffset)
             {
