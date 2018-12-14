@@ -6,6 +6,8 @@ externals/
 output/
 docs/
 .vs/
+generated/
+**/scriptcs_packages/
 
 *.xam
 *.DS_Store
@@ -29,3 +31,7 @@ Details.md
 /generated.targets
 *.commit
 cake.sh
+**/.mfractor/**
+
+util/
+*.binlog

@@ -58,6 +58,9 @@ if [ ! -f "$TOOLS_DIR/packages.config" ]; then
         echo "using local cake.packages.config..."
         cp "$SCRIPT_DIR/cake.packages.config" "$TOOLS_DIR/packages.config"
     fi
+else
+    echo "using local cake.packages.config..."
+    cp "$SCRIPT_DIR/cake.packages.config" "$TOOLS_DIR/packages.config"
 fi
 
 # Download NuGet if it does not exist.

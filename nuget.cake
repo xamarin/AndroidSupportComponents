@@ -27,6 +27,9 @@
 // --useExplicitVersion      [True|False]
 //                           This can be used to indicate that the dependencies
 //                               should use hard/exact versions: [x.x.x]
+// --prereleaseLabel        [Prelease label to use for the new package version]
+//                           This can be used to add a prerelease label to the
+//                               nuget package version being created
 ///////////////////////////////////////////////////////////////////////////////
 // EXAMPLE USE CASE
 //
@@ -38,6 +41,7 @@
 //       --incrementVersion=False `
 //       --packLatestOnly=True `
 //       --useExplicitVersion=True
+//       --prereleaseLabel=rc1
 //       --packagesPath="./externals/packages"
 //       --workingPath="./working/packages"
 //       --outputPath="./output/packages"
@@ -65,10 +69,15 @@ var keepLatestVersion = Argument("keepLatestVersion", false);
 var incrementVersion = Argument("incrementVersion", true);
 var packLatestOnly = Argument("packLatestOnly", false);
 var useExplicitVersion = Argument("useExplicitVersion", true);
+var prereleaseLabel = Argument("prereleaseLabel", (string)null);
 
 var packagesPath = (DirectoryPath)Argument("packagesPath", "externals/packages");
 var workingPath = (DirectoryPath)Argument("workingPath", "working/packages");
 var outputPath = (DirectoryPath)Argument("outputPath", "output/packages");
+
+if (!string.IsNullOrEmpty(localSource)) {
+    localSource = MakeAbsolute((DirectoryPath)localSource).FullPath;
+}
 
 var apiLevelVersion = new Dictionary<int, NuGetFramework> {
     // {  1, NuGetFramework.Parse("monoandroid1.0") },
@@ -94,31 +103,50 @@ var blacklistIdPrefix = new List<string> {
 };
 
 var seedPackages = new [] {
+    "Xamarin.Android.Arch.Core.Common",
+    "Xamarin.Android.Arch.Core.Runtime",
+    "Xamarin.Android.Arch.Lifecycle.Common",
+    "Xamarin.Android.Arch.Lifecycle.Extensions",
+    "Xamarin.Android.Arch.Lifecycle.LiveData",
+    "Xamarin.Android.Arch.Lifecycle.LiveData.Core",
+    "Xamarin.Android.Arch.Lifecycle.Runtime",
+    "Xamarin.Android.Arch.Lifecycle.ViewModel",
     "Xamarin.Android.Support.Animated.Vector.Drawable",
     "Xamarin.Android.Support.Annotations",
+    "Xamarin.Android.Support.AsyncLayoutInflater",
+    "Xamarin.Android.Support.Collections",
     "Xamarin.Android.Support.Compat",
-    // "Xamarin.Android.Support.Constraint.Layout",
-    // "Xamarin.Android.Support.Constraint.Layout.Solver",
-    "Xamarin.Android.Support.Content",
+    "Xamarin.Android.Support.CoordinatorLayout",
     "Xamarin.Android.Support.Core.UI",
     "Xamarin.Android.Support.Core.Utils",
+    "Xamarin.Android.Support.CursorAdapter",
     "Xamarin.Android.Support.CustomTabs",
+    "Xamarin.Android.Support.CustomView",
     "Xamarin.Android.Support.Design",
+    "Xamarin.Android.Support.DocumentFile",
+    "Xamarin.Android.Support.DrawerLayout",
     "Xamarin.Android.Support.Dynamic.Animation",
     "Xamarin.Android.Support.Emoji",
     "Xamarin.Android.Support.Emoji.AppCompat",
     "Xamarin.Android.Support.Emoji.Bundled",
     "Xamarin.Android.Support.Exif",
     "Xamarin.Android.Support.Fragment",
-    "Xamarin.Android.Support.InstantVideo",
+    "Xamarin.Android.Support.HeifWriter",
+    "Xamarin.Android.Support.Interpolator",
+    "Xamarin.Android.Support.Loader",
+    "Xamarin.Android.Support.LocalBroadcastManager",
     "Xamarin.Android.Support.Media.Compat",
     "Xamarin.Android.Support.Percent",
+    "Xamarin.Android.Support.Print",
     "Xamarin.Android.Support.Recommendation",
-    "Xamarin.Android.Support.TV.Provider",
+    "Xamarin.Android.Support.RecyclerView.Selection",
+    "Xamarin.Android.Support.Slices.Builders",
+    "Xamarin.Android.Support.Slices.Core",
+    "Xamarin.Android.Support.Slices.View",
+    "Xamarin.Android.Support.SlidingPaneLayout",
+    "Xamarin.Android.Support.SwipeRefreshLayout",
     "Xamarin.Android.Support.Transition",
-    "Xamarin.Android.Support.Vector.Drawable",
-    "Xamarin.Android.Support.Wear",
-    //"Xamarin.Android.Support.Wearable",
+    "Xamarin.Android.Support.TV.Provider",
     "Xamarin.Android.Support.v13",
     "Xamarin.Android.Support.v14.Preference",
     "Xamarin.Android.Support.v17.Leanback",
@@ -131,7 +159,11 @@ var seedPackages = new [] {
     "Xamarin.Android.Support.v7.Palette",
     "Xamarin.Android.Support.v7.Preference",
     "Xamarin.Android.Support.v7.RecyclerView",
-    "Xamarin.Android.Support.v8.RenderScript",
+    "Xamarin.Android.Support.Vector.Drawable",
+    "Xamarin.Android.Support.VersionedParcelable",
+    "Xamarin.Android.Support.ViewPager",
+    "Xamarin.Android.Support.Wear",
+    "Xamarin.Android.Support.WebKit"
 };
 
 bool IsBlacklisted(string id)
@@ -149,6 +181,12 @@ bool IsBlacklisted(string id)
 
 NuGetVersion GetSupportVersion(FilePath nuspec)
 {
+    var range = GetSupportVersionRange(nuspec);
+    return range.MinVersion ?? range.MaxVersion;
+}
+
+VersionRange GetSupportVersionRange(FilePath nuspec)
+{
     var xdoc = XDocument.Load(nuspec.FullPath);
     var ns = xdoc.Root.Name.Namespace;
 
@@ -157,16 +195,58 @@ NuGetVersion GetSupportVersion(FilePath nuspec)
 
     string version;
     if (xid.Value.ToLower().StartsWith("xamarin.android.arch")) {
+        // search this nuget for a support version
         version = xmd
             .Descendants(ns + "dependency")
-            .First(e => e.Attribute("id").Value.ToLower().StartsWith("xamarin.android.support"))
+            .FirstOrDefault(e => e.Attribute("id").Value.ToLower().StartsWith("xamarin.android.support"))
+            ?.Attribute("version")
+            ?.Value;
+
+        // if none was found, look in the dependencies
+        if (string.IsNullOrEmpty(version)) {
+            foreach (var xdep in xmd.Descendants(ns + "dependency")) {
+                var id = xdep.Attribute("id").Value.ToLower();
+                var range = VersionRange.Parse(xdep.Attribute("version").Value);
+                var depNuspec = $"{packagesPath}/{id}/{range.MinVersion ?? range.MaxVersion}/{id}.nuspec";
+                // if a support version was found, use it, otherwise continue looking
+                var suppRange = GetSupportVersionRange(depNuspec);
+                if (suppRange != null)
+                    return suppRange;
+            }
+        }
+    } else {
+        version = xmd.Element(ns + "version").Value;
+    }
+
+    return VersionRange.Parse(version);
+}
+
+NuGetVersion GetArchVersion(FilePath nuspec)
+{
+    var range = GetArchVersionRange(nuspec);
+    return range.MinVersion ?? range.MaxVersion;
+}
+
+VersionRange GetArchVersionRange(FilePath nuspec)
+{
+    var xdoc = XDocument.Load(nuspec.FullPath);
+    var ns = xdoc.Root.Name.Namespace;
+
+    var xmd = xdoc.Root.Element(ns + "metadata");
+    var xid = xmd.Element(ns + "id");
+
+    string version;
+    if (xid.Value.ToLower().StartsWith("xamarin.android.support")) {
+        version = xmd
+            .Descendants(ns + "dependency")
+            .First(e => e.Attribute("id").Value.ToLower().StartsWith("xamarin.android.arch"))
             .Attribute("version")
             .Value;
     } else {
         version = xmd.Element(ns + "version").Value;
     }
 
-    return NuGetVersion.Parse(version);
+    return VersionRange.Parse(version);
 }
 
 NuGetVersion GetNewVersion(string id, string old)
@@ -182,16 +262,13 @@ NuGetVersion GetNewVersion(string id, NuGetVersion old)
             return old;
     }
 
-    if (!incrementVersion)
-        return old;
-
     return new NuGetVersion(
         old.Major,
         old.Minor,
         old.Patch,
-        990 + old.Revision,
-        (string)null,   // old.Release,
-        (string)null);  // old.Metadata);
+        incrementVersion ? 990 + old.Revision : old.Revision,
+        prereleaseLabel ?? old.Release,
+        (string)null);
 }
 
 NuGetVersion GetNewVersion(string id, VersionRange old)
@@ -247,7 +324,8 @@ Task("DownloadNuGets")
 
             foreach (var nugetSource in nugetSources) {
                 var mdRes = await nugetSource.GetResourceAsync<MetadataResource>();
-                var allVersions = await mdRes.GetVersions(id, false, false, nugetCache, nugetLogger, default);
+                var includePrerelease = nugetSource.PackageSource.Source == localSource;
+                var allVersions = await mdRes.GetVersions(id, includePrerelease, false, nugetCache, nugetLogger, default);
 
                 // process the versions
                 foreach (var version in allVersions) {
@@ -348,11 +426,18 @@ Task("PrepareWorkingDirectory")
             NormalizeContents(nuspec.GetDirectory(), targetFw, "lib");
             NormalizeContents(nuspec.GetDirectory(), targetFw, "build");
             NormalizeContents(nuspec.GetDirectory(), targetFw, "proguard");
+            NormalizeContents(nuspec.GetDirectory(), targetFw, "aar");
 
             // change the path to the proguard.txt files, nothing clever, just a replace
-            var oldLink = @"..\..\proguard\proguard.txt";
-            var newLink = $@"..\..\proguard\{targetFw.GetShortFolderName()}\proguard.txt";
+            var oldLink = @"..\..\proguard\";
+            var newLink = $@"..\..\proguard\{targetFw.GetShortFolderName()}\";
             var targets = $"{nuspec.GetDirectory()}/build/{targetFw.GetShortFolderName()}/*.targets";
+            ReplaceTextInFiles(targets, oldLink, newLink);
+
+            // same with the aar
+            oldLink = @"..\..\aar\";
+            newLink = $@"..\..\aar\{targetFw.GetShortFolderName()}\";
+            targets = $"{nuspec.GetDirectory()}/build/{targetFw.GetShortFolderName()}/*.targets";
             ReplaceTextInFiles(targets, oldLink, newLink);
         }
     }
@@ -366,10 +451,12 @@ Task("PrepareWorkingDirectory")
         if (GetDirectories($"{dir}/{subdir}/*/*").Any())
             throw new Exception($"'{dir}' contains sub directories.");
 
-        // make sure the files are in the right folder, but
-        // only if there is one folder - more means this is
-        // already a fat package
-        if (GetDirectories($"{dir}/{subdir}/*").Count() == 1) {
+        // make sure the files are in the right folder:
+        //  - 0 means that this is a thin package
+        //      probably not the core build/lib folders (probably proguard)
+        //  - 1 means that this is a thin package
+        //  - 2+ more means this is already a fat package
+        if (GetDirectories($"{dir}/{subdir}/*").Count() <= 1) {
             EnsureDirectoryExists(dir.Combine("temp"));
             MoveFiles($"{dir}/{subdir}/**/*", dir.Combine("temp"));
             CleanDirectories($"{dir}/{subdir}");
@@ -379,8 +466,8 @@ Task("PrepareWorkingDirectory")
 
     NuGetFramework NormalizeNuspec(FilePath nuspec)
     {
-        var version = GetSupportVersion(nuspec);
-        var targetFw = apiLevelVersion[version.Major];
+        var supportVersion = GetSupportVersion(nuspec);
+        var targetFw = apiLevelVersion[supportVersion.Major];
 
         var xdoc = XDocument.Load(nuspec.FullPath);
         var ns = xdoc.Root.Name.Namespace;
@@ -388,6 +475,7 @@ Task("PrepareWorkingDirectory")
 
         // set the new version of the package
         var xv = xmd.Element(ns + "version");
+        var version = NuGetVersion.Parse(xv.Value);
         xv.Value = GetNewVersion(xmd.Element(ns + "id").Value, version).ToNormalizedString();
 
         // make sure the <dependencies> element exists
@@ -408,7 +496,7 @@ Task("PrepareWorkingDirectory")
         // some packages have the wrong <group> targets, so recreate everything
         var xnewGroups = new Dictionary<int, XElement>();
         foreach (var pair in apiLevelVersion) {
-            if (pair.Key > version.Major)
+            if (pair.Key > supportVersion.Major)
                 continue;
             xnewGroups.Add(pair.Key, new XElement(ns + "group",
                 new XAttribute("targetFramework", pair.Value.GetShortFolderName())));
@@ -423,7 +511,7 @@ Task("PrepareWorkingDirectory")
                 .Where(x => x.Attribute("id").Value.ToLower().StartsWith("xamarin.android.support"))
                 .Select(x => VersionRange.Parse(x.Attribute("version").Value))
                 .FirstOrDefault();
-            var minVersion = firstSupportVersion?.MinVersion ?? version;
+            var minVersion = firstSupportVersion?.MinVersion ?? supportVersion;
             xnewGroups[minVersion.Major].Add(xgroupDeps);
         }
 
@@ -519,8 +607,10 @@ Task("CreateFatNuGets")
         var xdoc = XDocument.Load(nuspec);
         var ns = xdoc.Root.Name.Namespace;
         var xmd = xdoc.Root.Element(ns + "metadata");
+        var xversion = xmd.Element(ns + "version");
         var xdeps = xmd.Element(ns + "dependencies");
         var xgroups = xdeps.Elements(ns + "group");
+        var isArch = id.ToLower().StartsWith("xamarin.android.arch");
 
         foreach (var included in includedVersions) {
             var includedNuspec = $"{workingPath}/{id}/{included.ToNormalizedString()}/{id}.nuspec";
@@ -533,6 +623,21 @@ Task("CreateFatNuGets")
 
             foreach (var ixgroup in ixgroups) {
                 var xgroup = xgroups.FirstOrDefault(g => g.Attribute("targetFramework").Value == ixgroup.Attribute("targetFramework").Value);
+                foreach (var ixdep in ixgroup.Elements(ins + "dependency")) {
+                    var includedArch = ixdep.Attribute("id").Value.ToLower().StartsWith("xamarin.android.arch");
+                    string newVersion = null;
+                    if (isArch == includedArch) {
+                        // if both are arch, or both are support, use the current version
+                        newVersion = xversion.Value;
+                    } else if (isArch) {
+                        // if the main is arch, but this is support
+                        newVersion = GetSupportVersion(nuspec).ToNormalizedString();
+                    } else {
+                        // if the main is support and this is arch
+                        newVersion = GetArchVersion(nuspec).ToNormalizedString();
+                    }
+                    ixdep.SetAttributeValue("version", useExplicitVersion ? $"[{newVersion}]" : newVersion);
+                }
                 xgroup.Add(ixgroup.Elements());
             }
         }
@@ -564,9 +669,9 @@ Task("PackNuGets")
             var nuspec = GetFiles($"{version.Dir}/*.nuspec").FirstOrDefault();
             Information($"Packing {nuspec}...");
             NuGetPack(nuspec, new NuGetPackSettings {
-                Version = version.Ver.ToString(),
                 BasePath = nuspec.GetDirectory(),
-                OutputDirectory = outputPath
+                OutputDirectory = outputPath,
+                RequireLicenseAcceptance = true, // TODO: work around a bug: https://github.com/cake-build/cake/issues/2061
             });
 
             if (packLatestOnly)
