@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net.Http;
+using System.Net;
 using System.Runtime.Serialization.Json;
 using System.Runtime.Versioning;
 using System.Text.RegularExpressions;
@@ -16,6 +16,8 @@ namespace Xamarin.Android.Support.BuildTasks
 {
 	public static class NugetPackages
 	{
+		const int WEB_REQUEST_TIMEOUT_MS = 10000;
+
 		public static readonly Dictionary<int, Version> AndroidApiLevelsAndVersions = new Dictionary<int, Version>
 		{
 			{ 23, new Version(6, 0) },
@@ -127,20 +129,18 @@ namespace Xamarin.Android.Support.BuildTasks
 			return supportVersion;
 		}
 
-		static readonly HttpClient http = new HttpClient();
-
-		public static async Task<string> GetRecommendedSupportPackageVersion(int apiLevel)
+		public static string GetRecommendedSupportPackageVersion(int apiLevel)
 		{
 			// Default to the apilevel.x since this is displayed as a suggestion in a message
 			var bestVersion = apiLevel.ToString() + ".x";
 
 			try
 			{
-				var searchUrl = await GetNuGetSearchUrl();
+				var searchUrl = GetNuGetSearchUrl();
 
 				var queryUrl = searchUrl + "?q=packageid:Xamarin.Android.Support.Annotations&prerelease=false";
 
-				var data = await http.GetStringAsync(queryUrl);
+				var data = DownloadString(queryUrl);
 
 				var js = new JavaScriptSerializer();
 				var json = js.Deserialize<dynamic>(data);
@@ -161,9 +161,9 @@ namespace Xamarin.Android.Support.BuildTasks
 			return bestVersion;
 		}
 
-		static async Task<string> GetNuGetSearchUrl()
+		static string GetNuGetSearchUrl()
 		{
-			var data = await http.GetStringAsync("https://api.nuget.org/v3/index.json");
+			var data = DownloadString("https://api.nuget.org/v3/index.json");
 
 			var js = new JavaScriptSerializer();
 			var json = js.Deserialize<dynamic>(data);
@@ -174,6 +174,23 @@ namespace Xamarin.Android.Support.BuildTasks
 			}
 
 			return null;
+		}
+
+		static string DownloadString(string url)
+		{
+			var result = string.Empty;
+
+			var request = (HttpWebRequest)WebRequest.Create(url);
+			request.Timeout = WEB_REQUEST_TIMEOUT_MS;
+			request.ReadWriteTimeout = WEB_REQUEST_TIMEOUT_MS;
+
+			using (var response = (HttpWebResponse)request.GetResponse())
+			using (var respStream = response.GetResponseStream())
+			using (var sr = new StreamReader(respStream)) {
+				result = sr.ReadToEnd();
+			}
+
+			return result;
 		}
 	}
 }
