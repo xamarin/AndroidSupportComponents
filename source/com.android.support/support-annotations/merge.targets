@@ -9,7 +9,12 @@
     Name="_VerifyXamarinAndroidSupportVersions"
     AfterTargets="ResolveAssemblyReferences">
 
+    <PropertyGroup>
+      <XamarinAndroidSupportSkipVerifyVersions Condition="'$(XamarinAndroidSupportSkipVerifyVersions)'==''">false</XamarinAndroidSupportSkipVerifyVersions>
+    </PropertyGroup>
+
     <VerifyVersionsTask
+        Condition="'$(XamarinAndroidSupportSkipVerifyVersions)'!='true'"
         TargetFrameworkVersion="$(TargetFrameworkVersion)"
         TargetApiLevel="$(_AndroidApiLevel)"
         AndroidSdkBuildToolsVersion="$(AndroidSdkBuildToolsVersion)"

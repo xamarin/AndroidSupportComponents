@@ -83,9 +83,9 @@ namespace Xamarin.Android.Support.BuildTasks
 				sb.AppendLine("The following Xamarin.Android.Support.* packages and versions were detected:");
 				sb.AppendLine();
 
-				var recommendedSupportVersion = NugetPackages.GetRecommendedSupportPackageVersion(apiLevel).Result;
+				var recommendedSupportVersion = NugetPackages.GetRecommendedSupportPackageVersion(apiLevel);
 
-				foreach (var pkg in packageVersions)
+				foreach (var pkg in packageVersions.OrderBy(p => p.Value + "-" + p.Key))
 					sb.AppendLine($"    {pkg.Key} ({pkg.Value})");
 
 				sb.AppendLine();

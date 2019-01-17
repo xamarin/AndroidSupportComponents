@@ -102,7 +102,10 @@ Task("libs")
 {
 	NuGetRestore("./generated/AndroidSupport.sln", new NuGetRestoreSettings { });
 
-	MSBuild("./generated/AndroidSupport.sln", c => c.Configuration = "Release");
+	MSBuild("./generated/AndroidSupport.sln", c => {
+		c.Configuration = "Release";
+		c.Properties.Add("DesignTimeBuild", new [] { "false" });
+	});
 });
 
 Task("nuget-restore")
@@ -136,7 +139,7 @@ Task("nuget-validation")
 		NeedsProjectUrl = true,
 		NeedsLicenseUrl = true,
 		ValidateRequireLicenseAcceptance = true,
-		ValidPackageNamespace = new [] { "Xamarin", "Mono", "SkiaSharp", "HarfBuzzSharp", "mdoc" },
+		ValidPackageNamespace = new [] { "Xamarin" },
 	};
 
 	var nupkgFiles = GetFiles ("./output/*.nupkg");
