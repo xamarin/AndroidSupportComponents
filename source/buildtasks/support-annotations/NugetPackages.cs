@@ -180,7 +180,7 @@ namespace Xamarin.Android.Support.BuildTasks
 		{
 			var result = string.Empty;
 
-			var request = (HttpWebRequest)WebRequest.Create(url);
+			var request = WebRequest.CreateHttp(url);
 			request.Timeout = WEB_REQUEST_TIMEOUT_MS;
 			request.ReadWriteTimeout = WEB_REQUEST_TIMEOUT_MS;
 
