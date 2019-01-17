@@ -85,7 +85,7 @@ namespace Xamarin.Android.Support.BuildTasks
 
 				var recommendedSupportVersion = NugetPackages.GetRecommendedSupportPackageVersion(apiLevel);
 
-				foreach (var pkg in packageVersions.OrderBy(p => p.Value + "-" + p.Value))
+				foreach (var pkg in packageVersions.OrderBy(p => p.Value + "-" + p.Key))
 					sb.AppendLine($"    {pkg.Key} ({pkg.Value})");
 
 				sb.AppendLine();
