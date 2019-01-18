@@ -51,9 +51,9 @@ namespace Xamarin.Android.Support.BuildTasks.Tests
 		[InlineData(24, "24.x")]
 		[InlineData(25, "25.4.0.2")]
 		[InlineData(26, "26.1.0.1")]
-		public async Task Test_Recommended_NuGet_Version(int apiLevel, string expectedVersion)
+		public void Test_Recommended_NuGet_Version(int apiLevel, string expectedVersion)
 		{
-			var v = await NugetPackages.GetRecommendedSupportPackageVersion(apiLevel);
+			var v = NugetPackages.GetRecommendedSupportPackageVersion(apiLevel);
 
 			Assert.Equal(expectedVersion, v);
 		}
