@@ -14,6 +14,10 @@
 		{
 			"templateFile": "source/AndroidSupportProject.cshtml",
 			"outputFileRule" : "generated/{groupid}.{artifactid}/{groupid}.{artifactid}.csproj"
+		},
+		{
+			"templateFile": "source/AndroidSupportPom.cshtml",
+			"outputFileRule" : "generated/{groupid}.{artifactid}/dependencies.pom"
 		}
 	],
 	"artifacts" : [
