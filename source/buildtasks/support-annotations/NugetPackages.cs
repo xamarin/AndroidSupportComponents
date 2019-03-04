@@ -129,10 +129,14 @@ namespace Xamarin.Android.Support.BuildTasks
 			return supportVersion;
 		}
 
-		public static string GetRecommendedSupportPackageVersion(int apiLevel)
+		public static string GetRecommendedSupportPackageVersion(int apiLevel, bool skipNugetQuery)
 		{
 			// Default to the apilevel.x since this is displayed as a suggestion in a message
-			var bestVersion = apiLevel.ToString() + ".x";
+			var bestVersion = apiLevel.ToString() + ".*";
+
+			// If we should skip an http request to nuget.org just return the api level
+			if (skipNugetQuery)
+				return bestVersion;
 
 			try
 			{
