@@ -53,7 +53,7 @@ namespace Xamarin.Android.Support.BuildTasks.Tests
 		[InlineData(26, "26.1.0.1")]
 		public void Test_Recommended_NuGet_Version(int apiLevel, string expectedVersion)
 		{
-			var v = NugetPackages.GetRecommendedSupportPackageVersion(apiLevel);
+			var v = NugetPackages.GetRecommendedSupportPackageVersion(apiLevel, false);
 
 			Assert.Equal(expectedVersion, v);
 		}
