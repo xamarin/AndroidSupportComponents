@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+    <attr path="/api/package[@name='android.arch.persistence.room']" name="managedName">Android.Arch.Persistence.Room</attr>
+    <attr path="/api/package[@name='android.arch.persistence.room.migration']" name="managedName">Android.Arch.Persistence.Room.Migration</attr>
+    <attr path="/api/package[@name='android.arch.persistence.room.paging']" name="managedName">Android.Arch.Persistence.Room.Paging</attr>
+    <attr path="/api/package[@name='android.arch.persistence.room.util']" name="managedName">Android.Arch.Persistence.Room.Util</attr>
+
+    <remove-node path="/api/package[@name='android.arch.persistence.room']/class[@name='EntityDeletionOrUpdateAdapter']/method[@name='createQuery' and count(parameter)=0]" />
+
+    <remove-node path="/api/package[@name='android.arch.persistence.room.util']/class[@name='TableInfo.ForeignKeyWithSequence']/implements" />
+
+    <attr path="/api/package[@name='android.arch.persistence.room']/class[@name='RoomOpenHelper.Delegate']" name="managedName">HelperDelegate</attr>
+</metadata>

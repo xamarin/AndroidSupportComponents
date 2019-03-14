@@ -78,6 +78,42 @@
 			"nugetVersion" : "1.1.1.1",
 			"nugetId" : "Xamarin.Android.Arch.Lifecycle.ViewModel"
 		},
+		{
+			"groupId" : "android.arch.persistence.room",
+			"artifactId" : "common",
+			"version" : "1.1.1",
+			"nugetVersion" : "1.1.1.1",
+			"nugetId" : "Xamarin.Android.Arch.Persistence.Room.Common"
+		},
+		{
+			"groupId" : "android.arch.persistence.room",
+			"artifactId" : "runtime",
+			"version" : "1.1.1",
+			"nugetVersion" : "1.1.1.1",
+			"nugetId" : "Xamarin.Android.Arch.Persistence.Room.Runtime"
+		},
+		{
+			"groupId" : "android.arch.persistence",
+			"artifactId" : "db",
+			"version" : "1.1.1",
+			"nugetVersion" : "1.1.1.1",
+			"nugetId" : "Xamarin.Android.Arch.Persistence.Db"
+		},
+		{
+			"groupId" : "android.arch.persistence",
+			"artifactId" : "db-framework",
+			"version" : "1.1.1",
+			"nugetVersion" : "1.1.1.1",
+			"nugetId" : "Xamarin.Android.Arch.Persistence.Db.Framework"
+		},
+		{
+			"groupId" : "android.arch.work",
+			"artifactId" : "work-runtime",
+			"version" : "1.0.0",
+			"nugetVersion" : "1.0.0",
+			"nugetId" : "Xamarin.Android.Arch.Work.Runtime"
+		},
+
 
 
 		{
@@ -463,6 +499,28 @@
 			"artifactId" : "constraint-layout-solver",
 			"version" : "1.1.0",
 			"nugetId" : "Xamarin.Android.Support.Constraint.Layout.Solver",
+			"dependencyOnly" : true
+		},
+		{
+			"groupId" : "com.google.guava",
+			"artifactId" : "guava",
+			"version" : "27.1.0",
+			"nugetId" : "Xamarin.Google.Guava",
+			"dependencyOnly" : true
+		},
+		{
+			"groupId" : "com.google.guava",
+			"artifactId" : "failureaccess",
+			"version" : "1.0.1",
+			"nugetId" : "Xamarin.Google.Guava.FailureAccess",
+			"dependencyOnly" : true
+		},
+		{
+			"groupId" : "com.google.guava",
+			"artifactId" : "listenablefuture",
+			"version" : "1.0",
+			"nugetId" : "Xamarin.Google.Guava.ListenableFuture",
+			"nugetVersion" : "1.0",
 			"dependencyOnly" : true
 		}
 	]
