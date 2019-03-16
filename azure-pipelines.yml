@@ -1,0 +1,107 @@
+
+variables:
+  MONO_VERSION: 5_16_0
+  XCODE_VERSION: 10.1
+  VERBOSITY: minimal
+
+resources:
+  repositories:
+    - repository: xamarin-templates
+      type: github
+      name: xamarin/yaml-templates
+      endpoint: xamarin
+
+jobs:
+
+  - job: build
+    displayName: 'Build Libraries & NuGets (macOS)'
+    pool:
+      vmImage: macos-10.13
+    steps:
+      # Make sure to select the correct Xamarin and mono
+      - bash: sudo $AGENT_HOMEDIRECTORY/scripts/select-xamarin-sdk.sh $(MONO_VERSION)
+        displayName: 'Switch to the latest Xamarin SDK'
+      - bash: echo '##vso[task.setvariable variable=MD_APPLE_SDK_ROOT;]'/Applications/Xcode_$(XCODE_VERSION).app;sudo xcode-select --switch /Applications/Xcode_$(XCODE_VERSION).app/Contents/Developer
+        displayName: 'Switch to the latest Xcode'
+      # Build the libraries and packages
+      - bash: sh build.sh --target=ci --settings_skipverification=true --verbosity=$(VERBOSITY)
+        displayName: 'Build NuGets'
+      - script: |
+          # Make a temp folder to move the created nugets to before we fat package them
+          mkdir -p $(Build.SourcesDirectory)/tmp/nuget
+          mkdir -p $(Build.SourcesDirectory)/tmp/output
+          # Move all of the nupkg files from output into the temp folder we just created
+          mv $(Build.SourcesDirectory)/output/*.nupkg $(Build.SourcesDirectory)/tmp/nuget
+          # Move the remaining output bits to a temp location so they don't get overwritten
+          mv $(Build.SourcesDirectory)/output/* $(Build.SourcesDirectory)/tmp/output
+          sh build.sh --script nuget.cake \
+            --localSource=$(Build.SourcesDirectory)/tmp/nuget \
+            --packagesPath=$(Build.SourcesDirectory)/tmp/pkgs \
+            --workingPath=$(Build.SourcesDirectory)/tmp/working \
+            --outputPath=$(Build.SourcesDirectory)/output \
+            --incrementVersion=False \
+            --packLatestOnly=True \
+            --useExplicitVersion=True
+          # Move the other output bits back to the original output folder
+          mv $(Build.SourcesDirectory)/tmp/output/* $(Build.SourcesDirectory)/output
+        displayName: 'NuGet FAT'
+        enabled: false
+      # Publish the artifacts
+      - task: PublishBuildArtifacts@1
+        displayName: 'Publish unsigned artifacts'
+        inputs:
+          pathToPublish: '$(Build.SourcesDirectory)/output'
+          artifactName: 'nuget'
+
+  - job: build_windows
+    displayName: 'Build Libraries & NuGets (Windows)'
+    pool:
+      vmImage: vs2017-win2016
+    steps:
+      # Build the libraries and packages
+      - powershell: .\build.ps1 --target=ci --settings_skipverification=true --verbosity=$(VERBOSITY)
+        displayName: 'Build everything'
+      # Publish the artifacts
+      - task: PublishBuildArtifacts@1
+        displayName: 'Publish Windows artifacts'
+        inputs:
+          pathToPublish: '$(Build.SourcesDirectory)/output'
+          artifactName: 'windows_output'
+      # Run some internal auditing
+      - ${{ if eq(variables['System.TeamProject'], 'devdiv') }}:
+        - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
+          condition: not(startsWith(variables['Build.SourceBranch'], 'refs/tags/'))
+          displayName: Component Detection - Log
+          inputs:
+            scanType: LogOnly
+        - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
+          condition: startsWith(variables['Build.SourceBranch'], 'refs/tags/')
+          displayName: Component Detection - Report
+        - task: securedevelopmentteam.vss-secure-development-tools.build-task-policheck.PoliCheck@1
+          condition: eq(variables['System.TeamProject'], 'devdiv')
+          displayName: 'PoliCheck'
+          inputs:
+            targetType: F
+
+  # only sign the packages when running on Windows, and using the private server which has the certificates
+  - ${{ if eq(variables['System.TeamProject'], 'devdiv') }}:
+    - job: signing
+      displayName: Signing NuGets
+      dependsOn: build
+      pool:
+        name: VSEng-XamarinCustom
+        demands:
+          - corpnet
+      condition: and(succeeded(), startsWith(variables['Build.SourceBranch'],'refs/tags/'))
+      steps:
+        # don't checkout code and sign the packages
+        - checkout: none
+        - template: sign-artifacts.yml@xamarin-templates
+          parameters:
+            targetFolder: '$(Build.ArtifactStagingDirectory)/signed'
+        # publish the signed packages
+        - task: PublishBuildArtifacts@1
+          displayName: 'Publish Signed NuGets'
+          inputs:
+            artifactName: nuget-signed
+            pathToPublish: '$(Build.ArtifactStagingDirectory)/signed'
