@@ -15,6 +15,7 @@
 
 var TARGET = Argument ("t", Argument ("target", "Default"));
 var BUILD_CONFIG = Argument ("config", "Release");
+var VERBOSITY = (Verbosity) Enum.Parse (typeof(Verbosity), Argument ("v", Argument ("verbosity", "Normal")), true);
 
 // Lists all the artifacts and their versions for com.android.support.*
 // https://dl.google.com/dl/android/maven2/com/android/support/group-index.xml
@@ -51,6 +52,8 @@ if (IsRunningOnWindows ()) {
 	else
 		MSCORLIB_PATH = MakeAbsolute (DOTNETDIR.Combine("Framework/v4.0.30319/")).FullPath;
 }
+
+var ANDROIDX_MAPPER_EXE = MakeAbsolute ((FilePath)$"util/AndroidXMapper/AndroidXMapper/bin/{BUILD_CONFIG}/net47/AndroidXMapper.exe");
 
 Information ("MONODROID_PATH: {0}", MONODROID_PATH);
 Information ("MSCORLIB_PATH: {0}", MSCORLIB_PATH);
@@ -169,6 +172,18 @@ Task("nuget-validation")
 
 });
 
+Task ("androidxmapper")
+	.Does (() =>
+{
+	MSBuild (
+		"./util/AndroidXMapper/AndroidXMapper.sln", c => {
+		c.Configuration = BUILD_CONFIG;
+		c.MaxCpuCount = 0;
+		c.Verbosity = VERBOSITY;
+		c.Restore = true;
+	});
+});
+
 Task ("diff")
 	.WithCriteria (!IsRunningOnWindows ())
 	.IsDependentOn ("merge")
@@ -201,33 +216,25 @@ Task ("diff")
 });
 
 Task ("merge")
+	.IsDependentOn ("androidxmapper")
 	.IsDependentOn ("libs")
 	.Does (() =>
 {
-	EnsureDirectoryExists("./output/");
-
-	if (FileExists ("./output/AndroidSupport.Merged.dll"))
-		DeleteFile ("./output/AndroidSupport.Merged.dll");
-
-	var allDlls = GetFiles ("./generated/**/bin/Release/" + TF_MONIKER + "/*.dll");
-
+	var allDlls = GetFiles ($"./generated/*/bin/{BUILD_CONFIG}/{TF_MONIKER}/Xamarin.*.dll");
 	var mergeDlls = allDlls
 		.GroupBy(d => new FileInfo(d.FullPath).Name)
 		.Select(g => g.FirstOrDefault())
-		.Where (g => !g.FullPath.Contains("v4") && !g.FullPath.Contains(".Android.Support.Constraint.Layout."))
 		.ToList();
 
-	Information("Merging: \n {0}", string.Join("\n", mergeDlls));
-
-	// Wait for ILRepack support in cake-0.5.2
-	ILRepack ("./output/AndroidSupport.Merged.dll", mergeDlls.First(), mergeDlls.Skip(1), new ILRepackSettings {
-		CopyAttrs = true,
-		AllowMultiple = true,
-		//TargetKind = ILRepack.TargetKind.Dll,
-		Libs = new List<DirectoryPath> {
-			MONODROID_PATH
-		},
-	});
+	EnsureDirectoryExists("./output/");
+	var result = StartProcess(ANDROIDX_MAPPER_EXE,
+		$"merge" +
+		$" -a {string.Join(" -a ", mergeDlls)} " +
+		$" -o " + MakeAbsolute((FilePath)"./output/AndroidSupport.Merged.dll") +
+		$" -s \"{MONODROID_PATH}\" " +
+		$" --inject-assemblyname");
+	if (result != 0)
+		throw new Exception($"The androidxmapper failed with error code {result}.");
 });
 
 Task ("ci-setup")

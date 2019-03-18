@@ -33,5 +33,5 @@ Details.md
 cake.sh
 **/.mfractor/**
 
-util/
+util/binderator/
 *.binlog
