@@ -36,6 +36,9 @@ var REF_DOCS_URL = "https://bosstoragemirror.blob.core.windows.net/android-docs-
 // We grab the previous release's api-info.xml to use as a comparison for this build's generated info to make an api-diff
 var BASE_API_INFO_URL = EnvironmentVariable("MONO_API_INFO_XML_URL") ?? "https://github.com/xamarin/AndroidSupportComponents/releases/download/28.0.0.1/api-info.xml";
 
+// In order to create the type mapping, we need to get the AndroidSupport.Merged.dll
+var SUPPORT_MERGED_DLL_URL = EnvironmentVariable("SUPPORT_MERGED_DLL_URL") ?? "https://dev.azure.com/xamarin/_apis/resources/Containers/3439005?itemPath=nuget%2FAndroidSupport.Merged.dll";
+
 var MONODROID_BASE_PATH = (DirectoryPath)"/Library/Frameworks/Xamarin.Android.framework/Versions/Current/lib/xbuild-frameworks/MonoAndroid/";
 if (IsRunningOnWindows ()) {
 	var vsInstallPath = VSWhereLatest (new VSWhereLatestSettings { Requires = "Component.Xamarin" });
@@ -239,16 +242,15 @@ Task ("diff")
 Task ("generate-mapping")
 	.IsDependentOn ("androidxmapper")
 	.IsDependentOn ("merge")
-	.IsDependentOn ("diff")
 	.Does (() =>
 {
 	EnsureDirectoryExists("./output/");
-	DownloadFile (BASE_API_INFO_URL, "./output/api-info.previous.xml");
+	DownloadFile (SUPPORT_MERGED_DLL_URL, "./output/AndroidSupport.Merged.dll");
 
 	var result = StartProcess(ANDROIDX_MAPPER_EXE,
 		$"generate -v " +
-		$" -s " + MakeAbsolute((FilePath)"./output/api-info.previous.xml") +
-		$" -x " + MakeAbsolute((FilePath)"./output/api-info.xml") +
+		$" -s " + MakeAbsolute((FilePath)"./output/AndroidSupport.Merged.dll") +
+		$" -x " + MakeAbsolute((FilePath)"./output/AndroidX.Merged.dll") +
 		$" -j " + MakeAbsolute((FilePath)"./util/AndroidXMapper/Resources/androidx-class-mapping.csv") +
 		$" -m " + MakeAbsolute((FilePath)"./util/AndroidXMapper/Resources/override-mapping.csv") +
 		$" -o " + MakeAbsolute((FilePath)"./output/androidx-mapping.csv"));
