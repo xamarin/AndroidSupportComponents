@@ -2,6 +2,10 @@
 
 Xamarin creates and maintains Xamarin.Android bindings for the Google Android Support Libraries and AndroidX.
 
+# AndroidX Roadmap
+To view our progress on AndroidX bindings and to see more information about our roadmap, check out the [AndroidX Branch](https://github.com/xamarin/AndroidSupportComponents/tree/AndroidX#android-support---androidx-roadmap)
+
+
 ## Building
 
 Building from source requires calling the cake script:
