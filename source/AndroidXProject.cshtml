@@ -113,7 +113,7 @@
       Include="..\..\externals\@(art.MavenGroupId)\@(art.MavenArtifactId)\libs\*.jar" 
       />
       } else {
-    <EmbeddedJar Include="..\..\externals\@(art.MavenGroupId)\@(art.MavenArtifactId).jar" />
+    <InputJar Include="..\..\externals\@(art.MavenGroupId)\@(art.MavenArtifactId).jar" />
       }
     }
   </ItemGroup>
