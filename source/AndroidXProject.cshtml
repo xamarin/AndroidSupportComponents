@@ -97,6 +97,8 @@
     @foreach (var art in @Model.MavenArtifacts) {
       if (art.MavenArtifactPackaging == "aar") {
     <None Include="..\..\externals\@(art.MavenGroupId)\@(art.MavenArtifactId).aar" Pack="True" PackagePath="aar\" />
+      } else {
+    <None Include="..\..\externals\@(art.MavenGroupId)\@(art.MavenArtifactId).jar" Pack="True" PackagePath="jar\" />
       }
     }   
   </ItemGroup>
