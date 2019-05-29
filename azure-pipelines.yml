@@ -3,6 +3,7 @@ variables:
   MONO_VERSION: 5_16_0
   XCODE_VERSION: 10.1
   VERBOSITY: minimal
+  BUILD_NUMBER: $[counter('$(Build.SourceBranchName)_counter', 1)]
 
 resources:
   repositories:
