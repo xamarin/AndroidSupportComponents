@@ -70,6 +70,7 @@ jobs:
         name: VSEng-XamarinCustom
         demands:
           - corpnet
+      condition: and(succeeded(), or(startsWith(variables['Build.SourceBranch'], 'refs/tags/'), eq(variables['Build.SourceBranch'], 'refs/heads/master')))
       steps:
         # don't checkout code and sign the packages
         - checkout: none
