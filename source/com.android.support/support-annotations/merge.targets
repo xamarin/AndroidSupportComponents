@@ -5,9 +5,16 @@
       AssemblyFile="Xamarin.Android.Support.BuildTasks.dll" 
       TaskName="Xamarin.Android.Support.BuildTasks.VerifyVersionsTask" />
 
+  <PropertyGroup>
+    <_SupportedVersionsStamp>$(IntermediateOutputPath)_VerifyXamarinAndroidSupportVersions.stamp</_SupportedVersionsStamp>
+  </PropertyGroup>
+
   <Target
     Name="_VerifyXamarinAndroidSupportVersions"
-    AfterTargets="ResolveAssemblyReferences">
+    Condition=" '$(DesignTimeBuild)' != 'True' "
+    AfterTargets="ResolveAssemblyReferences"
+    Inputs="$(MSBuildProjectFile);$(AndroidManifest)"
+    Outputs="$(_SupportedVersionsStamp)">
 
     <PropertyGroup>
       <XamarinAndroidSupportSkipVerifyVersions Condition="'$(XamarinAndroidSupportSkipVerifyVersions)'==''">false</XamarinAndroidSupportSkipVerifyVersions>
@@ -23,6 +30,14 @@
         DesignTimeBuild="$(DesignTimeBuild)"
         >
     </VerifyVersionsTask>
+
+    <Touch
+        AlwaysCreate="True"
+        Files="$(_SupportedVersionsStamp)"
+    />
+    <ItemGroup>
+      <FileWrites Include="$(_SupportedVersionsStamp)" />
+    </ItemGroup>
 
   </Target>
     
