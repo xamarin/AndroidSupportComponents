@@ -25,14 +25,14 @@
 			"groupId" : "android.arch.core",
 			"artifactId" : "common",
 			"version" : "1.1.1",
-			"nugetVersion" : "1.1.1.1",
+			"nugetVersion" : "1.1.1.2",
 			"nugetId" : "Xamarin.Android.Arch.Core.Common"
 		},
 		{
 			"groupId" : "android.arch.core",
 			"artifactId" : "runtime",
 			"version" : "1.1.1",
-			"nugetVersion" : "1.1.1.1",
+			"nugetVersion" : "1.1.1.2",
 			"nugetId" : "Xamarin.Android.Arch.Core.Runtime"
 		},
 		
@@ -40,77 +40,77 @@
 			"groupId" : "android.arch.lifecycle",
 			"artifactId" : "common",
 			"version" : "1.1.1",
-			"nugetVersion" : "1.1.1.1",
+			"nugetVersion" : "1.1.1.2",
 			"nugetId" : "Xamarin.Android.Arch.Lifecycle.Common"
 		},
 		{
 			"groupId" : "android.arch.lifecycle",
 			"artifactId" : "extensions",
 			"version" : "1.1.1",
-			"nugetVersion" : "1.1.1.1",
+			"nugetVersion" : "1.1.1.2",
 			"nugetId" : "Xamarin.Android.Arch.Lifecycle.Extensions"
 		},
 		{
 			"groupId" : "android.arch.lifecycle",
 			"artifactId" : "livedata",
 			"version" : "1.1.1",
-			"nugetVersion" : "1.1.1.1",
+			"nugetVersion" : "1.1.1.2",
 			"nugetId" : "Xamarin.Android.Arch.Lifecycle.LiveData"
 		},
 		{
 			"groupId" : "android.arch.lifecycle",
 			"artifactId" : "livedata-core",
 			"version" : "1.1.1",
-			"nugetVersion" : "1.1.1.1",
+			"nugetVersion" : "1.1.1.2",
 			"nugetId" : "Xamarin.Android.Arch.Lifecycle.LiveData.Core"
 		},
 		{
 			"groupId" : "android.arch.lifecycle",
 			"artifactId" : "runtime",
 			"version" : "1.1.1",
-			"nugetVersion" : "1.1.1.1",
+			"nugetVersion" : "1.1.1.2",
 			"nugetId" : "Xamarin.Android.Arch.Lifecycle.Runtime"
 		},
 		{
 			"groupId" : "android.arch.lifecycle",
 			"artifactId" : "viewmodel",
 			"version" : "1.1.1",
-			"nugetVersion" : "1.1.1.1",
+			"nugetVersion" : "1.1.1.2",
 			"nugetId" : "Xamarin.Android.Arch.Lifecycle.ViewModel"
 		},
 		{
 			"groupId" : "android.arch.persistence.room",
 			"artifactId" : "common",
 			"version" : "1.1.1",
-			"nugetVersion" : "1.1.1.1",
+			"nugetVersion" : "1.1.1.2",
 			"nugetId" : "Xamarin.Android.Arch.Persistence.Room.Common"
 		},
 		{
 			"groupId" : "android.arch.persistence.room",
 			"artifactId" : "runtime",
 			"version" : "1.1.1",
-			"nugetVersion" : "1.1.1.1",
+			"nugetVersion" : "1.1.1.2",
 			"nugetId" : "Xamarin.Android.Arch.Persistence.Room.Runtime"
 		},
 		{
 			"groupId" : "android.arch.persistence",
 			"artifactId" : "db",
 			"version" : "1.1.1",
-			"nugetVersion" : "1.1.1.1",
+			"nugetVersion" : "1.1.1.2",
 			"nugetId" : "Xamarin.Android.Arch.Persistence.Db"
 		},
 		{
 			"groupId" : "android.arch.persistence",
 			"artifactId" : "db-framework",
 			"version" : "1.1.1",
-			"nugetVersion" : "1.1.1.1",
+			"nugetVersion" : "1.1.1.2",
 			"nugetId" : "Xamarin.Android.Arch.Persistence.Db.Framework"
 		},
 		{
 			"groupId" : "android.arch.work",
 			"artifactId" : "work-runtime",
 			"version" : "1.0.0",
-			"nugetVersion" : "1.0.0",
+			"nugetVersion" : "1.0.0.2",
 			"nugetId" : "Xamarin.Android.Arch.Work.Runtime"
 		},
 
