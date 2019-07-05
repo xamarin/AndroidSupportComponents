@@ -16,8 +16,6 @@ namespace Xamarin.Android.Support.BuildTasks
 {
 	public static class NugetPackages
 	{
-		const int WEB_REQUEST_TIMEOUT_MS = 10000;
-
 		public static readonly Dictionary<int, Version> AndroidApiLevelsAndVersions = new Dictionary<int, Version>
 		{
 			{ 23, new Version(6, 0) },
@@ -130,71 +128,6 @@ namespace Xamarin.Android.Support.BuildTasks
 		}
 
 		public static string GetRecommendedSupportPackageVersion(int apiLevel, bool skipNugetQuery)
-		{
-			// Default to the apilevel.x since this is displayed as a suggestion in a message
-			var bestVersion = apiLevel.ToString() + ".*";
-
-			// If we should skip an http request to nuget.org just return the api level
-			if (skipNugetQuery)
-				return bestVersion;
-
-			try
-			{
-				var searchUrl = GetNuGetSearchUrl();
-
-				var queryUrl = searchUrl + "?q=packageid:Xamarin.Android.Support.Annotations&prerelease=false";
-
-				var data = DownloadString(queryUrl);
-
-				var js = new JavaScriptSerializer();
-				var json = js.Deserialize<dynamic>(data);
-
-				var versions = json["data"][0]["versions"];
-
-				foreach (var version in versions)
-				{
-					var v = version["version"].ToString();
-
-					if (v.StartsWith(apiLevel.ToString() + ".", StringComparison.InvariantCultureIgnoreCase))
-						bestVersion = v;
-				}
-			} catch (Exception ex) {
-				Console.WriteLine(ex);
-			}
-
-			return bestVersion;
-		}
-
-		static string GetNuGetSearchUrl()
-		{
-			var data = DownloadString("https://api.nuget.org/v3/index.json");
-
-			var js = new JavaScriptSerializer();
-			var json = js.Deserialize<dynamic>(data);
-
-			foreach (var item in json["resources"]) {
-				if (item["@type"] == "SearchQueryService")
-					return item["@id"];
-			}
-
-			return null;
-		}
-
-		static string DownloadString(string url)
-		{
-			var result = string.Empty;
-
-			var request = WebRequest.CreateHttp(url);
-			request.Timeout = WEB_REQUEST_TIMEOUT_MS;
-			request.ReadWriteTimeout = WEB_REQUEST_TIMEOUT_MS;
-
-			using (var response = (HttpWebResponse)request.GetResponse())
-			using (var respStream = response.GetResponseStream())
-			using (var sr = new StreamReader(respStream)) {
-				result = sr.ReadToEnd();
-			}
-
-			return result;
-		}
+			=> apiLevel.ToString() + ".*";
 	}
 }
