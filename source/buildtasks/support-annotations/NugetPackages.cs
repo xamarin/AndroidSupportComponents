@@ -24,6 +24,9 @@ namespace Xamarin.Android.Support.BuildTasks
 			{ 26, new Version(8, 0) },
 			{ 27, new Version(8, 1) },
 			{ 28, new Version(9, 0) },
+			{ 28, new Version(9, 1) },
+			{ 28, new Version(10, 0) },
+			{ 28, new Version(10, 1) },
 		};
 
 		public static int GetMajorVersion(string version)
