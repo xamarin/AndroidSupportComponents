@@ -16,7 +16,7 @@
 var TARGET = Argument ("t", Argument ("target", "Default"));
 var BUILD_CONFIG = Argument ("config", "Release");
 var VERBOSITY = (Verbosity) Enum.Parse (typeof(Verbosity), Argument ("v", Argument ("verbosity", "Normal")), true);
-var MAX_CPU_COUNT = Int.Parse(Argument("maxcpucount", "0"));
+var MAX_CPU_COUNT = Int32.Parse(Argument("maxcpucount", "0"));
 
 // Lists all the artifacts and their versions for com.android.support.*
 // https://dl.google.com/dl/android/maven2/com/android/support/group-index.xml
