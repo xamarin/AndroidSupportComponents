@@ -16,7 +16,6 @@ var TARGET = Argument ("t", Argument ("target", "Default"));
 var BUILD_CONFIG = Argument ("config", "Release");
 var VERBOSITY = (Verbosity) Enum.Parse (typeof(Verbosity), Argument ("v", Argument ("verbosity", "Normal")), true);
 var XAMARIN_ANDROID_PATH = EnvironmentVariable ("XAMARIN_ANDROID_PATH");
-var JAVA_HOME = EnvironmentVariable ("JAVA_HOME");
 
 // Lists all the artifacts and their versions for com.android.support.*
 // https://dl.google.com/dl/android/maven2/com/android/support/group-index.xml
@@ -147,9 +146,6 @@ Task("libs")
 		.WithProperty("DesignTimeBuild", "false")
 		.WithProperty("AndroidSdkBuildToolsVersion", "28.0.3");
 
-	if (!string.IsNullOrEmpty (JAVA_HOME))
-		settings.WithProperty ("JavaSdkDirectory", JAVA_HOME);
-
 	MSBuild("./generated/AndroidX.sln", settings);
 });
 
@@ -167,9 +163,6 @@ Task("nuget")
 		.WithProperty("DesignTimeBuild", "false")
 		.WithProperty("AndroidSdkBuildToolsVersion", "28.0.3")
 		.WithTarget("Pack");
-
-	if (!string.IsNullOrEmpty (JAVA_HOME))
-		settings.WithProperty ("JavaSdkDirectory", JAVA_HOME);
 
 	MSBuild("./generated/AndroidX.sln", settings);
 });
@@ -211,9 +204,6 @@ Task("samples")
 		.WithProperty("RestorePackagesPath", packagesPath)
 		.WithProperty("DesignTimeBuild", "false")
 		.WithProperty("AndroidSdkBuildToolsVersion", "28.0.3");
-
-	if (!string.IsNullOrEmpty (JAVA_HOME))
-		settings.WithProperty ("JavaSdkDirectory", JAVA_HOME);
 
 	MSBuild("./samples/BuildAll/BuildAll.sln", settings);
 });
