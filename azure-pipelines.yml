@@ -61,6 +61,8 @@ jobs:
       # run the main build
       - powershell: dotnet cake --target=ci --verbosity=$(VERBOSITY)
         displayName: 'Run build'
+        env:
+          JavaSdkDirectory: $(JAVA_HOME)
       # publish the nugets
       - task: PublishBuildArtifacts@1
         condition: eq(variables['System.JobName'], 'macos')
