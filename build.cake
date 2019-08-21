@@ -15,7 +15,6 @@ using Xamarin.Nuget.Validator;
 var TARGET = Argument ("t", Argument ("target", "Default"));
 var BUILD_CONFIG = Argument ("config", "Release");
 var VERBOSITY = (Verbosity) Enum.Parse (typeof(Verbosity), Argument ("v", Argument ("verbosity", "Normal")), true);
-var PACKAGE_VERSION_SUFFIX = EnvironmentVariable ("PACKAGE_VERSION_SUFFIX");
 var XAMARIN_ANDROID_PATH = EnvironmentVariable ("XAMARIN_ANDROID_PATH");
 var JAVA_HOME = EnvironmentVariable ("JAVA_HOME");
 
@@ -145,7 +144,6 @@ Task("libs")
 		.SetVerbosity(VERBOSITY)
 		.SetMaxCpuCount(0)
 		.WithRestore()
-		.WithProperty("PackageVersionSuffix", PACKAGE_VERSION_SUFFIX)
 		.WithProperty("DesignTimeBuild", "false")
 		.WithProperty("AndroidSdkBuildToolsVersion", "28.0.3");
 
@@ -164,7 +162,6 @@ Task("nuget")
 		.SetVerbosity(VERBOSITY)
 		.SetMaxCpuCount(0)
 		.WithRestore()
-		.WithProperty("PackageVersionSuffix", PACKAGE_VERSION_SUFFIX)
 		.WithProperty("PackageRequireLicenseAcceptance", "true")
 		.WithProperty("PackageOutputPath", MakeAbsolute ((DirectoryPath)"./output/").FullPath)
 		.WithProperty("DesignTimeBuild", "false")
