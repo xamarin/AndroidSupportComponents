@@ -14,7 +14,6 @@ variables:
   BINDERATOR_VERSION: 0.3.0
   ANDROIDX_TOOL_VERSION: 1.0.0-preview03
   DOTNET_CORE_VERSION: 2.2.x
-  # PACKAGE_VERSION_SUFFIX: <string>
   # XAMARIN_ANDROID_PATH: <path to Xamarin.Android>
 
 resources:
