@@ -104,11 +104,19 @@ namespace Xamarin.Android.Support.BuildTasks
 			{
 				var supportVersion = packageVersions[pkgId];
 
+                // Eg: if we have support 27.x installed, we'd get the recommended framework back of 8.1
 				var frameworkForSupportVersion = NugetPackages.FrameworkVersionForSupportVersion(supportVersion);
 				var apiLevelForSupportVersion = NugetPackages.GetMajorVersion(supportVersion);
 
+                // Eg: if (8.1 < our project's target framework version)
 				if (frameworkForSupportVersion < frameworkVersion)
-					invalidSupportVersionsForFramework.Add(Tuple.Create(pkgId, supportVersion, apiLevelForSupportVersion, frameworkForSupportVersion));
+                {
+                    // We only want to add this warning if the target framework is <= MonoAndroid90 since after that
+                    // there are no more support libraries to match the android api level, instead users should move to androidx
+                    // we may in the future add a warning here to upgrade to androidx in these cases
+                    if (frameworkVersion <= new Version(9, 0))
+                        invalidSupportVersionsForFramework.Add(Tuple.Create(pkgId, supportVersion, apiLevelForSupportVersion, frameworkForSupportVersion));
+                }	
 			}
 
 			if (invalidSupportVersionsForFramework.Any())

@@ -16,17 +16,14 @@ namespace Xamarin.Android.Support.BuildTasks
 {
 	public static class NugetPackages
 	{
-		public static readonly Dictionary<int, Version> AndroidApiLevelsAndVersions = new Dictionary<int, Version>
+		static readonly Dictionary<int, Version> AndroidApiLevelsAndVersions = new Dictionary<int, Version>
 		{
 			{ 23, new Version(6, 0) },
 			{ 24, new Version(7, 0) },
 			{ 25, new Version(7, 1) },
 			{ 26, new Version(8, 0) },
 			{ 27, new Version(8, 1) },
-			{ 28, new Version(9, 0) },
-			{ 28, new Version(9, 1) },
-			{ 28, new Version(10, 0) },
-			{ 28, new Version(10, 1) },
+			{ 28, new Version(9, 0) }
 		};
 
 		public static int GetMajorVersion(string version)
