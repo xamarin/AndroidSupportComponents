@@ -39,8 +39,6 @@ namespace Xamarin.Android.Support.BuildTasks
 		[Required]
 		public ITaskItem AndroidSdkBuildToolsVersion { get; set; }
 
-		public bool DesignTimeBuild { get;set;}
-
 		readonly Dictionary<string, string> packageVersions = new Dictionary<string, string>();
 
 		public override bool Execute()
@@ -85,7 +83,7 @@ namespace Xamarin.Android.Support.BuildTasks
 				sb.AppendLine("The following Xamarin.Android.Support.* packages and versions were detected:");
 				sb.AppendLine();
 
-				var recommendedSupportVersion = NugetPackages.GetRecommendedSupportPackageVersion(apiLevel, DesignTimeBuild);
+                var recommendedSupportVersion = NugetPackages.GetRecommendedSupportPackageVersion(apiLevel);
 
 				foreach (var pkg in packageVersions.OrderBy(p => p.Value + "-" + p.Key))
 					sb.AppendLine($"    {pkg.Key} ({pkg.Value})");

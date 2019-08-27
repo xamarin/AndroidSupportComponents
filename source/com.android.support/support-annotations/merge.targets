@@ -27,7 +27,6 @@
         AndroidSdkBuildToolsVersion="$(AndroidSdkBuildToolsVersion)"
         ProjectExtensionsPath="$(MSBuildProjectExtensionsPath)"
         ProjectPath="$(MSBuildProjectDirectory)"
-        DesignTimeBuild="$(DesignTimeBuild)"
         >
     </VerifyVersionsTask>
 

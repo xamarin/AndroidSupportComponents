@@ -127,7 +127,13 @@ namespace Xamarin.Android.Support.BuildTasks
 			return supportVersion;
 		}
 
-		public static string GetRecommendedSupportPackageVersion(int apiLevel, bool skipNugetQuery)
-			=> apiLevel.ToString() + ".*";
+		public static string GetRecommendedSupportPackageVersion(int apiLevel)
+        {
+            if (NugetPackages.AndroidApiLevelsAndVersions.ContainsKey(apiLevel))
+                return apiLevel.ToString() + ".*";
+
+            return "28.*"; // There will never be a newer major android support version
+        }
+			
 	}
 }
