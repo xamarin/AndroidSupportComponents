@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\..\packages\xunit.runner.visualstudio.2.4.0\build\net20\xunit.runner.visualstudio.props" Condition="Exists('..\..\packages\xunit.runner.visualstudio.2.4.0\build\net20\xunit.runner.visualstudio.props')" />
-  <Import Project="..\..\packages\xunit.core.2.4.0\build\xunit.core.props" Condition="Exists('..\..\packages\xunit.core.2.4.0\build\xunit.core.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -29,19 +27,14 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="xunit" Version="2.4.0" />
-    <PackageReference Include="xunit.runner.visualstudio" version="2.4.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="Microsoft.Build.Utilities.v4.0" />
-    <Reference Include="System.Runtime.Serialization">
-      <HintPath>..\..\..\..\..\..\Library\Frameworks\Mono.framework\Versions\5.12.0\lib\mono\4.5-api\System.Runtime.Serialization.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml" />
-    <Reference Include="System.Web.Extensions">
-      <HintPath>..\..\..\..\..\..\Library\Frameworks\Mono.framework\Versions\5.12.0\lib\mono\4.5-api\System.Web.Extensions.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
