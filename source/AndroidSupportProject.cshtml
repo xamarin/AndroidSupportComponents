@@ -73,7 +73,7 @@
   <ItemGroup>
     @foreach (var art in @Model.MavenArtifacts) {
       if (art.MavenArtifactPackaging == "aar") {
-    <LibraryProjectZip Include="..\..\externals\@(art.MavenGroupId)\@(art.MavenArtifactId).aar" />
+    <LibraryProjectZip Include="..\..\externals\@(art.MavenGroupId)\@(art.MavenGroupId).@(art.MavenArtifactId).aar" />
       }
     }   
   </ItemGroup>
@@ -119,7 +119,7 @@
       Include="..\..\externals\@(art.MavenGroupId).@(art.MavenArtifactId)\libs\*.jar" 
       />
       } else {
-    <EmbeddedJar Include="..\..\externals\@(art.MavenGroupId)\@(art.MavenArtifactId).jar" />
+    <EmbeddedJar Include="..\..\externals\@(art.MavenGroupId)\@(art.MavenGroupId).@(art.MavenArtifactId).jar" />
       }
     }
   </ItemGroup>

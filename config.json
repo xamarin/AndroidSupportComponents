@@ -1,6 +1,7 @@
 [{
 	"mavenRepositoryType" : "Google",
 	"slnFile" : "generated/AndroidSupport.sln",
+	"downloadExternalsWithFullName" : true,
 	"additionalProjects": [
 		"source/buildtasks/support-annotations/Support-Annotations-BuildTasks.csproj",
 		"source/buildtasks/support-annotations-tests/Support-Annotations-BuildTasks-Tests.csproj",
