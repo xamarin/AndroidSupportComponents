@@ -5,7 +5,6 @@ trigger:
 variables:
   BUILD_NUMBER: $(Build.BuildNumber)
 #   XAMARIN_ANDROID_PATH: <path to Xamarin.Android>
-#   MONO_API_INFO_XML_URL: <url to api-info.xml>
 
 resources:
   repositories:
@@ -13,21 +12,14 @@ resources:
       type: github
       name: xamarin/yaml-templates
       endpoint: xamarin
-      ref: refs/heads/dev/signing-job
     - repository: components
       type: github
       name: xamarin/XamarinComponents
       endpoint: xamarin
-      ref: refs/heads/dev/templating
 
 jobs:
-  - template: .ci/prepare.yml@components
-    parameters:
-      buildType: 'basic'
-      masterBranchName: 'master'
   - template: .ci/build.yml@components
     parameters:
-      cakeTemplatesBranch: 'dev/templating'
       cakeExtraArgs: '--settings_skipverification=true --nuget_useinprocessclient=false'
       tools:
         - 'xamarin.androidbinderator.tool': '0.3.0'
