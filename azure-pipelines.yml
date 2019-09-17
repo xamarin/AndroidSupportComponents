@@ -22,7 +22,7 @@ jobs:
     parameters:
       cakeExtraArgs: '--settings_skipverification=true --nuget_useinprocessclient=false'
       tools:
-        - 'xamarin.androidbinderator.tool': '0.3.0'
+        - 'xamarin.androidbinderator.tool': '0.4.0'
         - 'xamarin.androidx.migration.tool': '1.0.0-preview03'
       postBuildSteps:
         - script: |
