@@ -69,14 +69,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="@(Model.NuGetPackageId).targets" Pack="True" PackagePath="build\$(TargetFramework)" />
+    <None Include="@(Model.NuGetPackageId).targets" Pack="True" PackagePath="build\$(TargetFramework)\" />
   </ItemGroup>
 
   @if (@Model.MavenArtifacts.Count > 0) {
   <ItemGroup>
     @foreach (var art in @Model.MavenArtifacts) {
       if (art.ProguardFile != null) {
-    <None Include="..\..\@(art.ProguardFile)" Pack="True" PackagePath="proguard\" />
+    <None Include="..\..\@(art.ProguardFile)" Pack="True" PackagePath="proguard\$(TargetFramework)\" />
       }
     }
   </ItemGroup>
