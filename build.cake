@@ -166,7 +166,7 @@ Task ("merge")
 	RunProcess("androidx-migrator",
 		$"merge" +
 		$"  --assembly " + string.Join(" --assembly ", mergeDlls) +
-		$"  --output ./output/AndroidX.Merged.dll" +
+		$"  --output ./output/AndroidSupport.Merged.dll" +
 		$"  --search \"{XAMARIN_ANDROID_PATH}/{ANDROID_SDK_VERSION}\" " +
 		$"  --search \"{XAMARIN_ANDROID_PATH}/{ANDROID_SDK_BASE_VERSION}\" " +
 		$"  --inject-assemblyname");
