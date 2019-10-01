@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "AndroidXMapper": {
-      "commandName": "Project",
-      "commandLineArgs": "generate -s C:\\Projects\\AndroidX\\output\\api-info.previous.xml -x C:\\Projects\\AndroidX\\output\\api-info.xml -j C:\\Projects\\AndroidX\\util\\AndroidXMapper\\Resources\\androidx-class-mapping.csv"
-    }
-  }
-}
