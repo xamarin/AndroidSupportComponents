@@ -141,6 +141,7 @@ Task("nuget")
 	.Does(() =>
 {
 	MSBuild ("./generated/AndroidSupport.sln", c => {
+		c.NoBuild = true;
 		c.Configuration = "Release";
 		c.MaxCpuCount = MAX_CPU_COUNT;
 		c.Targets.Clear();
