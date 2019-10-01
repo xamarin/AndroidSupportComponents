@@ -22,8 +22,8 @@ jobs:
     parameters:
       cakeExtraArgs: '--settings_skipverification=true --nuget_useinprocessclient=false'
       tools:
-        - 'xamarin.androidbinderator.tool': '0.4.0'
-        - 'xamarin.androidx.migration.tool': '1.0.0-preview03'
+        - 'xamarin.androidbinderator.tool': '0.4.1'
+        - 'xamarin.androidx.migration.tool': '1.0.0-preview04'
       postBuildSteps:
         - script: |
             # Make a temp folder to move the created nugets to before we fat package them
