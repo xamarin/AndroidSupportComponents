@@ -20,6 +20,7 @@ resources:
 jobs:
   - template: .ci/build.yml@components
     parameters:
+      timeoutInMinutes: 120
       cakeExtraArgs: '--settings_skipverification=true --nuget_useinprocessclient=false'
       tools:
         - 'xamarin.androidbinderator.tool': '0.4.1'
