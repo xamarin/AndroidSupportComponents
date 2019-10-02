@@ -25,29 +25,7 @@ jobs:
         - 'xamarin.androidbinderator.tool': '0.4.1'
         - 'xamarin.androidx.migration.tool': '1.0.0-preview05'
       postBuildSteps:
-        - pwsh: |
-            # Make a temp folder to move the created nugets to before we fat package them
-            mkdir -p ./tmp/nuget
-            mkdir -p ./tmp/output
-
-            # Move all of the nupkg files from output into the temp folder we just created
-            mv ./output/*.nupkg ./tmp/nuget
-
-            # Move the remaining output bits to a temp location so they don't get overwritten
-            mv ./output/* ./tmp/output
-
-            dotnet cake nuget.cake `
-              --localSource=./tmp/nuget `
-              --packagesPath=./tmp/pkgs `
-              --workingPath=./tmp/working `
-              --outputPath=./output `
-              --incrementVersion=False `
-              --packLatestOnly=True `
-              --useExplicitVersion=True `
-              --skipNuspecProcessing=True
-
-            # Move the other output bits back to the original output folder
-            mv ./tmp/output/* ./output
+        - pwsh: .\fatten.ps1
           displayName: 'Fatten the NuGet packages'
         # Run some internal auditing on Windows
         - ${{ if and(eq(variables['System.TeamProject'], 'devdiv'), eq(variables['System.JobName'], 'windows')) }}:
