@@ -30,6 +30,9 @@
 // --prereleaseLabel        [Prelease label to use for the new package version]
 //                           This can be used to add a prerelease label to the
 //                               nuget package version being created
+// --skipNuspecProcessing   [True|False]
+//                           This is used to prevent the nuspec from being
+//                               processed if it is already a fat package
 ///////////////////////////////////////////////////////////////////////////////
 // EXAMPLE USE CASE
 //
@@ -48,7 +51,7 @@
 //
 ///////////////////////////////////////////////////////////////////////////////
 
-#addin nuget:?package=Cake.FileHelpers&version=3.0.0
+#addin nuget:?package=Cake.FileHelpers&version=3.2.1
 #addin nuget:?package=NuGet.Packaging&version=4.7.0&loaddependencies=true
 #addin nuget:?package=NuGet.Protocol&version=4.7.0&loaddependencies=true
 
@@ -70,6 +73,7 @@ var incrementVersion = Argument("incrementVersion", true);
 var packLatestOnly = Argument("packLatestOnly", false);
 var useExplicitVersion = Argument("useExplicitVersion", true);
 var prereleaseLabel = Argument("prereleaseLabel", (string)null);
+var skipNuspecProcessing = Argument("skipNuspecProcessing", false);
 
 var packagesPath = (DirectoryPath)Argument("packagesPath", "externals/packages");
 var workingPath = (DirectoryPath)Argument("workingPath", "working/packages");
@@ -100,6 +104,8 @@ var minimumVersion = new Dictionary<string, NuGetVersion> {
 
 var blacklistIdPrefix = new List<string> {
     "xamarin.build.download",
+    "xamarin.android.support.constraint.layout",
+    "xamarin.google.guava",
 };
 
 var seedPackages = new [] {
@@ -474,6 +480,9 @@ Task("PrepareWorkingDirectory")
         var supportVersion = GetSupportVersion(nuspec);
         var targetFw = apiLevelVersion[supportVersion.Major];
 
+        if (skipNuspecProcessing)
+            return targetFw;
+
         var xdoc = XDocument.Load(nuspec.FullPath);
         var ns = xdoc.Root.Name.Namespace;
         var xmd = xdoc.Root.Element(ns + "metadata");
@@ -608,6 +617,9 @@ Task("CreateFatNuGets")
 
     void MergeNuspecs(string id, NuGetVersion version, NuGetVersion[] includedVersions)
     {
+        if (skipNuspecProcessing)
+            return;
+
         var nuspec = $"{workingPath}/{id}/{version.ToNormalizedString()}/{id}.nuspec";
         var xdoc = XDocument.Load(nuspec);
         var ns = xdoc.Root.Name.Namespace;

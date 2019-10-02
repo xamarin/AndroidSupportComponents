@@ -43,7 +43,8 @@ jobs:
               --outputPath=./output `
               --incrementVersion=False `
               --packLatestOnly=True `
-              --useExplicitVersion=True
+              --useExplicitVersion=True `
+              --skipNuspecProcessing=True
 
             # Move the other output bits back to the original output folder
             mv ./tmp/output/* ./output
