@@ -48,7 +48,7 @@
 //
 ///////////////////////////////////////////////////////////////////////////////
 
-#addin nuget:?package=Cake.FileHelpers&version=3.0.0
+#addin nuget:?package=Cake.FileHelpers&version=3.2.1
 #addin nuget:?package=NuGet.Packaging&version=4.7.0&loaddependencies=true
 #addin nuget:?package=NuGet.Protocol&version=4.7.0&loaddependencies=true
 
@@ -100,6 +100,8 @@ var minimumVersion = new Dictionary<string, NuGetVersion> {
 
 var blacklistIdPrefix = new List<string> {
     "xamarin.build.download",
+    "xamarin.android.support.constraint.layout",
+    "xamarin.google.guava",
 };
 
 var seedPackages = new [] {
@@ -203,16 +205,18 @@ VersionRange GetSupportVersionRange(FilePath nuspec)
         // search this nuget for a support version
         version = xmd
             .Descendants(ns + "dependency")
-            .FirstOrDefault(e => e.Attribute("id").Value.ToLower().StartsWith("xamarin.android.support"))
+            .LastOrDefault(e => e.Attribute("id").Value.ToLower().StartsWith("xamarin.android.support"))
             ?.Attribute("version")
             ?.Value;
 
         // if none was found, look in the dependencies
         if (string.IsNullOrEmpty(version)) {
-            foreach (var xdep in xmd.Descendants(ns + "dependency")) {
+            foreach (var xdep in xmd.Descendants(ns + "dependency").Reverse()) {
                 var id = xdep.Attribute("id").Value.ToLower();
                 var range = VersionRange.Parse(xdep.Attribute("version").Value);
                 var depNuspec = $"{packagesPath}/{id}/{range.MinVersion ?? range.MaxVersion}/{id}.nuspec";
+                if (!FileExists(depNuspec))
+                    continue;
                 // if a support version was found, use it, otherwise continue looking
                 var suppRange = GetSupportVersionRange(depNuspec);
                 if (suppRange != null)
@@ -244,7 +248,7 @@ VersionRange GetArchVersionRange(FilePath nuspec)
     if (xid.Value.ToLower().StartsWith("xamarin.android.support")) {
         version = xmd
             .Descendants(ns + "dependency")
-            .First(e => e.Attribute("id").Value.ToLower().StartsWith("xamarin.android.arch"))
+            .Last(e => e.Attribute("id").Value.ToLower().StartsWith("xamarin.android.arch"))
             .Attribute("version")
             .Value;
     } else {
@@ -509,8 +513,9 @@ Task("PrepareWorkingDirectory")
 
         // move the old dependencies into the new groups if they contain a support version
         // if not, then just use the version of the nuspec
-        var xgroups = xdeps.Elements(ns + "group");
-        foreach (var xoldGroup in xgroups) {
+        // only select the last group as the rest will be re-created
+        var xoldGroup = xdeps.Elements(ns + "group").LastOrDefault();
+        if (xoldGroup != null) {
             var xgroupDeps = xoldGroup.Elements(ns + "dependency");
             var firstSupportVersion = xgroupDeps
                 .Where(x => x.Attribute("id").Value.ToLower().StartsWith("xamarin.android.support"))
