@@ -1,12 +1,6 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Annotation-BuildTasks", "..\source\buildtasks\annotation\Annotation-BuildTasks.csproj", "{21CE9566-FE09-4FEA-BE0F-4864083CD9D1}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Annotation-BuildTasks-Tests", "..\source\buildtasks\annotation-tests\Annotation-BuildTasks-Tests.csproj", "{9A8F8560-6F80-4FCD-8F8E-CEA80FE12F45}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VectorDrawable-BuildTasks", "..\source\buildtasks\vectordrawable\VectorDrawable-BuildTasks.csproj", "{DB19F806-FEF2-4BBB-8A0B-37EA54DB3A0D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "androidx.annotation.annotation", "androidx.annotation.annotation\androidx.annotation.annotation.csproj", "{B12E7EB7-711E-46D9-8636-0D6D268AA725}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "androidx.appcompat.appcompat", "androidx.appcompat.appcompat\androidx.appcompat.appcompat.csproj", "{479D52F4-5C25-4B11-AA21-1DE8600178DA}"
@@ -157,18 +151,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{21CE9566-FE09-4FEA-BE0F-4864083CD9D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{21CE9566-FE09-4FEA-BE0F-4864083CD9D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{21CE9566-FE09-4FEA-BE0F-4864083CD9D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{21CE9566-FE09-4FEA-BE0F-4864083CD9D1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9A8F8560-6F80-4FCD-8F8E-CEA80FE12F45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9A8F8560-6F80-4FCD-8F8E-CEA80FE12F45}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9A8F8560-6F80-4FCD-8F8E-CEA80FE12F45}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9A8F8560-6F80-4FCD-8F8E-CEA80FE12F45}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DB19F806-FEF2-4BBB-8A0B-37EA54DB3A0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DB19F806-FEF2-4BBB-8A0B-37EA54DB3A0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DB19F806-FEF2-4BBB-8A0B-37EA54DB3A0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DB19F806-FEF2-4BBB-8A0B-37EA54DB3A0D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B12E7EB7-711E-46D9-8636-0D6D268AA725}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B12E7EB7-711E-46D9-8636-0D6D268AA725}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B12E7EB7-711E-46D9-8636-0D6D268AA725}.Release|Any CPU.ActiveCfg = Release|Any CPU
