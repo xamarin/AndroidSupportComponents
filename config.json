@@ -2,6 +2,7 @@
 	"mavenRepositoryType" : "Google",
 	"nugetVersionSuffix" : "-preview03",
 	"slnFile" : "generated/AndroidX.sln",
+	"downloadExternals": "false",
 	"additionalProjects": 
 	[
 		"source/buildtasks/annotation/Annotation-BuildTasks.csproj",

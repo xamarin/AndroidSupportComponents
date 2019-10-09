@@ -142,7 +142,7 @@ Task("libs")
 		.WithProperty("DesignTimeBuild", "false")
 		.WithProperty("AndroidSdkBuildToolsVersion", "28.0.3");
 
-	MSBuild("./generated/AndroidX.sln", settings);
+	MSBuild("./testing/TestProject/TestProject.sln", settings);
 });
 
 Task("nuget")
