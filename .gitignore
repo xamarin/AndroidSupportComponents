@@ -6,7 +6,6 @@ externals/
 output/
 docs/
 .vs/
-generated/
 **/scriptcs_packages/
 tmp/
 util/binderator/

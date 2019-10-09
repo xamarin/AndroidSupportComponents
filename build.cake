@@ -115,20 +115,20 @@ Task("check-tools")
 Task ("binderate")
 	.Does (() =>
 {
-	var configFile = MakeAbsolute(new FilePath("./config.json")).FullPath;
-	var basePath = MakeAbsolute(new DirectoryPath ("./")).FullPath;
+	// var configFile = MakeAbsolute(new FilePath("./config.json")).FullPath;
+	// var basePath = MakeAbsolute(new DirectoryPath ("./")).FullPath;
 
-	// Run the dotnet tool for binderator
-	RunProcess("xamarin-android-binderator",
-		$"--config=\"{configFile}\" --basepath=\"{basePath}\"");
+	// // Run the dotnet tool for binderator
+	// RunProcess("xamarin-android-binderator",
+	// 	$"--config=\"{configFile}\" --basepath=\"{basePath}\"");
 
-	// format the targets file so they are pretty in the package
-	var targetsFiles = GetFiles("generated/**/*.targets");
-	var xmlns = (XNamespace)"http://schemas.microsoft.com/developer/msbuild/2003";
-	foreach (var targets in targetsFiles) {
-		var xdoc = XDocument.Load(targets.FullPath);
-		xdoc.Save(targets.FullPath);
-	}
+	// // format the targets file so they are pretty in the package
+	// var targetsFiles = GetFiles("generated/**/*.targets");
+	// var xmlns = (XNamespace)"http://schemas.microsoft.com/developer/msbuild/2003";
+	// foreach (var targets in targetsFiles) {
+	// 	var xdoc = XDocument.Load(targets.FullPath);
+	// 	xdoc.Save(targets.FullPath);
+	// }
 });
 
 Task("libs")
@@ -142,7 +142,7 @@ Task("libs")
 		.WithProperty("DesignTimeBuild", "false")
 		.WithProperty("AndroidSdkBuildToolsVersion", "28.0.3");
 
-	MSBuild("./testing/TestProject/TestProject.sln", settings);
+	MSBuild("./generated/AndroidX.sln", settings);
 });
 
 Task("nuget")
