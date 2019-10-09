@@ -7,8 +7,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 #EndProject
 #Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VectorDrawable-BuildTasks", "..\source\buildtasks\vectordrawable\VectorDrawable-BuildTasks.csproj", "{DB19F806-FEF2-4BBB-8A0B-37EA54DB3A0D}"
 #EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "androidx.annotation.annotation", "androidx.annotation.annotation\androidx.annotation.annotation.csproj", "{144D0C4D-4B0E-4A14-AE77-BF69B31736C6}"
-EndProject
+#Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "androidx.annotation.annotation", "androidx.annotation.annotation\androidx.annotation.annotation.csproj", "{144D0C4D-4B0E-4A14-AE77-BF69B31736C6}"
+#EndProject
 #Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "androidx.appcompat.appcompat", "androidx.appcompat.appcompat\androidx.appcompat.appcompat.csproj", "{C9B13AE3-03B3-4EBA-8965-604077DF06C5}"
 #EndProject
 #Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "androidx.arch.core.core-common", "androidx.arch.core.core-common\androidx.arch.core.core-common.csproj", "{526031C5-5C28-46C5-A639-D48133D74E30}"
@@ -169,10 +169,10 @@ Global
 #		{DB19F806-FEF2-4BBB-8A0B-37EA54DB3A0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 #		{DB19F806-FEF2-4BBB-8A0B-37EA54DB3A0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 #		{DB19F806-FEF2-4BBB-8A0B-37EA54DB3A0D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{144D0C4D-4B0E-4A14-AE77-BF69B31736C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{144D0C4D-4B0E-4A14-AE77-BF69B31736C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{144D0C4D-4B0E-4A14-AE77-BF69B31736C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{144D0C4D-4B0E-4A14-AE77-BF69B31736C6}.Release|Any CPU.Build.0 = Release|Any CPU
+#		{144D0C4D-4B0E-4A14-AE77-BF69B31736C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+#		{144D0C4D-4B0E-4A14-AE77-BF69B31736C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+#		{144D0C4D-4B0E-4A14-AE77-BF69B31736C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+#		{144D0C4D-4B0E-4A14-AE77-BF69B31736C6}.Release|Any CPU.Build.0 = Release|Any CPU
 #		{C9B13AE3-03B3-4EBA-8965-604077DF06C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 #		{C9B13AE3-03B3-4EBA-8965-604077DF06C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 #		{C9B13AE3-03B3-4EBA-8965-604077DF06C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
