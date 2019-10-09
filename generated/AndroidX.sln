@@ -139,12 +139,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 #EndProject
 #Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "androidx.vectordrawable.vectordrawable-animated", "androidx.vectordrawable.vectordrawable-animated\androidx.vectordrawable.vectordrawable-animated.csproj", "{B6990EDE-744E-4DD1-B3E6-5D5D80D7843F}"
 #EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "androidx.versionedparcelable.versionedparcelable", "androidx.versionedparcelable.versionedparcelable\androidx.versionedparcelable.versionedparcelable.csproj", "{F648F876-CAB4-427E-A600-2C20FBD627A4}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "androidx.viewpager.viewpager", "androidx.viewpager.viewpager\androidx.viewpager.viewpager.csproj", "{568E75B1-7B9D-4FF2-8DC6-FC19003BD7EA}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "androidx.wear.wear", "androidx.wear.wear\androidx.wear.wear.csproj", "{E5A2F670-3713-4288-9DE4-C9E7A85DDEAB}"
-EndProject
+#Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "androidx.versionedparcelable.versionedparcelable", "androidx.versionedparcelable.versionedparcelable\androidx.versionedparcelable.versionedparcelable.csproj", "{F648F876-CAB4-427E-A600-2C20FBD627A4}"
+#EndProject
+#Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "androidx.viewpager.viewpager", "androidx.viewpager.viewpager\androidx.viewpager.viewpager.csproj", "{568E75B1-7B9D-4FF2-8DC6-FC19003BD7EA}"
+#EndProject
+#Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "androidx.wear.wear", "androidx.wear.wear\androidx.wear.wear.csproj", "{E5A2F670-3713-4288-9DE4-C9E7A85DDEAB}"
+#EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "androidx.webkit.webkit", "androidx.webkit.webkit\androidx.webkit.webkit.csproj", "{9AB05518-B48D-4AE4-A355-F4B08DC014AC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "androidx.work.work-runtime", "androidx.work.work-runtime\androidx.work.work-runtime.csproj", "{43F01043-27F2-4B42-83D6-FA7C76873F8B}"
@@ -433,18 +433,18 @@ Global
 #		{B6990EDE-744E-4DD1-B3E6-5D5D80D7843F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 #		{B6990EDE-744E-4DD1-B3E6-5D5D80D7843F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 #		{B6990EDE-744E-4DD1-B3E6-5D5D80D7843F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F648F876-CAB4-427E-A600-2C20FBD627A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F648F876-CAB4-427E-A600-2C20FBD627A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F648F876-CAB4-427E-A600-2C20FBD627A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F648F876-CAB4-427E-A600-2C20FBD627A4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{568E75B1-7B9D-4FF2-8DC6-FC19003BD7EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{568E75B1-7B9D-4FF2-8DC6-FC19003BD7EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{568E75B1-7B9D-4FF2-8DC6-FC19003BD7EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{568E75B1-7B9D-4FF2-8DC6-FC19003BD7EA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E5A2F670-3713-4288-9DE4-C9E7A85DDEAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E5A2F670-3713-4288-9DE4-C9E7A85DDEAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E5A2F670-3713-4288-9DE4-C9E7A85DDEAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E5A2F670-3713-4288-9DE4-C9E7A85DDEAB}.Release|Any CPU.Build.0 = Release|Any CPU
+#		{F648F876-CAB4-427E-A600-2C20FBD627A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+#		{F648F876-CAB4-427E-A600-2C20FBD627A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+#		{F648F876-CAB4-427E-A600-2C20FBD627A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+#		{F648F876-CAB4-427E-A600-2C20FBD627A4}.Release|Any CPU.Build.0 = Release|Any CPU
+#		{568E75B1-7B9D-4FF2-8DC6-FC19003BD7EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+#		{568E75B1-7B9D-4FF2-8DC6-FC19003BD7EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+#		{568E75B1-7B9D-4FF2-8DC6-FC19003BD7EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+#		{568E75B1-7B9D-4FF2-8DC6-FC19003BD7EA}.Release|Any CPU.Build.0 = Release|Any CPU
+#		{E5A2F670-3713-4288-9DE4-C9E7A85DDEAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+#		{E5A2F670-3713-4288-9DE4-C9E7A85DDEAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+#		{E5A2F670-3713-4288-9DE4-C9E7A85DDEAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+#		{E5A2F670-3713-4288-9DE4-C9E7A85DDEAB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9AB05518-B48D-4AE4-A355-F4B08DC014AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9AB05518-B48D-4AE4-A355-F4B08DC014AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9AB05518-B48D-4AE4-A355-F4B08DC014AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
