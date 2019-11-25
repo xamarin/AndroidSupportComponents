@@ -404,7 +404,7 @@ Task("PrepareWorkingDirectory")
         GetFiles($"{workingPath}/*/*.json") +
         GetFiles($"{workingPath}/*/*/*.nupkg") +
         GetFiles($"{workingPath}/*/*/.signature.p7s") +
-        GetFiles($"{workingPath}/*/*/[Content_Types].xml");
+        GetFiles($"{workingPath}/*/*/*Content_Types*.xml");
     foreach (var junk in junkFiles) {
         DeleteFile(junk);
     }
