@@ -1,10 +1,9 @@
-# Android Support / AndroidX for Xamarin.Android
+# Android Support for Xamarin.Android
 
-Xamarin creates and maintains Xamarin.Android bindings for the Google Android Support Libraries and AndroidX.
+Xamarin creates and maintains Xamarin.Android bindings for the Google Android Support Libraries.
 
-# AndroidX Roadmap
-To view our progress on AndroidX bindings and to see more information about our roadmap, check out the [AndroidX Branch](https://github.com/xamarin/AndroidSupportComponents/tree/AndroidX#android-support---androidx-roadmap)
-
+# AndroidX
+For AndroidX, please see https://github.com/xamarin/AndroidX
 
 ## Building
 
