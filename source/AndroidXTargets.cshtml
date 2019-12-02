@@ -4,6 +4,8 @@
 @using System.Xml.Linq
 @functions 
 {
+  public static string GetTargetFrameworkVersion() { return "monoandroid90"; }
+
   public static void RemoveXmlns(XElement e)
   {
     e.Name = e.Name.LocalName;
@@ -21,7 +23,7 @@
   <ItemGroup>
     @foreach (var art in @Model.MavenArtifacts) {
       if (art.ProguardFile != null) {
-    <ProguardConfiguration Include="$(MSBuildThisFileDirectory)..\..\proguard\proguard.txt">
+    <ProguardConfiguration Include="$(MSBuildThisFileDirectory)..\..\proguard\@(GetTargetFrameworkVersion())\proguard.txt">
       <AndroidXSkipAndroidXMigration>true</AndroidXSkipAndroidXMigration>
     </ProguardConfiguration>
       }
