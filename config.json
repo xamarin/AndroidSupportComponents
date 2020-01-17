@@ -485,7 +485,7 @@
 			"groupId" : "com.android.support",
 			"artifactId" : "support-v4",
 			"version" : "28.0.0",
-			"nugetVersion" : "28.0.0.3",
+			"nugetVersion" : "28.0.0.4",
 			"nugetId" : "Xamarin.Android.Support.v4"
 		},
 		{
