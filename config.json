@@ -80,6 +80,20 @@
 			"nugetId" : "Xamarin.Android.Arch.Lifecycle.ViewModel"
 		},
 		{
+			"groupId" : "android.arch.paging",
+			"artifactId" : "common",
+			"version" : "1.0.1",
+			"nugetVersion" : "1.0.1.4",
+			"nugetId" : "Xamarin.Android.Arch.Paging.Common"
+		},
+		{
+			"groupId" : "android.arch.paging",
+			"artifactId" : "runtime",
+			"version" : "1.0.1",
+			"nugetVersion" : "1.0.1.4",
+			"nugetId" : "Xamarin.Android.Arch.Paging.Runtime"
+		},
+		{
 			"groupId" : "android.arch.persistence.room",
 			"artifactId" : "common",
 			"version" : "1.1.1",

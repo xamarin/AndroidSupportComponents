@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+    <attr
+        path="/api/package[@name='android.arch.paging']/class[@name='PageKeyedDataSource']/method[@name='map' and count(parameter)=1 and parameter[1][@type='android.arch.core.util.Function&lt;Value, ToValue&gt;']]"
+        name="managedReturn"
+        >
+        Android.Arch.Paging.DataSource
+    </attr>
+    <attr
+        path="/api/package[@name='android.arch.paging']/class[@name='DataSource']/method[@name='map' and count(parameter)=1 and parameter[1][@type='android.arch.core.util.Function&lt;Value, ToValue&gt;']]/parameter[1]"
+        name="managedName"
+        >
+        function
+    </attr>
+    <attr
+        path="/api/package[@name='android.arch.paging']/class[@name='ItemKeyedDataSource']/method[@name='map' and count(parameter)=1 and parameter[1][@type='android.arch.core.util.Function&lt;Value, ToValue&gt;']]"
+        name="managedReturn"
+        >
+        Android.Arch.Paging.DataSource
+    </attr>
+    <attr
+        path="/api/package[@name='android.arch.paging']/class[@name='PositionalDataSource']/method[@name='map' and count(parameter)=1 and parameter[1][@type='android.arch.core.util.Function&lt;T, V&gt;']]"
+        name="managedReturn"
+        >
+        Android.Arch.Paging.DataSource
+    </attr>
+    <attr
+        path="/api/package[@name='android.arch.paging']/class[@name='PageKeyedDataSource']/method[@name='mapByPage' and count(parameter)=1 and parameter[1][@type='android.arch.core.util.Function&lt;java.util.List&lt;Value&gt;, java.util.List&lt;ToValue&gt;&gt;']]"
+        name="managedReturn"
+        >
+        Android.Arch.Paging.DataSource
+    </attr>
+    <attr
+        path="/api/package[@name='android.arch.paging']/class[@name='ItemKeyedDataSource']/method[@name='mapByPage' and count(parameter)=1 and parameter[1][@type='android.arch.core.util.Function&lt;java.util.List&lt;Value&gt;, java.util.List&lt;ToValue&gt;&gt;']]"
+        name="managedReturn"
+        >
+        Android.Arch.Paging.DataSource
+    </attr>
+    <attr
+        path="/api/package[@name='android.arch.paging']/class[@name='PositionalDataSource']/method[@name='mapByPage' and count(parameter)=1 and parameter[1][@type='android.arch.core.util.Function&lt;java.util.List&lt;T&gt;, java.util.List&lt;V&gt;&gt;']]"
+        name="managedReturn"
+        >
+        Android.Arch.Paging.DataSource
+    </attr>
+    <attr
+        path="/api/package[@name='android.arch.paging']/class[@name='DataSource']/method[@name='mapByPage' and count(parameter)=1 and parameter[1][@type='android.arch.core.util.Function&lt;java.util.List&lt;Value&gt;, java.util.List&lt;ToValue&gt;&gt;']]/parameter[1]"
+        name="managedName"
+        >
+        function
+    </attr>
+    <attr
+        path="/api/package[@name='android.arch.paging']/class[@name='ContiguousDataSource']"
+        name="visibility"
+        >
+        public
+    </attr>
+    <attr
+        path="/api/package[@name='android.arch.paging']/class[@name='PageKeyedDataSource']/method[@name='map' and count(parameter)=1 and parameter[1][@type='android.arch.core.util.Function&lt;Value, ToValue&gt;']]"
+        name="final"
+        >
+        false
+    </attr>
+    <attr
+        path="/api/package[@name='android.arch.paging']/class[@name='ItemKeyedDataSource']/method[@name='map' and count(parameter)=1 and parameter[1][@type='android.arch.core.util.Function&lt;Value, ToValue&gt;']]"
+        name="final"
+        >
+        false
+    </attr>
+    <attr
+        path="/api/package[@name='android.arch.paging']/class[@name='ItemKeyedDataSource']/method[@name='mapByPage' and count(parameter)=1 and parameter[1][@type='android.arch.core.util.Function&lt;java.util.List&lt;Value&gt;, java.util.List&lt;ToValue&gt;&gt;']]"
+        name="final"
+        >
+        false
+    </attr>
+    <attr
+        path="/api/package[@name='android.arch.paging']/class[@name='PageKeyedDataSource']/method[@name='mapByPage' and count(parameter)=1 and parameter[1][@type='android.arch.core.util.Function&lt;java.util.List&lt;Value&gt;, java.util.List&lt;ToValue&gt;&gt;']]"
+        name="final"
+        >
+        false
+    </attr>
+    <attr
+        path="/api/package[@name='android.arch.paging']/class[@name='PositionalDataSource']/method[@name='map' and count(parameter)=1 and parameter[1][@type='android.arch.core.util.Function&lt;T, V&gt;']]"
+        name="final"
+        >
+        false
+    </attr>
+    <attr
+        path="/api/package[@name='android.arch.paging']/class[@name='PositionalDataSource']/method[@name='mapByPage' and count(parameter)=1 and parameter[1][@type='android.arch.core.util.Function&lt;java.util.List&lt;T&gt;, java.util.List&lt;V&gt;&gt;']]"
+        name="final"
+        >
+        false
+    </attr>
+    
+    
+</metadata>
