@@ -11,7 +11,6 @@ var TARGET = Argument ("t", Argument ("target", "Default"));
 var BUILD_CONFIG = Argument ("config", "Release");
 var VERBOSITY = Argument ("v", Argument ("verbosity", Verbosity.Normal));
 var MAX_CPU_COUNT = Argument("maxcpucount", 0);
-var CONFIGURATION = Argument ("c", Argument ("configuration", "Release"));
 
 // Lists all the artifacts and their versions for com.android.support.*
 // https://dl.google.com/dl/android/maven2/com/android/support/group-index.xml
@@ -24,6 +23,8 @@ var REF_DOCS_URL = "https://bosstoragemirror.blob.core.windows.net/android-docs-
 var XAMARIN_ANDROID_PATH = EnvironmentVariable ("XAMARIN_ANDROID_PATH");
 var ANDROID_SDK_BASE_VERSION = "v1.0";
 var ANDROID_SDK_VERSION = "v9.0";
+string AndroidSdkBuildTools = $"29.0.2";
+
 if (string.IsNullOrEmpty(XAMARIN_ANDROID_PATH)) {
 	if (IsRunningOnWindows()) {
 		var vsInstallPath = VSWhereLatest(new VSWhereLatestSettings { Requires = "Component.Xamarin" });
@@ -46,6 +47,12 @@ var BUILD_TIMESTAMP = DateTime.UtcNow.ToString();
 var REQUIRED_DOTNET_TOOLS = new [] {
 	"xamarin-android-binderator",
 	"xamarin.androidx.migration.tool"
+};
+
+string[] Configs = new []
+{
+	"Debug",
+	"Release"
 };
 
 // Log some variables
@@ -131,11 +138,14 @@ Task("binderate")
 Task("libs")
 	.Does(() =>
 {
-	MSBuild("./generated/AndroidSupport.sln", c => {
-		c.Configuration = "Release";
-		c.Restore = true;
-		c.Properties.Add("DesignTimeBuild", new [] { "false" });
-	});
+	foreach(string config in Configs)
+	{
+		MSBuild("./generated/AndroidSupport.sln", c => {
+			c.Configuration = config;
+			c.Restore = true;
+			c.Properties.Add("DesignTimeBuild", new [] { "false" });
+		});
+	}
 });
 
 Task("nuget")
@@ -184,18 +194,22 @@ Task("samples")
 	EnsureDirectoryExists(packagesPath);
 	CleanDirectories(packagesPath);
 
-	// build the samples
-	var settings = new MSBuildSettings()
-		.SetConfiguration(CONFIGURATION)
-		.SetVerbosity(VERBOSITY)
-		.SetMaxCpuCount(0)
-		.EnableBinaryLogger("./output/samples.binlog")
-		.WithRestore()
-		.WithProperty("RestorePackagesPath", packagesPath)
-		.WithProperty("DesignTimeBuild", "false")
-		.WithProperty("AndroidSdkBuildToolsVersion", "29.0.2");
 
-	MSBuild("./samples/BuildAll/BuildAll.sln", settings);
+	foreach(string config in Configs)
+	{
+		// build the samples
+		var settings = new MSBuildSettings()
+			.SetConfiguration(config)
+			.SetVerbosity(VERBOSITY)
+			.SetMaxCpuCount(0)
+			.EnableBinaryLogger("./output/samples.binlog")
+			.WithRestore()
+			.WithProperty("RestorePackagesPath", packagesPath)
+			.WithProperty("DesignTimeBuild", "false")
+			.WithProperty("AndroidSdkBuildToolsVersion", AndroidSdkBuildTools);
+
+		MSBuild("./samples/BuildAll/BuildAll.sln", settings);
+	}
 });
 
 Task ("merge")
@@ -233,13 +247,13 @@ Task ("clean")
 	.Does (() =>
 {
 	if (DirectoryExists ("./externals"))
-		DeleteDirectory ("./externals", true);
+		DeleteDirectory ("./externals", new DeleteDirectorySettings { Recursive = true, Force = true });
 
 	if (DirectoryExists ("./generated"))
-		DeleteDirectory ("./generated", true);
+		DeleteDirectory ("./generated", new DeleteDirectorySettings { Recursive = true, Force = true });
 
 	if (DirectoryExists ("./util/binderator"))
-		DeleteDirectory ("./util/binderator", true);
+		DeleteDirectory ("./util/binderator", new DeleteDirectorySettings { Recursive = true, Force = true });
 
 	CleanDirectories ("./**/packages");
 });
