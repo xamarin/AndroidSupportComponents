@@ -1,9 +1,17 @@
 # Android Support for Xamarin.Android
 
-Xamarin creates and maintains Xamarin.Android bindings for the Google Android Support Libraries.
+Xamarin.Android bindings for the now-deprecated Google Android Support Libraries.  These libraries have been replaced with AndroidX libraries.
 
 # AndroidX
 For AndroidX, please see https://github.com/xamarin/AndroidX
+
+## Status
+
+Please note that both these packages and the Google libraries contained within them have been deprecated, and are no longer maintained or supported:
+
+https://developer.android.com/topic/libraries/support-library/packages
+
+Existing bindings published from this repository will continue to be available on NuGet, but will not receive fixes or updates.
 
 ## Building
 
